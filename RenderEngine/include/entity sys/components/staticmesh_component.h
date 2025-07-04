@@ -47,6 +47,7 @@ namespace wizm {
 
 			m_mesh_asset_id = save_t[index].get_string("asset id")[0];
 			m_material_asset_ids = save_t[index].get_string("m_material_asset_ids");
+			is_static = save_t[index].get_int("is_static")[0];
 		};
 
 
@@ -55,9 +56,10 @@ namespace wizm {
 			save_t["staticmesh" + index]["transform"].set_float("position", { get_position().x, get_position().y, get_position().z });
 			save_t["staticmesh" + index]["transform"].set_float("rotation", { get_rotation().x, get_rotation().y, get_rotation().z });
 			save_t["staticmesh" + index]["transform"].set_float("scale", { get_scale().x, get_scale().y, get_scale().z });
-			
+
 			save_t["staticmesh" + index].set_string("asset id", { m_mesh_asset_id });
 			save_t["staticmesh" + index].set_string("m_material_asset_ids", m_material_asset_ids);
+			save_t["staticmesh" + index].set_int("is_static", { is_static});
 
 			for(auto& mat : m_materials)
 			{
@@ -68,10 +70,16 @@ namespace wizm {
 
 
 	public:
+		bool is_static = true;
 		std::vector<std::shared_ptr<material_asset>> m_materials;
 		std::shared_ptr<staticmesh_asset> m_model;
 		std::string m_mesh_asset_id;
 		std::vector<std::string> m_material_asset_ids;
 
+
+	private:
+		bool is_dirty = false;
+		int LOD_level = 0;
+		int previous_LOD_level = 0;
 	};
 }

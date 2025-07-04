@@ -17,8 +17,8 @@ namespace wizm {
 		script_editor_layer(asset_manager* passet_manager);
 		~script_editor_layer();
 
-		virtual void OnAttach() override;
-		virtual void OnDetach() override;
+		virtual void on_attach() override;
+		virtual void on_detach() override;
 		virtual void update(float delta_time) override;
 
 		bool write_script(const std::string& filepath, const char* buffer);

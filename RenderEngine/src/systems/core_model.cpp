@@ -11,6 +11,7 @@ void lowlevelsys::core_model::render_model()
 		meshes[i].draw_mesh();
 }
 
+
 void lowlevelsys::core_model::loadModel(std::string path)
 {
     Assimp::Importer import;
@@ -49,6 +50,7 @@ lowlevelsys::core_mesh lowlevelsys::core_model::processMesh(aiMesh* mesh, const 
     std::vector<core_gl_texture> textures;
 
     total_triangles += mesh->mNumFaces;
+    total_vertices += mesh->mNumVertices;
 
     for (unsigned int i = 0; i < mesh->mNumVertices; i++)
     {

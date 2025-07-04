@@ -25,12 +25,12 @@ wizm::viewport_layer::~viewport_layer()
 {
 }
 
-void wizm::viewport_layer::OnAttach()
+void wizm::viewport_layer::on_attach()
 {
     
 }
 
-void wizm::viewport_layer::OnDetach()
+void wizm::viewport_layer::on_detach()
 {
 }
 

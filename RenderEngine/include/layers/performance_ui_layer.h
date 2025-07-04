@@ -13,8 +13,8 @@ namespace wizm {
 		performace_ui_layer();
 		~performace_ui_layer();
 
-		virtual void OnAttach() override;
-		virtual void OnDetach() override;
+		virtual void on_attach() override;
+		virtual void on_detach() override;
 		virtual void update(float delta_time) override;
 
 	private:

@@ -45,7 +45,7 @@ namespace wizm {
 			}
 		}
 
-		void draw(std::shared_ptr<core_gl_shader> m_shader) {
+		void apply(std::shared_ptr<core_gl_shader> m_shader) {
 		
 			if (m_diffuse_texture) {
 				glActiveTexture(GL_TEXTURE0);

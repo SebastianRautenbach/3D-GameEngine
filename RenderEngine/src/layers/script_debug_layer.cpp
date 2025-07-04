@@ -10,11 +10,11 @@ wizm::script_debug_layer::~script_debug_layer()
 {
 }
 
-void wizm::script_debug_layer::OnAttach()
+void wizm::script_debug_layer::on_attach()
 {
 }
 
-void wizm::script_debug_layer::OnDetach()
+void wizm::script_debug_layer::on_detach()
 {
 }
 

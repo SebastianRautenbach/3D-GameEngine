@@ -12,18 +12,21 @@ namespace wizm {
 	class staticmesh_asset : public core_asset, public core_renderable {
 	public:
 
-		~staticmesh_asset() override {
-		}
+		//~staticmesh_asset() override {
+		//}
 
 		void set_mesh(std::shared_ptr<core_model> model) { m_model = model; }
 		std::shared_ptr<core_model> get_mesh() { return m_model; }
+
+		std::vector<int> _gettest() { return test_del; }
+
 		int material_count() { return m_model->m_num_materials; }
 		
 		void load(const std::string& path) override {
 			if(!path.empty())
 			{
 				std::filesystem::path file_path(path);
-
+				
 				m_model = std::make_unique<core_model>(path.c_str());
 				file_name = file_path.filename().string();
 			}
@@ -35,6 +38,10 @@ namespace wizm {
 
 		unsigned int get_triangles() {
 			return m_model->total_triangles;
+		}
+
+		unsigned int get_vertices_count() {
+			return m_model->total_vertices;
 		}
 
 		std::vector<unsigned int> retrieve_all_indices() {
@@ -59,6 +66,7 @@ namespace wizm {
 
 	private:
 		std::shared_ptr<core_model> m_model;
+		std::vector<int> test_del;
 	};
 
 }

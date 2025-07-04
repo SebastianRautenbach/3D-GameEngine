@@ -10,10 +10,10 @@ namespace wizm {
         core_layer(const std::string& name = "Layer") : m_DebugName(name) {}
         virtual ~core_layer() = default;
 
-        virtual void OnAttach() {} 
-        virtual void OnDetach() {} 
+        virtual void on_attach() {} 
+        virtual void on_detach() {} 
         virtual void update(float delta_time) {}
-        virtual void OnImGuiRender() {}
+        virtual void on_imgui_render() {}
 
         std::string get_layer_name() { return m_DebugName; }
 

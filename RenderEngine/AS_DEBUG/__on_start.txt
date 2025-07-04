@@ -1,0 +1,39 @@
+void on_start()
+
+Temps: 1, 2, 3, 5
+
+Variables: 
+ 001: int 
+ 002: int 
+ 003: int 
+ 005: (heap) string 
+
+
+- 58,5 -
+    0   5 *    SUSPEND
+    1   5 *    PshC4    0x0          (i:0, f:0)
+    3   6 *    PshC4    0x0          (i:0, f:0)
+    5   7 *    PshC4    0x0          (i:0, f:0)
+    7   8 *    PSF      v5
+    8  10 *    PshGPtr  0x2d2b6075e18          (i:3104020323864, f:1.53359e-311)
+   11  12 *    CHKREF
+   12  12 *    ALLOC    0x2d2b906e200, 20             (type:string, string::string(const string&in))
+   16   8 *    VAR      v5
+   17  10 *    GETOBJ   0
+   18  10 *    CALLSYS  77           (void set_entity_rotation(string, float, float, float))
+- 59,5 -
+   20   5 *    SUSPEND
+   21   5 *    PshC4    0x0          (i:0, f:0)
+   23   6 *    PshC4    0x0          (i:0, f:0)
+   25   7 *    PshC4    0x0          (i:0, f:0)
+   27   8 *    PSF      v5
+   28  10 *    PshGPtr  0x2d2b6075e18          (i:3104020323864, f:1.53359e-311)
+   31  12 *    CHKREF
+   32  12 *    ALLOC    0x2d2b906e200, 20             (type:string, string::string(const string&in))
+   36   8 *    VAR      v5
+   37  10 *    GETOBJ   0
+   38  10 *    CALLSYS  80           (void add_entity_position(string, float, float, float))
+- 60,2 -
+   40   5 *    SUSPEND
+            0:
+   41   5 *    RET      0

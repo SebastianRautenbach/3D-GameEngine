@@ -42,11 +42,11 @@ wizm::material_editor_layer::~material_editor_layer()
     delete light;
 }
 
-void wizm::material_editor_layer::OnAttach()
+void wizm::material_editor_layer::on_attach()
 {
 }
 
-void wizm::material_editor_layer::OnDetach()
+void wizm::material_editor_layer::on_detach()
 {
 }
 

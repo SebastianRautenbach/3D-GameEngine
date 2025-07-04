@@ -39,12 +39,12 @@ wizm::content_browser_layer::~content_browser_layer()
     delete entity_file_icon;
 }
 
-void wizm::content_browser_layer::OnAttach()
+void wizm::content_browser_layer::on_attach()
 {
     all_content = get_directory_content(current_directory.string());
 }
 
-void wizm::content_browser_layer::OnDetach()
+void wizm::content_browser_layer::on_detach()
 {
 	
 }

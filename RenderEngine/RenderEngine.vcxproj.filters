@@ -1,0 +1,517 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\add_on\scriptarray\scriptarray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\add_on\scriptbuilder\scriptbuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\add_on\scriptstdstring\scriptstdstring.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\add_on\scriptstdstring\scriptstdstring_utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\glad.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\imgui\backends\imgui_impl_glfw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\imgui\backends\imgui_impl_opengl3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\imgui\imgui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\imgui\imgui_demo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\imgui\imgui_draw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\imgui\imgui_tables.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\imgui\imgui_widgets.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\ImGuizmo\ImCurveEdit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\ImGuizmo\ImGradient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\ImGuizmo\ImGuizmo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\ImGuizmo\ImSequencer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\sqlite3.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\tinyfiledialogs.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\app.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\components\boxvolume_component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\components\camera_component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\components\component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\components\directionallight_component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\components\light_component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\components\pointlight_component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\components\scripting_component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\components\sound_component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\components\spotlight_component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\components\staticmesh_component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\core shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\entity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\input.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\layers\asset_viewer_layer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\layers\content_browser_layer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\layers\gui_layer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\layers\layerstack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\layers\material_editor_layer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\layers\performance_ui_layer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\layers\properties_ui_layer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\layers\scene_ui_layer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\layers\script_debug_layer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\layers\script_editor_layer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\layers\viewport_layer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\material.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\other utils\common.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\sdl renderer\gl_renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\systems\asset_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\systems\billboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\systems\billboard_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\systems\camera_3d.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\systems\camera_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\systems\compute_cluster_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\systems\core_mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\systems\core_model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\systems\core_renderable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\systems\input_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\systems\node.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\systems\scene_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\systems\scripting\script_controller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\tag.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\timer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\update_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\src\vertex_buffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\systems\batcher.cpp" />
+    <ClCompile Include="src\systems\runtimemanager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\core_application.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\add_on\scriptarray\scriptarray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\add_on\scriptbuilder\scriptbuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\add_on\scriptstdstring\scriptstdstring.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\filetypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\imgui\backends\imgui_impl_glfw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\imgui\backends\imgui_impl_opengl3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\imgui\imconfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\imgui\imgui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\imgui\imgui_internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\imgui\imstb_rectpack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\imgui\imstb_textedit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\imgui\imstb_truetype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\ImGuizmo\ImCurveEdit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\ImGuizmo\ImGradient.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\ImGuizmo\ImGuizmo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\ImGuizmo\ImSequencer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\dependencies\sqlite3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\entity sys\component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\entity sys\component_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\entity sys\components\all_components_list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\entity sys\components\boxvolume_component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\entity sys\components\camera_component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\entity sys\components\light_component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\entity sys\components\pointlight_component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\entity sys\components\scripting_component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\entity sys\components\sound_component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\entity sys\entity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\gl core\core shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\gl core\core_camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\gl core\engine_shader_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\gl core\vertex_buffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\gl renderer\gl_renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\input.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\input_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\layers\asset_viewer_layer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\layers\content_browser_layer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\layers\gui_cntx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\layers\layer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\layers\layers_define.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\layers\layerstack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\layers\material_editor_layer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\layers\performance_ui_layer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\layers\properties_ui_layer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\layers\scene_ui_layer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\layers\script_debug_layer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\layers\script_editor_layer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\layers\UI\popup_window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\other utils\common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\other utils\extra_utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\other utils\IDGEN.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\other utils\matrix_math.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\other utils\ZER.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\scene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\asset_class.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\asset_importer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\asset_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\assets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\assets\assettypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\assets\entity_asset.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\assets\material_asset.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\assets\mesh_asset.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\assets\script_asset.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\assets\sound_asset.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\assets\texture_asset.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\assettypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\audio_listener.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\audio_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\billboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\billboard_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\bounding_volume.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\camera_3d.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\camera_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\compose_level.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\compose_material.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\compute_cluster_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\core_mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\core_model.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\core_renderable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\draw_ray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\filewatcher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\input_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\material.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\material_types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\node.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\scene_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\scripting\compose_script.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\scripting\script_controller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\scripting\scripting_functions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\scripting\scripting_objects.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\tag.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\update_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\viewport\viewport_gui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\entity sys\components\directionallight_component.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\entity sys\components\spotlight_component.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\entity sys\components\staticmesh_component.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\layers\viewport_layer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\other utils\copy_to_clipboard.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\other utils\strconvr.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\include\system\mouse_picking.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\batcher.h" />
+    <ClInclude Include="include\system\runtimemanager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\karat\Documents\GitHub\3D-Game-Engine\RenderEngine\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{A49B7690-C116-3AFA-9A8D-EE7AFE28956F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{266296C2-2ED1-3921-92A7-8A5038C67AED}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

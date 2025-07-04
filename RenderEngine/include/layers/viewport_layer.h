@@ -20,8 +20,8 @@ namespace wizm {
 		viewport_layer(core_framebuffer* fbo, std::shared_ptr<camera_manager> camera_manager, gl_renderer* renderer, asset_manager* manager);
 		~viewport_layer();
 
-		virtual void OnAttach() override;
-		virtual void OnDetach() override;
+		virtual void on_attach() override;
+		virtual void on_detach() override;
 		virtual void update(float delta_time) override;
 
 		void scene_viewport_func(float delta_time);

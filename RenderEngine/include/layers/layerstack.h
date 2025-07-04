@@ -9,8 +9,8 @@ namespace wizm {
         layer_stack() = default;
         ~layer_stack();
 
-        void PushLayer(core_layer* layer);
-        void PopLayer(core_layer* layer);
+        void push_layer(core_layer* layer);
+        void pop_layer(core_layer* layer);
 
         std::vector<core_layer*>::iterator begin() { return m_Layers.begin(); }
         std::vector<core_layer*>::iterator end() { return m_Layers.end(); }

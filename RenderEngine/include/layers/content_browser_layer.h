@@ -18,8 +18,8 @@ namespace wizm {
 		content_browser_layer(asset_manager* p_asset_manager);
 		~content_browser_layer();
 	
-		virtual void OnAttach() override;
-		virtual void OnDetach() override;
+		virtual void on_attach() override;
+		virtual void on_detach() override;
 		virtual void update(float delta_time) override;
 
 		void refresh_assets();

@@ -1,0 +1,18 @@
+float radians(float)
+
+Temps: 1
+
+Variables: 
+ 000: float degrees
+ 001: int 
+
+
+- 49,5 -
+               VarDecl  0
+    0   1 *    SUSPEND
+    1   1 *    MULIf    v1, v0, 0.017453
+            {
+            }
+    4   1 *    CpyVtoR4 v1
+            0:
+    5   1 *    RET      1

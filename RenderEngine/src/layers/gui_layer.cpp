@@ -15,7 +15,7 @@ wizm::gui_layer::~gui_layer()
    // OnDetach();
 }
 
-void wizm::gui_layer::OnAttach()
+void wizm::gui_layer::on_attach()
 {
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
@@ -86,7 +86,7 @@ void wizm::gui_layer::OnAttach()
     ImGui_ImplOpenGL3_Init("#version 460");
 }
 
-void wizm::gui_layer::OnDetach()
+void wizm::gui_layer::on_detach()
 {
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();

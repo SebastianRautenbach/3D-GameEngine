@@ -14,11 +14,11 @@ wizm::asset_viewer_layer::~asset_viewer_layer()
 {
 }
 
-void wizm::asset_viewer_layer::OnAttach()
+void wizm::asset_viewer_layer::on_attach()
 {
 }
 
-void wizm::asset_viewer_layer::OnDetach()
+void wizm::asset_viewer_layer::on_detach()
 {
 }
 

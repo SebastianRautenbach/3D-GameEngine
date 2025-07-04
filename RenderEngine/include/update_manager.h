@@ -11,10 +11,13 @@
 #include "system/camera_manager.h"
 #include "system/compute_cluster_test.h"
 #include "system/audio_listener.h"
+#include "system/batcher.h"
+#include "system/runtimemanager.h"
 
 
 // DELETE
 #include "system/draw_ray.h"
+
 
 namespace wizm {
 
@@ -37,11 +40,9 @@ namespace wizm {
 
 		core_framebuffer* m_framebuffer;
 
-
-
 		compute_cluster* compute_cluster_test;
 		
-
+		std::unique_ptr<runtime_manager> m_runtime_manager;
 
 		layer_stack* m_layer_stack;
 		billboard_manager* m_billboard_manager;
@@ -52,7 +53,7 @@ namespace wizm {
 
 		audio_listener* m_listener_manager;
 		audio_manager* m_audio_manager;
-
+		
 	};
 
 

@@ -1,0 +1,10 @@
+^C:\USERS\KARAT\DOCUMENTS\GITHUB\3D-GAME-ENGINE\RENDERENGINE\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/karat/Documents/GitHub/3D-Game-Engine/RenderEngine -BC:/Users/karat/Documents/GitHub/3D-Game-Engine/RenderEngine/out --check-stamp-file C:/Users/karat/Documents/GitHub/3D-Game-Engine/RenderEngine/out/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

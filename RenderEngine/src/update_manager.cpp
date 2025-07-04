@@ -11,7 +11,7 @@ using namespace wizm;
 
 void update_manager::render_setup(int window_size_x, int window_size_y, const char* window_name)
 {
-
+	
 	global_scene = new core_scene;
 
 	m_camera_manager = std::make_shared<camera_manager>();
@@ -40,17 +40,20 @@ void update_manager::render_setup(int window_size_x, int window_size_y, const ch
 
 	m_layer_stack = new layer_stack();
 
-	m_layer_stack->PushLayer(base_layer);
+	m_layer_stack->push_layer(base_layer);
 
 	m_billboard_manager = new billboard_manager(m_gl_renderer->m_shdrs[ENGINE_SHADER_BILLBOARD]);
 
-	m_layer_stack->PushLayer(new script_debug_layer());
-	m_layer_stack->PushLayer(new viewport_layer(m_framebuffer, m_camera_manager, m_gl_renderer, m_asset_manager));
-	m_layer_stack->PushLayer(new scene_ui_layer(m_gl_renderer));
-	m_layer_stack->PushLayer(new performace_ui_layer());
-	m_layer_stack->PushLayer(new properties_ui_layer(m_gl_renderer, m_asset_manager));
-	m_layer_stack->PushLayer(new content_browser_layer(m_asset_manager));
-	m_layer_stack->PushLayer(new material_editor_layer(m_asset_manager));
+	m_layer_stack->push_layer(new script_debug_layer());
+	m_layer_stack->push_layer(new viewport_layer(m_framebuffer, m_camera_manager, m_gl_renderer, m_asset_manager));
+	m_layer_stack->push_layer(new scene_ui_layer(m_gl_renderer));
+	m_layer_stack->push_layer(new performace_ui_layer());
+	m_layer_stack->push_layer(new properties_ui_layer(m_gl_renderer, m_asset_manager));
+	m_layer_stack->push_layer(new content_browser_layer(m_asset_manager));
+	m_layer_stack->push_layer(new material_editor_layer(m_asset_manager));
+
+	m_runtime_manager = std::make_unique<runtime_manager>();
+	
 }
 
 
@@ -86,22 +89,12 @@ void update_manager::render()
 	compute_cluster_test->update();
 
 
-
-	// depth pass -- shadow pass
-	{
-		//m_gl_renderer->m_shdrs[3]->use_shader();
-		//global_scene->update_light_components(m_timer->get_delta_time(), m_gl_renderer->m_shdrs[3]);
-		//glViewport(0, 0, 1024, 1024);
-		//glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
-		//glClear(GL_DEPTH_BUFFER_BIT);
-		//global_scene->scene_update(m_timer->get_delta_time(), m_gl_renderer->m_shdrs[3]);
-		//glBindFramebuffer(GL_FRAMEBUFFER, 0);
-	}
 	
 	{
 		m_framebuffer->bind_buffer();
 		m_gl_renderer->m_shdrs[ENGINE_SHADER_DEFUALT]->use_shader();
-		global_scene->scene_update(m_timer->get_delta_time(), m_gl_renderer->m_shdrs[ENGINE_SHADER_DEFUALT]);
+		global_scene->scene_update(m_timer->get_delta_time(), m_gl_renderer->m_shdrs[ENGINE_SHADER_DEFUALT]);		
+		m_runtime_manager->render_runtime(m_timer->get_delta_time(), m_gl_renderer->m_shdrs[ENGINE_SHADER_DEFUALT]);
 		global_scene->update_light_components(m_timer->get_delta_time(), m_gl_renderer->m_shdrs[ENGINE_SHADER_DEFUALT]);
 		m_billboard_manager->render();
 		m_framebuffer->unbind_buffer();

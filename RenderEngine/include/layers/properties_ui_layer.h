@@ -18,8 +18,8 @@ namespace wizm {
 		properties_ui_layer( gl_renderer* renderer, asset_manager* manager);
 		~properties_ui_layer();
 
-		virtual void OnAttach() override;
-		virtual void OnDetach() override;
+		virtual void on_attach() override;
+		virtual void on_detach() override;
 		virtual void update(float delta_time) override;
 
 		// properties panel specific

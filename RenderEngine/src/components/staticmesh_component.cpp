@@ -46,7 +46,7 @@ void wizm::staticmesh_component::component_update(float delta_time, std::shared_
 		auto material = m_materials[mat_index];
 
 		if (material)
-			material->draw(shader);
+			material->apply(shader);
 
 		
 
@@ -76,6 +76,8 @@ core_component* wizm::staticmesh_component::_copy() const
 
 	new_sc_comp->m_materials = this->m_materials;
 	new_sc_comp->m_material_asset_ids = this->m_material_asset_ids;
+
+	new_sc_comp->is_static = this->is_static;
 
 	return new_sc_comp;
 }

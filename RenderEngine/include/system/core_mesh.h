@@ -25,12 +25,11 @@ namespace lowlevelsys {
 	
 	public:
 		std::vector<vertex_data> vertices;
-		std::vector<unsigned int> indices;
-		std::vector<core_gl_texture> textures;
+		std::vector<unsigned int> indices;		
 		int m_material_index;
 
 	private:
-		std::unique_ptr<core_arr_vertex_buffer> vertex_arr;
+		core_arr_vertex_buffer vertex_arr;
 		void setup_mesh();
 	};
 }

@@ -17,8 +17,8 @@ namespace wizm {
 		gui_layer(GLFWwindow* window, std::shared_ptr<camera_manager> camera_manager, asset_manager* p_asset_manager);
 		~gui_layer();
 
-		virtual void OnAttach() override;
-		virtual void OnDetach() override;
+		virtual void on_attach() override;
+		virtual void on_detach() override;
 
 
 		void begin();

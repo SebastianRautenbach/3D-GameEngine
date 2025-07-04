@@ -10,11 +10,11 @@ wizm::performace_ui_layer::~performace_ui_layer()
 {
 }
 
-void wizm::performace_ui_layer::OnAttach()
+void wizm::performace_ui_layer::on_attach()
 {
 }
 
-void wizm::performace_ui_layer::OnDetach()
+void wizm::performace_ui_layer::on_detach()
 {
 }
 

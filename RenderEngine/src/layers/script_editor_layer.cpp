@@ -13,11 +13,11 @@ wizm::script_editor_layer::~script_editor_layer()
 {
 }
 
-void wizm::script_editor_layer::OnAttach()
+void wizm::script_editor_layer::on_attach()
 {
 }
 
-void wizm::script_editor_layer::OnDetach()
+void wizm::script_editor_layer::on_detach()
 {
 }
 

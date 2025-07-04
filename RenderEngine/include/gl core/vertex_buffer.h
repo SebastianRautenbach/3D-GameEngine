@@ -206,6 +206,7 @@ class core_arr_vertex_buffer : public core_buffer_object {
 public:
 	// default constructor
 	core_arr_vertex_buffer(std::vector<vertex_data>& vertices, std::vector<unsigned int>& indices);
+	core_arr_vertex_buffer() {}
 	~core_arr_vertex_buffer();
 	
 	void create_buffer();

@@ -11,11 +11,11 @@ wizm::properties_ui_layer::~properties_ui_layer()
 {
 }
 
-void wizm::properties_ui_layer::OnAttach()
+void wizm::properties_ui_layer::on_attach()
 {
 }
 
-void wizm::properties_ui_layer::OnDetach()
+void wizm::properties_ui_layer::on_detach()
 {
 }
 
@@ -277,7 +277,7 @@ void wizm::properties_ui_layer::update(float delta_time)
 				
 
 				global_scene->get_crnt_entity()->m_components_list.erase(std::find(global_scene->get_crnt_entity()->m_components_list.begin(),
-					global_scene->get_crnt_entity()->m_components_list.end(), global_scene->get_crnt_entity()->get_selected_comp()));
+				global_scene->get_crnt_entity()->m_components_list.end(), global_scene->get_crnt_entity()->get_selected_comp()));
 				global_scene->get_crnt_entity()->set_selected_comp(nullptr);
 			}
 
@@ -466,6 +466,8 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, core_
 				}
 			}
 		}	
+		
+		ImGui::Checkbox("is geometry static?", &staticmesh->is_static);
 	}
 
 

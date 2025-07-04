@@ -12,11 +12,11 @@ wizm::scene_ui_layer::~scene_ui_layer()
 {
 }
 
-void wizm::scene_ui_layer::OnAttach()
+void wizm::scene_ui_layer::on_attach()
 {
 }
 
-void wizm::scene_ui_layer::OnDetach()
+void wizm::scene_ui_layer::on_detach()
 {
 }
 

@@ -74,6 +74,7 @@ namespace filedata
 	class ZER {
 	public:
 		std::map<std::string, ZER*> class_properties;
+		bool read_file_success = false;
 
 	public:
 
@@ -492,13 +493,21 @@ namespace filedata
 			std::string file_data, line_data;
 			std::ifstream read_file(file_name);
 
-			while (std::getline(read_file, line_data))
-				file_data += line_data + '\n';
-			read_file.close();
-			int start_index = 0;
-			std::erase(file_data, 9);
-			construct_class_from_file(file_data, *this, start_index);
+			if (read_file.is_open()) {
+				read_file_success = true;
+				while (std::getline(read_file, line_data))
+					file_data += line_data + '\n';
+				read_file.close();
 
+				int start_index = 0;
+				std::erase(file_data, 9);
+				construct_class_from_file(file_data, *this, start_index);
+			}
+
+		
+			if (!read_file_success) {
+				std::cerr << "Failed to read file: " << file_name << std::endl;
+			}
 		}
 
 		void read_string_cntx(std::string string_data) {
@@ -526,6 +535,7 @@ namespace filedata
 	private:
 		std::string property_id;
 		std::vector<std::string> variables;
+
 	};
 
 }
