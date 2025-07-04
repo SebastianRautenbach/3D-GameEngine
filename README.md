@@ -25,7 +25,7 @@ Clone the repository to your local machine using your preferred Git client or th
 - *Runtime*: Supports runtime loading and unloading of assets, scripts, and other game data.
 
 **Whats to come**
-I want the engine to support a layer system where all scenes can be layered on top of each other making it more modular.
+I want the engine to support a layer system where all scenes can be layered on top of each other making it more modular.I am also currently busy working on the batch renderer
 
 **Resources Used**
 
