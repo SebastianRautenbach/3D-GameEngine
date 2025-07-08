@@ -14,9 +14,9 @@
 
 wizm::viewport_layer::viewport_layer(core_framebuffer* fbo,
     std::shared_ptr<camera_manager> camera_manager, gl_renderer* renderer,
-    asset_manager* manager)
+    asset_manager* manager, wizm::core_scene* scene)
     : core_layer("viewport_layer"), m_framebuffer(fbo), m_camera_manager(camera_manager),  
-    m_renderer(renderer), m_asset_manager(manager)
+    m_renderer(renderer), m_asset_manager(manager), global_scene(scene)
 {
  
 }
@@ -295,7 +295,7 @@ void wizm::viewport_layer::scene_viewport_func(float delta_time)
         }
         if (ImGui::MenuItem("Duplicate")) {
 
-            auto name = global_scene->get_crnt_entity()->m_ent_ID;
+            auto name = global_scene->get_crnt_entity()->m_ent_name;
 
             while (global_scene->does_ent_name_exist(name)) {
                 name += "(1)";

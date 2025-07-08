@@ -21,6 +21,8 @@
 
 namespace wizm {
 
+	class core_scene;
+
 	class update_manager {
 	public:
 
@@ -53,6 +55,7 @@ namespace wizm {
 
 		audio_listener* m_listener_manager;
 		audio_manager* m_audio_manager;
+		core_scene* global_scene;
 		
 	};
 

@@ -1,9 +1,11 @@
 #include "layers/properties_ui_layer.h"
 #include "other utils/strconvr.h"
 #include "system/scene_manager.h"
+#include "scene.h"
 
-wizm::properties_ui_layer::properties_ui_layer( gl_renderer* renderer, asset_manager* manager)
-	:core_layer("properties_ui_layer"), m_renderer(renderer), m_asset_manager(manager)
+wizm::properties_ui_layer::properties_ui_layer( gl_renderer* renderer, asset_manager* manager, core_scene* scene)
+	:core_layer("properties_ui_layer"), m_renderer(renderer), m_asset_manager(manager),
+	global_scene(scene)
 {
 }
 
@@ -30,7 +32,15 @@ void wizm::properties_ui_layer::update(float delta_time)
 	
 	if (global_scene->get_crnt_entity() != nullptr)
 	{
-		ImGui::Text(global_scene->get_crnt_entity()->m_ent_ID.c_str());
+
+		wizm::core_entity* ent = global_scene->get_crnt_entity();
+		
+		ImGui::PushID(ent->m_guid.c_str());
+
+		ImGui::Text(ent->m_ent_name.c_str());
+		ImGui::Text(ent->m_guid.c_str());
+		ImGui::SameLine();		
+
 
 
 		std::string trans_id;
@@ -43,7 +53,7 @@ void wizm::properties_ui_layer::update(float delta_time)
 		
 		{
 			ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0, 0));
-			float pos[3] = { global_scene->get_crnt_entity()->get_position().x, global_scene->get_crnt_entity()->get_position().y, global_scene->get_crnt_entity()->get_position().z };
+			float pos[3] = { ent->get_position().x, ent->get_position().y, ent->get_position().z };
 			ImVec2 buttonSize = ImVec2(ImGui::CalcTextSize(" X ").x, ImGui::GetFrameHeight());
 			float dragWidth = 100.0f;
 			
@@ -51,37 +61,37 @@ void wizm::properties_ui_layer::update(float delta_time)
 
 
 			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.8f, 0.1f, 0.15f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.9f, 0.2f, 0.2f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{ 0.8f, 0.1f, 0.15f, 1.0f });
-			trans_id = "##" + global_scene->get_crnt_entity()->m_ent_ID + "posX";
+			trans_id = "##posX";
 			ImGui::Button("X", buttonSize);
 			ImGui::SameLine();
 			ImGui::SetNextItemWidth(dragWidth);
 			if (ImGui::DragFloat(trans_id.c_str(), &pos[0], .01f, 0.0f, 0.0f, "%.2f", ImGuiSliderFlags_NoRoundToFormat))
-				global_scene->get_crnt_entity()->set_position(glm::vec3(pos[0], pos[1], pos[2]));
+				ent->set_position(glm::vec3(pos[0], pos[1], pos[2]));
 			ImGui::PopStyleColor(3);
 
 
 
 			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.2f, 0.7f, 0.3f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.3f, 0.8f, 0.3f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{ 0.2f, 0.7f, 0.2f, 1.0f });
-			trans_id = "##" + global_scene->get_crnt_entity()->m_ent_ID + "posY";
+			trans_id = "##posY";
 			ImGui::SameLine();
 			ImGui::Button("Y", buttonSize);
 			ImGui::SameLine();
 			ImGui::SetNextItemWidth(dragWidth);
 			if (ImGui::DragFloat(trans_id.c_str(), &pos[1], .01f, 0.0f, 0.0f, "%.2f", ImGuiSliderFlags_NoRoundToFormat))
-				global_scene->get_crnt_entity()->set_position(glm::vec3(pos[0], pos[1], pos[2]));
+				ent->set_position(glm::vec3(pos[0], pos[1], pos[2]));
 			ImGui::PopStyleColor(3);
 
 
 
 
 			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.1f, 0.4f, 0.8f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.2f, 0.5f, 0.9f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{ 0.1f, 0.4f, 0.8f, 1.0f });
-			trans_id = "##" + global_scene->get_crnt_entity()->m_ent_ID + "posZ";
+			trans_id = "##posZ";
 			ImGui::SameLine();
 			ImGui::Button("Z", buttonSize);
 			ImGui::SameLine();
 			ImGui::SetNextItemWidth(dragWidth);
 			if (ImGui::DragFloat(trans_id.c_str(), &pos[2], .01f, 0.0f, 0.0f, "%.2f", ImGuiSliderFlags_NoRoundToFormat))
-				global_scene->get_crnt_entity()->set_position(glm::vec3(pos[0], pos[1], pos[2]));
+				ent->set_position(glm::vec3(pos[0], pos[1], pos[2]));
 			ImGui::PopStyleColor(3);
 
 			ImGui::PopStyleVar();
@@ -93,40 +103,40 @@ void wizm::properties_ui_layer::update(float delta_time)
 			
 
 			ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0, 0));
-			float rot[3] = { global_scene->get_crnt_entity()->get_rotation().x, global_scene->get_crnt_entity()->get_rotation().y, global_scene->get_crnt_entity()->get_rotation().z };
+			float rot[3] = { ent->get_rotation().x, ent->get_rotation().y, ent->get_rotation().z };
 			ImVec2 buttonSize = ImVec2(ImGui::CalcTextSize(" X ").x, ImGui::GetFrameHeight());
 			float dragWidth = 100.0f;
 
 			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.8f, 0.1f, 0.15f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.9f, 0.2f, 0.2f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{ 0.8f, 0.1f, 0.15f, 1.0f });
-			trans_id = "##" + global_scene->get_crnt_entity()->m_ent_ID + "rotX";
+			trans_id = "##rotX";
 			ImGui::Button("P", buttonSize);
 			ImGui::SameLine();
 			ImGui::SetNextItemWidth(dragWidth);
 			if (ImGui::DragFloat(trans_id.c_str(), &rot[0], .01f, 0.0f, 0.0f, "%.2f", ImGuiSliderFlags_NoRoundToFormat))
-				global_scene->get_crnt_entity()->set_rotation(glm::vec3(rot[0], rot[1], rot[2]));
+				ent->set_rotation(glm::vec3(rot[0], rot[1], rot[2]));
 			ImGui::PopStyleColor(3);
 
 			
 			
 			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.2f, 0.7f, 0.3f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.3f, 0.8f, 0.3f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{ 0.2f, 0.7f, 0.2f, 1.0f });
-			trans_id = "##" + global_scene->get_crnt_entity()->m_ent_ID + "rotY";
+			trans_id = "##rotY";
 			ImGui::SameLine();
 			ImGui::Button("Y", buttonSize);
 			ImGui::SameLine();
 			ImGui::SetNextItemWidth(dragWidth);
 			if (ImGui::DragFloat(trans_id.c_str(), &rot[1], .01f, 0.0f, 0.0f, "%.2f", ImGuiSliderFlags_NoRoundToFormat))
-				global_scene->get_crnt_entity()->set_rotation(glm::vec3(rot[0], rot[1], rot[2]));
+				ent->set_rotation(glm::vec3(rot[0], rot[1], rot[2]));
 			ImGui::PopStyleColor(3);
 
 
 			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.1f, 0.4f, 0.8f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.2f, 0.5f, 0.9f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{ 0.1f, 0.4f, 0.8f, 1.0f });
-			trans_id = "##" + global_scene->get_crnt_entity()->m_ent_ID + "rotZ";
+			trans_id = "##rotZ";
 			ImGui::SameLine();
 			ImGui::Button("R", buttonSize);
 			ImGui::SameLine();
 			ImGui::SetNextItemWidth(dragWidth);
 			if (ImGui::DragFloat(trans_id.c_str(), &rot[2], .01f, 0.0f, 0.0f, "%.2f", ImGuiSliderFlags_NoRoundToFormat))
-				global_scene->get_crnt_entity()->set_rotation(glm::vec3(rot[0], rot[1], rot[2]));
+				ent->set_rotation(glm::vec3(rot[0], rot[1], rot[2]));
 			ImGui::PopStyleColor(3);
 
 			
@@ -137,42 +147,42 @@ void wizm::properties_ui_layer::update(float delta_time)
 
 		{
 			ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(0, 0));
-			float sca[3] = { global_scene->get_crnt_entity()->get_scale().x, global_scene->get_crnt_entity()->get_scale().y, global_scene->get_crnt_entity()->get_scale().z };
+			float sca[3] = { ent->get_scale().x, ent->get_scale().y, ent->get_scale().z };
 			ImVec2 buttonSize = ImVec2(ImGui::CalcTextSize(" X ").x, ImGui::GetFrameHeight());
 			float dragWidth = 100.0f;
 
 
 
 			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.8f, 0.1f, 0.15f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.9f, 0.2f, 0.2f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{ 0.8f, 0.1f, 0.15f, 1.0f });
-			trans_id = "##" + global_scene->get_crnt_entity()->m_ent_ID + "scaX";
+			trans_id = "##scaX";
 			ImGui::Button("X", buttonSize);
 			ImGui::SameLine();
 			ImGui::SetNextItemWidth(dragWidth);
 			if (ImGui::DragFloat(trans_id.c_str(), &sca[0], .01f, 0.0f, 0.0f, "%.2f", ImGuiSliderFlags_NoRoundToFormat))
-				global_scene->get_crnt_entity()->set_scale(glm::vec3(sca[0], sca[1], sca[2]));
+				ent->set_scale(glm::vec3(sca[0], sca[1], sca[2]));
 			ImGui::PopStyleColor(3);
 
 
 			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.2f, 0.7f, 0.3f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.3f, 0.8f, 0.3f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{ 0.2f, 0.7f, 0.2f, 1.0f });
-			trans_id = "##" + global_scene->get_crnt_entity()->m_ent_ID + "scaY";
+			trans_id = "##scaY";
 			ImGui::SameLine();
 			ImGui::Button("Y", buttonSize);
 			ImGui::SameLine();
 			ImGui::SetNextItemWidth(dragWidth);
 			if (ImGui::DragFloat(trans_id.c_str(), &sca[1], .01f, 0.0f, 0.0f, "%.2f", ImGuiSliderFlags_NoRoundToFormat))
-				global_scene->get_crnt_entity()->set_scale(glm::vec3(sca[0], sca[1], sca[2]));
+				ent->set_scale(glm::vec3(sca[0], sca[1], sca[2]));
 			ImGui::PopStyleColor(3);
 
 
 
 			ImGui::PushStyleColor(ImGuiCol_Button, ImVec4{ 0.1f, 0.4f, 0.8f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4{ 0.2f, 0.5f, 0.9f, 1.0f }); ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4{ 0.1f, 0.4f, 0.8f, 1.0f });
-			trans_id = "##" + global_scene->get_crnt_entity()->m_ent_ID + "scaZ";
+			trans_id = "##scaZ";
 			ImGui::SameLine();
 			ImGui::Button("Z", buttonSize);
 			ImGui::SameLine();
 			ImGui::SetNextItemWidth(dragWidth);
 			if (ImGui::DragFloat(trans_id.c_str(), &sca[2], .01f, 0.0f, 0.0f, "%.2f", ImGuiSliderFlags_NoRoundToFormat))
-				global_scene->get_crnt_entity()->set_scale(glm::vec3(sca[0], sca[1], sca[2]));
+				ent->set_scale(glm::vec3(sca[0], sca[1], sca[2]));
 			ImGui::PopStyleColor(3);
 
 			ImGui::PopStyleVar();
@@ -185,9 +195,9 @@ void wizm::properties_ui_layer::update(float delta_time)
 		ImGui::Text("Components");
 		ImGui::Separator();
 
-		for (int i = 0; i < global_scene->get_crnt_entity()->m_components_list.size(); i++)
+		for (int i = 0; i < ent->m_components_list.size(); i++)
 		{
-			auto& comps = global_scene->get_crnt_entity()->m_components_list[i];
+			auto& comps = ent->m_components_list[i];
 
 
 			std::string comp_type;
@@ -221,30 +231,30 @@ void wizm::properties_ui_layer::update(float delta_time)
 			}
 
 
-			trans_id = comp_type + "##" + global_scene->get_crnt_entity()->m_ent_ID + std::to_string(comps->m_component_type) + std::to_string(i);
+			trans_id = comp_type + "##"  + std::to_string(comps->m_component_type) + std::to_string(i);
 			if (ImGui::CollapsingHeader(trans_id.c_str()))
 			{
-				trans_id = "transfrom ##" + global_scene->get_crnt_entity()->m_ent_ID + std::to_string(comps->m_component_type) + std::to_string(i);
+				trans_id = "transfrom ##"  + std::to_string(comps->m_component_type) + std::to_string(i);
 				ImGui::Indent(20.0f);
 				if (ImGui::CollapsingHeader("transform"))
 				{
 
 					ImGui::Text("Position:");
 					float pos[3] = { comps->get_position().x, comps->get_position().y, comps->get_position().z };
-					std::string trans_id = "##" + global_scene->get_crnt_entity()->m_ent_ID + "c pos" + std::to_string(comps->m_component_type) + std::to_string(i);
+					std::string trans_id = "##c pos" + std::to_string(comps->m_component_type) + std::to_string(i);
 					if (ImGui::DragFloat3(trans_id.c_str(), pos, 0.01))
 						comps->set_position(glm::vec3(pos[0], pos[1], pos[2]));
 
 					ImGui::Text("Rotation:");
 					float rot[3] = { comps->get_rotation().x, comps->get_rotation().y, comps->get_rotation().z };
-					trans_id = "##" + global_scene->get_crnt_entity()->m_ent_ID + "c rot" + std::to_string(comps->m_component_type) + std::to_string(i);
+					trans_id = "##c rot" + std::to_string(comps->m_component_type) + std::to_string(i);
 					if (ImGui::DragFloat3(trans_id.c_str(), rot, 0.1))
 						comps->set_rotation(glm::vec3(rot[0], rot[1], rot[2]));
 
 
 					ImGui::Text("Scale:");
 					float sca[3] = { comps->get_scale().x, comps->get_scale().y, comps->get_scale().z };
-					trans_id = "##" + global_scene->get_crnt_entity()->m_ent_ID + "c sca" + std::to_string(comps->m_component_type) + std::to_string(i);
+					trans_id = "##c sca" + std::to_string(comps->m_component_type) + std::to_string(i);
 					if (ImGui::DragFloat3(trans_id.c_str(), sca, 0.01))
 						comps->set_scale(glm::vec3(sca[0], sca[1], sca[2]));
 
@@ -261,7 +271,7 @@ void wizm::properties_ui_layer::update(float delta_time)
 			if (ImGui::IsItemClicked(1))
 			{
 				ImGui::OpenPopup("ModComp");
-				global_scene->get_crnt_entity()->set_selected_comp(comps);
+				ent->set_selected_comp(comps);
 			}
 
 		}
@@ -276,9 +286,9 @@ void wizm::properties_ui_layer::update(float delta_time)
 
 				
 
-				global_scene->get_crnt_entity()->m_components_list.erase(std::find(global_scene->get_crnt_entity()->m_components_list.begin(),
-				global_scene->get_crnt_entity()->m_components_list.end(), global_scene->get_crnt_entity()->get_selected_comp()));
-				global_scene->get_crnt_entity()->set_selected_comp(nullptr);
+				ent->m_components_list.erase(std::find(ent->m_components_list.begin(),
+				ent->m_components_list.end(), ent->get_selected_comp()));
+				ent->set_selected_comp(nullptr);
 			}
 
 			ImGui::EndPopup();
@@ -286,6 +296,7 @@ void wizm::properties_ui_layer::update(float delta_time)
 
 		component_add_popup();
 
+		ImGui::PopID();
 	}
 
 	ImGui::End();
@@ -333,13 +344,13 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, core_
 	std::string trans_id;
 	if (type == "PointLight")
 	{
-		trans_id = "Radius ##" + global_scene->get_crnt_entity()->m_ent_ID + std::to_string(component->m_component_type);
+		trans_id = "Radius ##" + global_scene->get_crnt_entity()->m_guid + std::to_string(component->m_component_type);
 		auto pointlight = dynamic_cast<pointlight_component*>(component);
 
 		ImGui::InputFloat(trans_id.c_str(), &pointlight->m_radius);
 
 
-		trans_id = "Intensity ##" + global_scene->get_crnt_entity()->m_ent_ID + std::to_string(component->m_component_type);
+		trans_id = "Intensity ##" + global_scene->get_crnt_entity()->m_guid + std::to_string(component->m_component_type);
 		ImGui::InputFloat(trans_id.c_str(), &pointlight->m_intensity);
 
 		float test[3] = { pointlight->m_diffuse.x, pointlight->m_diffuse.y, pointlight->m_diffuse.z };

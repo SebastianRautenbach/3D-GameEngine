@@ -1,9 +1,11 @@
 #include "system/scripting/script_controller.h"
 #include "system/scripting/scripting_functions.h"
 #include "other utils/common.h"
+#include "scene.h"
 
-script_controller::script_controller(std::string path)
+void script_controller::init_script(wizm::core_scene* scene, std::string path)
 {
+	global_scene = scene;
 	m_script_engine = asCreateScriptEngine();
 
 
@@ -15,10 +17,9 @@ script_controller::script_controller(std::string path)
 
 	engine_scripting::scripting_functions sf;
 	sf.init_variables(m_script_engine);
-	sf.init_scripts(m_script_engine);
+	sf.init_scripts(m_script_engine, global_scene);
 
 	reload_script(path);
-
 }
 
 script_controller::~script_controller()
@@ -98,7 +99,7 @@ void script_controller::reset()
 
 	engine_scripting::scripting_functions sf;
 	sf.init_variables(m_script_engine);
-	sf.init_scripts(m_script_engine);
+	sf.init_scripts(m_script_engine, global_scene);
 
 	reload_script(m_path);
 }

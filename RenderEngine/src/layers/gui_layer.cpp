@@ -1,11 +1,11 @@
 #include "layers/gui_cntx.h"
 #include "scene.h"
 #include "IconsFontAwesome5.h"
-#include "system/scene_manager.h"
+#include "scene.h"
 #include "other utils/common.h"
 
-wizm::gui_layer::gui_layer(GLFWwindow* window, std::shared_ptr<camera_manager> camera_manager, asset_manager* p_asset_manager)
-    : core_layer("gui_layer"), m_camera_manager(camera_manager), m_asset_manager(p_asset_manager)
+wizm::gui_layer::gui_layer(GLFWwindow* window, std::shared_ptr<camera_manager> camera_manager, asset_manager* p_asset_manager, core_scene* scene)
+    : core_layer("gui_layer"), m_camera_manager(camera_manager), m_asset_manager(p_asset_manager), global_scene(scene)
 {
     m_window = window;
 }

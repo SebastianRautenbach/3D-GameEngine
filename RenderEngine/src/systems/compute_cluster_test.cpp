@@ -1,9 +1,10 @@
 #include "system/compute_cluster_test.h"
 #include "system/camera_3d.h"
+#include "scene.h"
 
-
-wizm::compute_cluster::compute_cluster(std::map<int, std::shared_ptr<core_gl_shader>>& shaders, std::shared_ptr<core_gl_shader>& com_shader_cluster, std::shared_ptr<core_gl_shader>& com_shader_cull, std::shared_ptr<camera_manager> camera_manager)
-	: m_shader_cluster(com_shader_cluster), m_shader_cull(com_shader_cull), m_camera_manager(camera_manager), m_shaders(shaders)
+wizm::compute_cluster::compute_cluster(std::map<int, std::shared_ptr<core_gl_shader>>& shaders, std::shared_ptr<core_gl_shader>& com_shader_cluster, 
+	std::shared_ptr<core_gl_shader>& com_shader_cull, std::shared_ptr<camera_manager> camera_manager, core_scene* scene)
+	: m_shader_cluster(com_shader_cluster), m_shader_cull(com_shader_cull), m_camera_manager(camera_manager), m_shaders(shaders), global_scene(scene)
 {
 	glGenBuffers(1, &clusterGridSSBO);
 	glBindBuffer(GL_SHADER_STORAGE_BUFFER, clusterGridSSBO);

@@ -1,8 +1,8 @@
 #include "layers/performance_ui_layer.h"
-#include "system/scene_manager.h"
+#include "scene.h"
 
-wizm::performace_ui_layer::performace_ui_layer()
-	:core_layer("performance layer")
+wizm::performace_ui_layer::performace_ui_layer(core_scene* scene)
+	:core_layer("performance layer"), global_scene(scene)
 {
 }
 

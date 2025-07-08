@@ -11,13 +11,14 @@ using namespace lowlevelsys;
 
 namespace wizm {
 
+	class core_scene;
 
 	class core_entity : public core_node
 	{
 
 	public:
 	
-		core_entity(std::string ent_ID);
+		core_entity(std::string ent_ID, std::string ent_guid = "", core_scene* scene = nullptr);
 		~core_entity();
 	
 		
@@ -56,12 +57,14 @@ namespace wizm {
 
 	public:
 
-		std::string m_ent_ID;
+		std::string m_ent_name;
+		std::string m_guid;
 
 		int entity_color_id;
 
 		core_tag* entity_tags;
 		std::vector<core_component*> m_components_list;
+		core_scene* global_scene;
 
 	private:
 		core_component* m_selected_comp;

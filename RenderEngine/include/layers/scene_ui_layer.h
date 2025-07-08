@@ -12,7 +12,7 @@ namespace wizm {
 
 	class scene_ui_layer : public core_layer {
 	public:
-		scene_ui_layer( gl_renderer* renderer);
+		scene_ui_layer( gl_renderer* renderer, wizm::core_scene* scene);
 		~scene_ui_layer();
 
 		virtual void on_attach() override;
@@ -25,6 +25,7 @@ namespace wizm {
 		void open_create_ent_menu();
 
 	private:
+		wizm::core_scene* global_scene;
 		gl_renderer* m_renderer;
 		bool open_mod_popup = false;
 	};

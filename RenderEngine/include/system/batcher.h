@@ -22,7 +22,7 @@ struct mesh_batch_data {
 
 class batcher {
 public:
-	batcher(unsigned int max_vertices);
+	batcher(unsigned int max_vertices, wizm::core_scene* scene);
 	~batcher();
 
 	void render(std::shared_ptr<core_gl_shader> m_shader);
@@ -38,6 +38,6 @@ public:
 private:
 	std::unordered_map<std::shared_ptr<material_asset>, std::vector<mesh_batch_data>> unified_meshes;
 	std::unordered_map<std::shared_ptr<material_asset>, std::vector<MeshGL>> meshGLs;
-
+	wizm::core_scene* global_scene;
 	unsigned int m_max_vertices;
 };

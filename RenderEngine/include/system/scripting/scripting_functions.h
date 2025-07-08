@@ -8,7 +8,7 @@
 #include "add_on/scriptstdstring/scriptstdstring.h"
 #include <string>
 #include <iostream>
-#include "system/scene_manager.h"
+#include "scene.h"
 #include "system/asset_importer.h"
 #include "system/input_manager.h"
 #include "system/scripting/scripting_objects.h"
@@ -231,10 +231,9 @@
 
 namespace engine_scripting
 {
+	wizm::core_scene* global_scene;
 	
 	
-
-
 	static void print(std::string& msg, int lvl) {
 		add_console_line(msg, lvl);
 	}
@@ -260,10 +259,10 @@ namespace engine_scripting
 	//-------------------------------------------------- STATIC MESH
 	//--------------------------------------------------------------
 	
-	static void change_mesh(std::string entity_name, int component_index ,std::string asset_id) {
-		auto entity = global_scene->get_entity_name(entity_name);
-		
-		if(entity->m_components_list.size() > component_index) {
+	static void change_mesh(std::string entity_name, int component_index, std::string asset_id) {
+		auto entity = global_scene->get_entity_by_id(entity_name);
+
+		if (entity->m_components_list.size() > component_index) {
 			auto sm_comp = dynamic_cast<staticmesh_component*>(entity->m_components_list[component_index]);
 			sm_comp->m_mesh_asset_id = asset_id;
 			global_scene->m_reloaded = true;
@@ -285,7 +284,7 @@ namespace engine_scripting
 
 
 	void change_material(std::string entity_name, int component_index, std::string asset_id, int material_index) {
-		auto entity = global_scene->get_entity_name(entity_name);
+		auto entity = global_scene->get_entity_by_id(entity_name);
 		if (entity->m_components_list.size() > component_index) {
 			auto sm_comp = dynamic_cast<staticmesh_component*>(entity->m_components_list[component_index]);
 			
@@ -304,7 +303,7 @@ namespace engine_scripting
 	// entity
 	
 	static void set_entity_rotation(std::string entity_name, float p, float y, float r) {
-		auto entity = global_scene->get_entity_name(entity_name);
+		auto entity = global_scene->get_entity_by_id(entity_name);
 		entity->set_rotation(glm::vec3(p, y, r));
 	}
 	SCRIPT_DEFINE_FUNC_4(void, set_entity_rotation, string, float, float, float);
@@ -312,7 +311,7 @@ namespace engine_scripting
 	//-----------------------------------------------------------------------
 	
 	static void add_entity_rotation(std::string entity_name, float p, float y, float r) {
-		auto entity = global_scene->get_entity_name(entity_name);
+		auto entity = global_scene->get_entity_by_id(entity_name);
 		entity->add_rotation(glm::vec3(p, y, r));
 	}
 	SCRIPT_DEFINE_FUNC_4(void, add_entity_rotation, string, float, float, float);
@@ -321,7 +320,7 @@ namespace engine_scripting
 	//-----------------------------------------------------------------------
 
 	static wizm_script::vec3 get_entity_rotation(const std::string entity_name) {
-		auto entity = global_scene->get_entity_name(entity_name);
+		auto entity = global_scene->get_entity_by_id(entity_name);
 		if (entity)
 			return wizm_script::vec3(entity->get_rotation().x, entity->get_rotation().y, entity->get_rotation().z);
 		else
@@ -333,7 +332,7 @@ namespace engine_scripting
 	
 	
 	static void set_entity_position(std::string entity_name, float x, float y, float z) {
-		auto entity = global_scene->get_entity_name(entity_name);
+		auto entity = global_scene->get_entity_by_id(entity_name);
 		entity->set_position(glm::vec3(x, y, z));
 	}
 	SCRIPT_DEFINE_FUNC_4(void, set_entity_position, string, float, float, float);
@@ -341,7 +340,7 @@ namespace engine_scripting
 	//-----------------------------------------------------------------------
 	
 	static void add_entity_position(std::string entity_name, float x, float y, float z) {
-		auto entity = global_scene->get_entity_name(entity_name);
+		auto entity = global_scene->get_entity_by_id(entity_name);
 		entity->add_position(glm::vec3(x, y, z));
 	}
 	SCRIPT_DEFINE_FUNC_4(void, add_entity_position, string, float, float, float);
@@ -350,7 +349,7 @@ namespace engine_scripting
 	//-----------------------------------------------------------------------
 
 	static wizm_script::vec3 get_entity_position(const std::string entity_name) {
-		auto entity = global_scene->get_entity_name(entity_name);
+		auto entity = global_scene->get_entity_by_id(entity_name);
 		if (entity)
 			return wizm_script::vec3(entity->get_position().x, entity->get_position().y, entity->get_position().z);
 		else
@@ -363,7 +362,7 @@ namespace engine_scripting
 	
 	
 	static void set_entity_scale(std::string entity_name, float x, float y, float z) {
-		auto entity = global_scene->get_entity_name(entity_name);
+		auto entity = global_scene->get_entity_by_id(entity_name);
 		entity->set_scale(glm::vec3(x, y, z));
 	}
 	SCRIPT_DEFINE_FUNC_4(void, set_entity_scale, string, float, float, float);
@@ -372,7 +371,7 @@ namespace engine_scripting
 	
 		
 	static void add_entity_scale(std::string entity_name, float x, float y, float z) {
-		auto entity = global_scene->get_entity_name(entity_name);
+		auto entity = global_scene->get_entity_by_id(entity_name);
 		entity->add_scale(glm::vec3(x, y, z));
 	}
 	SCRIPT_DEFINE_FUNC_4(void, add_entity_scale, string, float, float, float);
@@ -381,7 +380,7 @@ namespace engine_scripting
 	//-----------------------------------------------------------------------
 
 	static wizm_script::vec3 get_entity_scale(const std::string entity_name) {
-		auto entity = global_scene->get_entity_name(entity_name);
+		auto entity = global_scene->get_entity_by_id(entity_name);
 		if (entity)
 			return wizm_script::vec3(entity->get_scale().x, entity->get_scale().y, entity->get_scale().z);
 		else
@@ -394,8 +393,8 @@ namespace engine_scripting
 	
 	// component
 	
-	static void set_component_rotation(std::string entity_name, int component_index, float p, float y, float r) {
-		auto entity = global_scene->get_entity_name(entity_name);
+	static void set_component_rotation(std::string entity_id, int component_index, float p, float y, float r) {
+		auto entity = global_scene->get_entity_by_id(entity_id);
 	
 		if (entity->m_components_list.size() > component_index) {
 			auto comp = entity->m_components_list[component_index];
@@ -406,8 +405,8 @@ namespace engine_scripting
 	
 	//-----------------------------------------------------------------------
 	
-	static void add_component_rotation(std::string entity_name, int component_index, float p, float y, float r) {
-		auto entity = global_scene->get_entity_name(entity_name);
+	static void add_component_rotation(std::string entity_id, int component_index, float p, float y, float r) {
+		auto entity = global_scene->get_entity_by_id(entity_id);
 	
 		if (entity->m_components_list.size() > component_index) {
 			auto comp = entity->m_components_list[component_index];
@@ -419,8 +418,8 @@ namespace engine_scripting
 	//-----------------------------------------------------------------------
 
 
-	static wizm_script::vec3 get_component_rotation(const std::string entity_name, int component_index) {
-		auto entity = global_scene->get_entity_name(entity_name);
+	static wizm_script::vec3 get_component_rotation(const std::string entity_id, int component_index) {
+		auto entity = global_scene->get_entity_by_id(entity_id);
 		if (entity)
 		{
 			if (component_index < entity->m_components_list.size()) {
@@ -434,8 +433,8 @@ namespace engine_scripting
 	SCRIPT_DEFINE_FUNC_2(vec3, get_component_rotation, string, int);
 
 
-	static wizm_script::vec3 get_component_world_rotation(const std::string entity_name, int component_index) {
-		auto entity = global_scene->get_entity_name(entity_name);
+	static wizm_script::vec3 get_component_world_rotation(const std::string entity_id, int component_index) {
+		auto entity = global_scene->get_entity_by_id(entity_id);
 		if (entity)
 		{
 			if (component_index < entity->m_components_list.size()) {
@@ -452,8 +451,8 @@ namespace engine_scripting
 	//-----------------------------------------------------------------------
 	
 	
-	static void set_component_position(std::string entity_name, int component_index, float x, float y, float z) {
-		auto entity = global_scene->get_entity_name(entity_name);
+	static void set_component_position(std::string entity_id, int component_index, float x, float y, float z) {
+		auto entity = global_scene->get_entity_by_id(entity_id);
 	
 		if (entity->m_components_list.size() > component_index) {
 			auto comp = entity->m_components_list[component_index];
@@ -466,8 +465,8 @@ namespace engine_scripting
 	//-----------------------------------------------------------------------
 	
 	
-	static void add_component_position(std::string entity_name, int component_index, float x, float y, float z) {
-		auto entity = global_scene->get_entity_name(entity_name);
+	static void add_component_position(std::string entity_id, int component_index, float x, float y, float z) {
+		auto entity = global_scene->get_entity_by_id(entity_id);
 	
 		if (entity->m_components_list.size() > component_index) {
 			auto comp = entity->m_components_list[component_index];
@@ -479,8 +478,8 @@ namespace engine_scripting
 	
 	//-----------------------------------------------------------------------
 
-	static wizm_script::vec3 get_component_position(const std::string entity_name, int component_index) {
-		auto entity = global_scene->get_entity_name(entity_name);
+	static wizm_script::vec3 get_component_position(const std::string entity_id, int component_index) {
+		auto entity = global_scene->get_entity_by_id(entity_id);
 		if (entity)
 		{
 			if (component_index < entity->m_components_list.size()) {
@@ -494,8 +493,8 @@ namespace engine_scripting
 	SCRIPT_DEFINE_FUNC_2(vec3, get_component_position, string, int);
 
 
-	static wizm_script::vec3 get_component_world_position(const std::string entity_name, int component_index) {
-		auto entity = global_scene->get_entity_name(entity_name);
+	static wizm_script::vec3 get_component_world_position(const std::string entity_id, int component_index) {
+		auto entity = global_scene->get_entity_by_id(entity_id);
 		if (entity)
 		{
 			if (component_index < entity->m_components_list.size()) {
@@ -512,8 +511,8 @@ namespace engine_scripting
 	//-----------------------------------------------------------------------
 	
 	
-	static void set_component_scale(std::string entity_name, int component_index, float x, float y, float z) {
-		auto entity = global_scene->get_entity_name(entity_name);
+	static void set_component_scale(std::string entity_id, int component_index, float x, float y, float z) {
+		auto entity = global_scene->get_entity_by_id(entity_id);
 	
 		if (entity->m_components_list.size() > component_index) {
 			auto comp = entity->m_components_list[component_index];
@@ -525,8 +524,8 @@ namespace engine_scripting
 	
 	//-----------------------------------------------------------------------
 	
-	static void add_component_scale(std::string entity_name, int component_index, float x, float y, float z) {
-		auto entity = global_scene->get_entity_name(entity_name);
+	static void add_component_scale(std::string entity_id, int component_index, float x, float y, float z) {
+		auto entity = global_scene->get_entity_by_id(entity_id);
 	
 		if (entity->m_components_list.size() > component_index) {
 			auto comp = entity->m_components_list[component_index];
@@ -538,8 +537,8 @@ namespace engine_scripting
 	//-----------------------------------------------------------------------
 
 
-	static wizm_script::vec3 get_component_scale(const std::string entity_name, int component_index) {
-		auto entity = global_scene->get_entity_name(entity_name);
+	static wizm_script::vec3 get_component_scale(const std::string entity_id, int component_index) {
+		auto entity = global_scene->get_entity_by_id(entity_id);
 		if (entity)
 		{
 			if (component_index < entity->m_components_list.size()) {
@@ -553,8 +552,8 @@ namespace engine_scripting
 	SCRIPT_DEFINE_FUNC_2(vec3, get_component_scale, string, int);
 
 
-	static wizm_script::vec3 get_component_world_scale(const std::string entity_name, int component_index) {
-		auto entity = global_scene->get_entity_name(entity_name);
+	static wizm_script::vec3 get_component_world_scale(const std::string entity_id, int component_index) {
+		auto entity = global_scene->get_entity_by_id(entity_id);
 		if (entity)
 		{
 			if (component_index < entity->m_components_list.size()) {
@@ -575,8 +574,8 @@ namespace engine_scripting
 	//--------------------------------------------------------------
 
 	// I needa fix this
-	void set_light_brightness(const std::string entity_name, int component_index, float brightness) {
-		auto entity = global_scene->get_entity_name(entity_name);
+	void set_light_brightness(const std::string entity_id, int component_index, float brightness) {
+		auto entity = global_scene->get_entity_by_id(entity_id);
 
 		if (entity->m_components_list.size() > component_index) {
 			auto light_comp = dynamic_cast<light_component*>(entity->m_components_list[component_index]);
@@ -587,8 +586,8 @@ namespace engine_scripting
 	SCRIPT_DEFINE_FUNC_3(void, set_light_brightness, string, int, float);
 
 
-	void set_light_ambient(const std::string entity_name, int component_index,wizm_script::vec3 ambient) {
-		auto entity = global_scene->get_entity_name(entity_name);
+	void set_light_ambient(const std::string entity_id, int component_index,wizm_script::vec3 ambient) {
+		auto entity = global_scene->get_entity_by_id(entity_id);
 
 		if (entity->m_components_list.size() > component_index) {
 			auto light_comp = dynamic_cast<light_component*>(entity->m_components_list[component_index]);
@@ -606,8 +605,8 @@ namespace engine_scripting
 	//--------------------------------------------------	  SOUNDS
 	//--------------------------------------------------------------
 
-	void play_component_sound(const std::string entity_name, int component_index) {
-		auto entity = global_scene->get_entity_name(entity_name);
+	void play_component_sound(const std::string entity_id, int component_index) {
+		auto entity = global_scene->get_entity_by_id(entity_id);
 
 		if (entity->m_components_list.size() > component_index) {
 			auto s_comp = dynamic_cast<sound_component*>(entity->m_components_list[component_index]);
@@ -622,8 +621,8 @@ namespace engine_scripting
 
 	//-----------------------------------------------------------------------
 
-	void stop_component_sound(const std::string entity_name, int component_index) {
-		auto entity = global_scene->get_entity_name(entity_name);
+	void stop_component_sound(const std::string entity_id, int component_index) {
+		auto entity = global_scene->get_entity_by_id(entity_id);
 
 		if (entity->m_components_list.size() > component_index) {
 			auto s_comp = dynamic_cast<sound_component*>(entity->m_components_list[component_index]);
@@ -635,8 +634,8 @@ namespace engine_scripting
 
 	//-----------------------------------------------------------------------
 
-	void set_component_sound_loop(const std::string entity_name, int component_index, bool should_loop) {
-		auto entity = global_scene->get_entity_name(entity_name);
+	void set_component_sound_loop(const std::string entity_id, int component_index, bool should_loop) {
+		auto entity = global_scene->get_entity_by_id(entity_id);
 
 		if (entity->m_components_list.size() > component_index) {
 			auto s_comp = dynamic_cast<sound_component*>(entity->m_components_list[component_index]);
@@ -648,8 +647,8 @@ namespace engine_scripting
 
 	//-----------------------------------------------------------------------
 
-	void set_component_sound_3D(const std::string entity_name, int component_index, bool is_3d) {
-		auto entity = global_scene->get_entity_name(entity_name);
+	void set_component_sound_3D(const std::string entity_id, int component_index, bool is_3d) {
+		auto entity = global_scene->get_entity_by_id(entity_id);
 
 		if (entity->m_components_list.size() > component_index) {
 			auto s_comp = dynamic_cast<sound_component*>(entity->m_components_list[component_index]);
@@ -678,8 +677,13 @@ bool add_script_func(asIScriptEngine* script_engine, const std::string& func_dec
 
 class scripting_functions {
 public:
-
-	void init_scripts(asIScriptEngine* script_engine) {
+	
+	void init_scripts(asIScriptEngine* script_engine, wizm::core_scene* scene) {
+		if (scene == NULL) {
+			//stop
+			return;
+		}
+		global_scene = scene;
 
 		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(print));
 		add_script_func(script_engine, SCRIPT_REGISTER_FUNC(has_key_pressed));
@@ -830,7 +834,7 @@ public:
 		script_engine->RegisterObjectBehaviour("vec3", asBEHAVE_CONSTRUCT, "void f()", asFUNCTIONPR([](void* memory) { new(memory) wizm_script::vec3(); }, (void*), void), asCALL_CDECL_OBJFIRST);
 		script_engine->RegisterObjectBehaviour("vec3", asBEHAVE_CONSTRUCT, "void f(float, float, float)", asFUNCTIONPR([](void* memory, float x, float y, float z) { new(memory) wizm_script::vec3(x, y, z); }, (void*, float, float, float), void), asCALL_CDECL_OBJFIRST);
 
-	}
+	}	
 };
 
 

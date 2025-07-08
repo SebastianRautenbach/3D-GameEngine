@@ -6,8 +6,11 @@
 #include "gl core/engine_shader_types.h"
 
 
-void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const char* window_name, std::shared_ptr<camera_manager> camera_manager)
+void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const char* window_name,
+	std::shared_ptr<camera_manager> camera_manager, core_scene* scene)
 {
+	global_scene = scene;
+
 	w_width = window_size_x;
 	w_height = window_size_y;
 

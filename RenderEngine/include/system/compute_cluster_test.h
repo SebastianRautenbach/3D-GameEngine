@@ -11,6 +11,8 @@ using namespace lowlevelsys;
 
 namespace wizm {
 
+	class core_scene;
+
 
 	struct alignas(16) Cluster
 	{
@@ -58,7 +60,9 @@ namespace wizm {
 
 	class compute_cluster {
 	public:
-		compute_cluster(std::map<int, std::shared_ptr<core_gl_shader>>& shaders, std::shared_ptr<core_gl_shader>& com_shader_cluster, std::shared_ptr<core_gl_shader>& com_shader_cull, std::shared_ptr<camera_manager> camera_manager);
+		compute_cluster(std::map<int, std::shared_ptr<core_gl_shader>>& shaders, 
+			std::shared_ptr<core_gl_shader>& com_shader_cluster, std::shared_ptr<core_gl_shader>& com_shader_cull, 
+			std::shared_ptr<camera_manager> camera_manager, core_scene* scene);
 
 	public:
 
@@ -67,6 +71,9 @@ namespace wizm {
 		void update();
 
 	private:
+
+		core_scene* global_scene;
+
 		std::map<int, std::shared_ptr<core_gl_shader>>& m_shaders;
 		
 		std::shared_ptr<core_gl_shader> m_shader_cull;

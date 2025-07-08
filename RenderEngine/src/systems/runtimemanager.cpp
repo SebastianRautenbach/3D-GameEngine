@@ -1,8 +1,8 @@
 #include "system/runtimemanager.h"
 #include "other utils/ZER.h"
+#include "scene.h"
 
-
-wizm::runtime_manager::runtime_manager()
+wizm::runtime_manager::runtime_manager(core_scene* scene)
 {
 	filedata::ZER get_batchmax;
 	get_batchmax.read_file_cntx("batchsettings");
@@ -16,7 +16,7 @@ wizm::runtime_manager::runtime_manager()
 		get_batchmax.save_file(get_batchmax, "batchsettings");
 	}
 
-	m_batcher_renderer = std::make_unique<batcher>(max_vert);
+	m_batcher_renderer = std::make_unique<batcher>(max_vert, scene);
 }
 
 void wizm::runtime_manager::render_runtime(float delta_time, std::shared_ptr<core_gl_shader> m_shader)

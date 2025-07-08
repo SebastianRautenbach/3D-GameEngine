@@ -16,12 +16,14 @@
 
 namespace wizm {
 
+    class core_scene;
+
 	class asset_manager {
     private:
         std::unordered_map<std::string, std::shared_ptr<core_asset>> m_assets;
 
     public:
-        asset_manager(audio_manager* audio_manager);
+        asset_manager(audio_manager* audio_manager, core_scene* scene);
         ~asset_manager();
 
 
@@ -62,6 +64,6 @@ namespace wizm {
         unsigned int total_entities = 0;
         asset_importer asset_import;
         audio_manager* m_auio_manager;
-
+        core_scene* global_scene;
 	};
 }

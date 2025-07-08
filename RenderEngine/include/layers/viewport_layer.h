@@ -17,7 +17,8 @@ namespace wizm {
 
 	class viewport_layer : public core_layer {
 	public:
-		viewport_layer(core_framebuffer* fbo, std::shared_ptr<camera_manager> camera_manager, gl_renderer* renderer, asset_manager* manager);
+		viewport_layer(core_framebuffer* fbo, std::shared_ptr<camera_manager> camera_manager,
+			gl_renderer* renderer, asset_manager* manager, wizm::core_scene* scene);
 		~viewport_layer();
 
 		virtual void on_attach() override;
@@ -40,6 +41,7 @@ namespace wizm {
 		glm::vec2 m_viewport_bounds[2];
 		asset_manager* m_asset_manager;
 		core_framebuffer* m_framebuffer;
+		wizm::core_scene* global_scene;
 	};
 
 }

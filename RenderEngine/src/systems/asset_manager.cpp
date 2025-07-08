@@ -5,9 +5,10 @@
 #include "system/assets/sound_asset.h"
 #include "system/assets/material_asset.h"
 #include "system/assets/entity_asset.h"
+#include "scene.h"
 
-wizm::asset_manager::asset_manager(audio_manager* audio_manager)
-	: m_auio_manager(audio_manager)
+wizm::asset_manager::asset_manager(audio_manager* audio_manager, core_scene* scene)
+	: m_auio_manager(audio_manager), global_scene(scene)
 {
 	load_assets_db();
 }
@@ -82,7 +83,8 @@ void wizm::asset_manager::load_assets_db()
 			load<texture_asset>(asset.id, asset.path);
 		}
 		else if (asset.type == tSCRIPT) {
-			load<script_asset>(asset.id, asset.path);
+			auto _asset = load<script_asset>(asset.id, asset.path);
+			_asset->sc->init_script(global_scene, asset.path);
 		}
 		else if (asset.type == tSOUND) {
 			auto _asset = load<sound_asset>(asset.id, asset.path);

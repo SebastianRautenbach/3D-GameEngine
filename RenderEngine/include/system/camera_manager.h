@@ -5,10 +5,11 @@
 namespace wizm {
 
 	class camera_core_3d;
+	class core_scene;
 
 	class camera_manager {
 	public:
-		camera_manager();
+		camera_manager(core_scene* scene);
 		~camera_manager();
 
 		bool update_crnt_camera(bool simulate);
@@ -23,6 +24,7 @@ namespace wizm {
 
 	public:
 		bool did_change_cam = false;
+		core_scene* global_scene;
 	};
 
 }

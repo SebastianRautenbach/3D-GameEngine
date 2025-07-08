@@ -15,7 +15,6 @@ namespace wizm {
 		void scene_postupdate();
 		unsigned int total_component_count();
 		bool does_ent_name_exist(std::string name);
-		void gen_new_name(std::string& name);
 
 		// serialization
 		void read_map_data(std::string file_path);
@@ -24,14 +23,14 @@ namespace wizm {
 		
 		// entity related 
 		core_entity* add_entity(core_entity* entity);
-		core_entity* add_entity(std::string entity_name);
+		core_entity* add_entity(std::string entity_name, std::string entity_guid = "");
 		void load_entity(filedata::ZER& entity_save);
-		void process_entity(filedata::ZER& new_read, core_entity* parent, const std::string& class_name);
+		void process_entity(filedata::ZER& new_read, core_entity* parent, const std::string& guid);
 		filedata::ZER save_entity(core_entity* entity);
 
 		core_entity* get_entity(std::string entity_id) { 
 			for (auto& ent : m_entities) { 
-				if (ent->m_ent_ID == entity_id) {
+				if (ent->m_guid == entity_id) {
 					return ent; 
 				} 
 				
@@ -76,9 +75,9 @@ namespace wizm {
 
 		
 
-		core_entity* get_entity_name(std::string name) {
+		core_entity* get_entity_by_id(std::string id) {
 			for (auto& ent : m_entities) {
-				if (ent->m_ent_ID == name)
+				if (ent->m_guid == id)
 					return ent;
 			}
 		}
@@ -97,7 +96,7 @@ namespace wizm {
 
 		void clear_entities();
 
-	public:
+	public:		
 		std::vector<core_entity*> m_entities;
 		bool m_reloaded = false;
 		std::string current_scene = "";

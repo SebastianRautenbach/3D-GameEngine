@@ -9,12 +9,14 @@
 
 
 namespace wizm {
+	
 	class core_scene;
 
 	class gui_layer : public core_layer
 	{
 	public:
-		gui_layer(GLFWwindow* window, std::shared_ptr<camera_manager> camera_manager, asset_manager* p_asset_manager);
+		gui_layer(GLFWwindow* window, std::shared_ptr<camera_manager> camera_manager,
+			asset_manager* p_asset_manager, core_scene* scene);
 		~gui_layer();
 
 		virtual void on_attach() override;
@@ -46,11 +48,13 @@ namespace wizm {
 		
 	
 	private:
+		core_scene* global_sscene;
 		bool show_demo_window = true;
 		ImVec2 m_window_size;
 		GLFWwindow* m_window;
 		std::shared_ptr<camera_manager> m_camera_manager;
 		asset_manager* m_asset_manager;
+		core_scene* global_scene;
 	};
 
 

@@ -7,10 +7,11 @@
 
 namespace wizm {
 
+	class core_scene;
 
 	class performace_ui_layer : public core_layer {
 	public:
-		performace_ui_layer();
+		performace_ui_layer(core_scene* scene);
 		~performace_ui_layer();
 
 		virtual void on_attach() override;
@@ -18,7 +19,7 @@ namespace wizm {
 		virtual void update(float delta_time) override;
 
 	private:
-		
+		core_scene* global_scene;
 	};
 
 }

@@ -13,14 +13,19 @@
 
 
 
-using namespace wizm;
+namespace wizm {
+	class camera_manager;
+	class core_scene;
+}
+
 class core_gl_shader;
 
 namespace lowlevelsys {
 
 	class gl_renderer {
 	public:
-		void setup(int window_size_x, int window_size_y, const char* window_name, std::shared_ptr<camera_manager> camera_manager);
+		void setup(int window_size_x, int window_size_y, const char* window_name, std::shared_ptr<wizm::camera_manager> camera_manager,
+			wizm::core_scene* scene);
 		
 		void pre_render(bool& is_running, float deltaTime);
 		void render(float deltaTime);
@@ -29,6 +34,9 @@ namespace lowlevelsys {
 		void on_exit();
 
 	public:
+
+		core_scene* global_scene;
+
 		GLFWwindow* window;
 		
 		std::map<int, std::shared_ptr<core_gl_shader>> m_shdrs;

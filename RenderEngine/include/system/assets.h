@@ -5,6 +5,7 @@
 
 namespace wizm {
 
+	class core_scene;
 
 	class core_asset {
 	public:

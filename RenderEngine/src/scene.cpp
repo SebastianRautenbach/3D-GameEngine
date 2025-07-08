@@ -64,35 +64,25 @@ namespace wizm {
 	{
 		bool does_exist = false;
 		for (auto& i : m_entities)
-			if (i->m_ent_ID == name) 
+			if (i->m_ent_name == name) 
 				does_exist = true;
 		
 		return does_exist;
 	}
 
-	void core_scene::gen_new_name(std::string& name) {
-		
-		if (does_ent_name_exist(name)) {
-			name += "1";
-			gen_new_name(name);
-		}
-
-	}
 
 
 	core_entity* core_scene::add_entity(core_entity* entity) {
 		
-		gen_new_name(entity->m_ent_ID);
+		entity->m_guid = generate_unique_id(); 
 		
 		m_entities.push_back(entity);
 		return entity;
 	}
 	
-	core_entity* core_scene::add_entity(std::string entity_name)
+	core_entity* core_scene::add_entity(std::string entity_name, std::string entity_guid)
 	{
-		gen_new_name(entity_name);
-
-		auto ptr = new core_entity(entity_name);
+		auto ptr = new core_entity(entity_name, entity_guid, this);
 		m_entities.push_back(ptr);
 		return ptr;
 	}
@@ -104,12 +94,12 @@ namespace wizm {
 		}
 	}
 
-	void core_scene::process_entity(filedata::ZER& new_read, core_entity* parent, const std::string& class_name)
+	void core_scene::process_entity(filedata::ZER& new_read, core_entity* parent, const std::string& guid)
 	{
 		if (!new_read["specs"].get_int("is_entity")[0])
-			return;
+			return;		
 
-		auto new_ent = add_entity(class_name);
+		auto new_ent = add_entity(new_read["specs"].get_string("m_ent_name")[0], guid );
 
 		if (new_ent) {
 			new_ent->read_saved_data("", "", new_read);
@@ -136,13 +126,13 @@ namespace wizm {
 
 				auto ent_child = dynamic_cast<core_entity*>(child);
 				if (!ent_child) { continue; }
-				process_entity(ent_child, read[ent_child->m_ent_ID]);
+				process_entity(ent_child, read[ent_child->m_guid]);
 			}
 			};
 
 		filedata::ZER read;
 	
-		process_entity(entity, read[entity->m_ent_ID]);
+		process_entity(entity, read[entity->m_guid]);
 
 		return read;
 	}
@@ -221,13 +211,14 @@ namespace wizm {
 			if (!entity) { return; }
 
 			read["specs"].set_int("is_entity", { 1 });
+			read["specs"].set_string("m_ent_name", { entity->m_ent_name });
 			entity->save_data("", "", read);
 
 			for (auto& child : entity->get_children()) {
 				
 				auto ent_child = dynamic_cast<core_entity*>(child);
 				if (!ent_child) { continue; }
-				process_entity(ent_child, read[ent_child->m_ent_ID]);
+				process_entity(ent_child, read[ent_child->m_guid]);
 			}
 		};
 
@@ -237,7 +228,7 @@ namespace wizm {
 			
 
 			if(!e->get_parent())
-				process_entity(e, read[e->m_ent_ID]);
+				process_entity(e, read[e->m_guid]);
 			
 
 			

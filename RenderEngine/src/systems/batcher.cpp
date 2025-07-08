@@ -3,8 +3,8 @@
 #include <future>
 #include <mutex>
 
-batcher::batcher(unsigned int max_vertices)
-: m_max_vertices(max_vertices * 2) {}
+batcher::batcher(unsigned int max_vertices, wizm::core_scene* scene)
+: m_max_vertices(max_vertices * 2), global_scene(scene) {}
 
 
 void batcher::render(std::shared_ptr<core_gl_shader> m_shader)
@@ -38,29 +38,30 @@ void batcher::generate_unified_meshes()
     std::unordered_map<std::shared_ptr<material_asset>, std::vector<mesh_batch_data>> material_batches;
 
     for (const auto& entity : global_scene->m_entities) {
-        for (const auto& component : entity->get_components()) {
-            auto sm_comp = dynamic_cast<staticmesh_component*>(component);
+        // Store components to be removed later to avoid iterator invalidation
+        std::vector<core_component*> components_to_remove;
 
+        for (auto* component : entity->get_components()) {
+            auto* sm_comp = dynamic_cast<staticmesh_component*>(component);
 
-            // Check if the mesh is static which than can be bacthed
             if (sm_comp && sm_comp->is_static) {
-                              
-                glm::mat4 applied_trans = sm_comp->get_world_transform();
+                const glm::mat4 applied_trans = sm_comp->get_world_transform();
+                const auto& meshes_in_model = sm_comp->m_model->get_mesh()->meshes;
+                const auto& material_per_mesh = sm_comp->m_materials;
 
-                auto& meshes_in_model = sm_comp->m_model->get_mesh()->meshes;
-                auto& material_per_mesh = sm_comp->m_materials;
-
-                for (auto& mesh : meshes_in_model) {
+                for (const auto& mesh : meshes_in_model) {
                     mesh_batch_data mbd;
                     mbd.vertices.reserve(mesh.vertices.size());
                     mbd.indices = mesh.indices;
 
-                    for (auto& v : mesh.vertices) {
+                    for (const auto& v : mesh.vertices) {
                         vertex_data tv = v;
 
+                        // Apply world transform
                         glm::vec4 worldPos = applied_trans * glm::vec4(v.Position, 1.0f);
                         tv.Position = glm::vec3(worldPos);
 
+                        // Transform normals and tangents
                         glm::mat3 normalMat = glm::transpose(glm::inverse(glm::mat3(applied_trans)));
                         tv.Normal = glm::normalize(normalMat * v.Normal);
                         tv.Tangent = glm::normalize(normalMat * v.Tangent);
@@ -69,16 +70,31 @@ void batcher::generate_unified_meshes()
                         mbd.vertices.push_back(tv);
                     }
 
+                    // Material association
                     if (mesh.m_material_index < material_per_mesh.size()) {
-                        material_batches[material_per_mesh[mesh.m_material_index]].emplace_back(std::move(mbd));
+                        const auto& material = material_per_mesh[mesh.m_material_index];
+                        material_batches[material].emplace_back(std::move(mbd));
                     }
-                }           
-                entity->m_components_list.erase(std::find(entity->m_components_list.begin(),
-                    entity->m_components_list.end(), component));
-                delete component;
+                }
+
+                components_to_remove.push_back(component);
+            }
+        }
+
+        // Remove and delete static mesh components after iteration
+        for (auto* comp : components_to_remove) {
+            auto& components = entity->m_components_list;
+            auto it = std::find(components.begin(), components.end(), comp);
+            if (it != components.end()) {
+                components.erase(it);
+                delete comp;
             }
         }
     }
+
+
+
+
 
     // Clear unified_meshes and start fresh
     unified_meshes.clear();

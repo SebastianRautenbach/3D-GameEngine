@@ -17,7 +17,7 @@ namespace wizm {
 		void load(const std::string& path) override {
 			std::filesystem::path file_path(path);
 			file_name = file_path.filename().string();
-			sc = new script_controller(path);
+			sc = new script_controller();
 		}
 
 		void on_start() {

@@ -1,5 +1,6 @@
 #include "entity sys/entity.h"
-
+#include "other utils/IDGEN.h"
+#include "scene.h"
 
 	//////////////////////////////////////////////////////////////////////////
 	// DEFAULT CONSTRUCTOR
@@ -7,9 +8,15 @@
 
 	//-----------------------------------------------------------------------
 
-wizm::core_entity::core_entity(std::string ent_ID)
-	:m_ent_ID(ent_ID)
+wizm::core_entity::core_entity(std::string ent_name, std::string ent_guid, core_scene* scene)
+	:m_ent_name(ent_name), global_scene(scene)
 {
+	if (ent_guid.empty()) {
+		ent_guid = generate_unique_id();
+	}
+	
+	m_guid = ent_guid;
+	
 	entity_tags = new core_tag();
 }
 
@@ -22,7 +29,7 @@ wizm::core_entity::~core_entity()
 
 void wizm::core_entity::remame_entity(std::string name)
 {
-	m_ent_ID = name;
+	m_ent_name = name;
 }
 
 void wizm::core_entity::destroy_entity()
@@ -143,21 +150,21 @@ void wizm::core_entity::read_saved_data(std::string parent_name, std::string ind
 
 		if (i.first.find("pointlight") != -1) {
 			auto c = add_component(new pointlight_component());
-			c->read_saved_data(m_ent_ID, i.first, save_t);
+			c->read_saved_data(m_guid, i.first, save_t);
 		}
 
 		//--- DIRECTIONAL LIGHT
 
 		if (i.first.find("directionallight") != -1) {
 			auto c = add_component(new directionallight_component());
-			c->read_saved_data(m_ent_ID, i.first, save_t);
+			c->read_saved_data(m_guid, i.first, save_t);
 		}
 
 		//--- MESH COMPONENT
 
 		if (i.first.find("staticmesh") != -1) {
 			auto c = add_component(new staticmesh_component());
-			c->read_saved_data(m_ent_ID, i.first, save_t);
+			c->read_saved_data(m_guid, i.first, save_t);
 		}
 
 
@@ -165,28 +172,28 @@ void wizm::core_entity::read_saved_data(std::string parent_name, std::string ind
 
 		if (i.first.find("spotlight") != -1) {
 			auto c = add_component(new spotlight_component());
-			c->read_saved_data(m_ent_ID, i.first, save_t);
+			c->read_saved_data(m_guid, i.first, save_t);
 		}
 
 		//--- CAMERA COMPONENT
 
 		if (i.first.find("cameracomponent") != -1) {
 			auto c = add_component(new camera_component());
-			c->read_saved_data(m_ent_ID, i.first, save_t);
+			c->read_saved_data(m_guid, i.first, save_t);
 		}
 
 		//--- SCRIPTING COMP
 
 		if (i.first.find("ScriptingComponent") != -1) {
 			auto c = add_component(new scripting_component());
-			c->read_saved_data(m_ent_ID, i.first, save_t);
+			c->read_saved_data(m_guid, i.first, save_t);
 		}
 
 		//--- SCRIPTING SOUND
 
 		if (i.first.find("sound_component") != -1) {
 			auto c = add_component(new sound_component());
-			c->read_saved_data(m_ent_ID, i.first, save_t);
+			c->read_saved_data(m_guid, i.first, save_t);
 		}
 
 	}
@@ -206,7 +213,7 @@ void wizm::core_entity::save_data(std::string parent_name, std::string index, fi
 	save_t["tags"].set_string("tags", entity_tags->tags);
 
 	for (int i = 0; i < m_components_list.size(); i++) {
-		m_components_list[i]->save_data(m_ent_ID, std::to_string(i), save_t);
+		m_components_list[i]->save_data(m_guid, std::to_string(i), save_t);
 	}
 }
 

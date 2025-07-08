@@ -6,11 +6,17 @@
 #include "other utils/IDGEN.h"
 #include <iostream>
 
+namespace wizm {
+	class core_scene;
+}
+
 
 class script_controller {
 
 public:
-	script_controller(std::string path);
+
+	void init_script(wizm::core_scene* scene, std::string path);
+
 	~script_controller();
 	
 	bool reload_script(std::string path);
@@ -27,6 +33,7 @@ private:
 	asIScriptFunction* m_onstart_func = nullptr;
 	asIScriptEngine* m_script_engine = nullptr;
 	asIScriptContext* m_context = nullptr;
+	wizm::core_scene* global_scene;
 	bool m_initiated_scripts = false;
 
 };

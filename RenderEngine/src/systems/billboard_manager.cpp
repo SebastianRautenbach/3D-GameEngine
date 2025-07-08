@@ -1,9 +1,9 @@
 #include "system/billboard_manager.h"
 #include "other utils/common.h"
-#include "system/scene_manager.h"
+#include "scene.h"
 
-wizm::billboard_manager::billboard_manager(std::shared_ptr<core_gl_shader> shader)
-	: m_shader(shader)
+wizm::billboard_manager::billboard_manager(std::shared_ptr<core_gl_shader> shader, core_scene* scene)
+	: m_shader(shader), global_scene(scene)
 {
 	m_billboard_core = new billboard_core(m_shader);
 	m_shader->setVec3("tint", glm::vec3(1.0f));

@@ -1,8 +1,9 @@
 #include "system/camera_manager.h"
 #include "system/camera_3d.h"
-#include "system/scene_manager.h"
+#include "scene.h"
 
-wizm::camera_manager::camera_manager()
+wizm::camera_manager::camera_manager(core_scene* scene)
+	: global_scene(scene)
 {
 }
 

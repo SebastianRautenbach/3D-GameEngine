@@ -3,10 +3,13 @@
 
 
 namespace wizm {
+
+	class core_scene;
+
 	class runtime_manager {
 	public:
 		
-		runtime_manager();
+		runtime_manager(core_scene* scene);
 		void render_runtime(float delta_time, std::shared_ptr<core_gl_shader> m_shader);
 		void init_runtime();
 		void exit_runtime();

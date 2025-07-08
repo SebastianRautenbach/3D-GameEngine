@@ -3,8 +3,8 @@
 #include <functional>
 #include "tinyfiledialogs.h"
 
-wizm::scene_ui_layer::scene_ui_layer( gl_renderer* renderer)
-	:core_layer("scene ui layer"), m_renderer(renderer)
+wizm::scene_ui_layer::scene_ui_layer( gl_renderer* renderer, wizm::core_scene* scene)
+	:core_layer("scene ui layer"), m_renderer(renderer), global_scene(scene)
 {
 }
 
@@ -84,7 +84,7 @@ void wizm::scene_ui_layer::update(float delta_time)
 			bool does_ent_name_exist = false;
 			for (const auto y : global_scene->m_entities)
 			{
-				if (_ent_str == y->m_ent_ID)
+				if (_ent_str == y->m_ent_name)
 				{
 					does_ent_name_exist = true;
 					break;
@@ -128,12 +128,14 @@ void wizm::scene_ui_layer::render_entity_node(core_entity* entity)
 	}
 
 
-	bool node_open = ImGui::TreeNodeEx(entity->m_ent_ID.c_str(), flags);
+	bool node_open = ImGui::TreeNodeEx(entity->m_ent_name.c_str(), flags);
+	
 	if (ImGui::BeginDragDropSource()) {
 		ImGui::SetDragDropPayload("ENTITY_POINTER", &entity, sizeof(core_entity*));
-		ImGui::Text("Dragging: %s", entity->m_ent_ID.c_str());
+		ImGui::Text("Dragging: %s", entity->m_ent_name.c_str());
 		ImGui::EndDragDropSource();
 	}
+
 
 	if (ImGui::BeginDragDropTarget()) {
 		if (const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("ENTITY_POINTER")) {
@@ -184,12 +186,12 @@ void wizm::scene_ui_layer::render_modify_popup()
 
 
 		char entity_name[256];
-		strncpy_s(entity_name, sizeof(entity_name), global_scene->get_crnt_entity()->m_ent_ID.c_str(), _TRUNCATE);
+		strncpy_s(entity_name, sizeof(entity_name), global_scene->get_crnt_entity()->m_ent_name.c_str(), _TRUNCATE);
 
 
 
 		if (ImGui::InputText("##name", entity_name, IM_ARRAYSIZE(entity_name)))
-			global_scene->get_crnt_entity()->m_ent_ID = entity_name;
+			global_scene->get_crnt_entity()->m_ent_name = entity_name;
 
 
 		if (ImGui::MenuItem("Delete")) {
@@ -201,12 +203,8 @@ void wizm::scene_ui_layer::render_modify_popup()
 		}
 		if (ImGui::MenuItem("Duplicate")) {
 
-			auto name = global_scene->get_crnt_entity()->m_ent_ID;
-
-			while (global_scene->does_ent_name_exist(name)) {
-				name += "(1)";
-			}
-
+			auto name = global_scene->get_crnt_entity()->m_ent_name;			
+			name += "1";			
 
 			auto crnt = global_scene->get_crnt_entity()->copy_(name);
 			global_scene->add_entity(crnt);
@@ -225,7 +223,7 @@ void wizm::scene_ui_layer::open_create_ent_menu()
 {
 	auto ent = global_scene->get_selected_entities()[0];
 	
-	std::string default_file = "../GAME/" + ent->m_ent_ID + ".went";
+	std::string default_file = "../GAME/" + ent->m_ent_name + ".went";
 	
 	
 	const char* filter = "*.went";
