@@ -53,6 +53,7 @@ core_entity* wizm::core_entity::copy_(std::string name) const
 {
 	std::string new_ent_ID = name;
 	core_entity* new_entity = new core_entity(new_ent_ID);
+
 	
 	new_entity->set_position(get_position());
 	new_entity->set_rotation(get_rotation());

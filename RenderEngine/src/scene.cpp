@@ -77,6 +77,10 @@ namespace wizm {
 		entity->m_guid = generate_unique_id(); 
 		
 		m_entities.push_back(entity);
+
+		m_dirty_components.insert(m_dirty_components.end(), entity->m_components_list.begin(),
+			entity->m_components_list.end());
+
 		return entity;
 	}
 	
@@ -102,7 +106,11 @@ namespace wizm {
 		auto new_ent = add_entity(new_read["specs"].get_string("m_ent_name")[0], guid );
 
 		if (new_ent) {
+
 			new_ent->read_saved_data("", "", new_read);
+			
+			m_dirty_components.insert(m_dirty_components.end(), new_ent->m_components_list.begin(),
+				new_ent->m_components_list.end());
 
 			if (parent)
 				new_ent->add_parent(parent);

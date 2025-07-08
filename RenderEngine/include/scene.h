@@ -97,7 +97,12 @@ namespace wizm {
 		void clear_entities();
 
 	public:		
+		
 		std::vector<core_entity*> m_entities;
+		std::vector<core_component*> m_dirty_components;
+
+
+
 		bool m_reloaded = false;
 		std::string current_scene = "";
 

@@ -171,88 +171,50 @@ void lowlevelsys::gl_renderer::post_render(float deltaTime)
 
 void lowlevelsys::gl_renderer::update_draw_data()
 {
+	for (auto& component : global_scene->m_dirty_components) {
 
-	if (global_scene->total_component_count() != shader_count || global_scene->m_reloaded) {
-
-		std::vector<pointlight_component*> point_lights;
-		std::vector<directionallight_component*> directional_lights;
-		std::vector<spotlight_component*> spot_lights;
-		std::vector<light_component*> all_lights;
-		std::vector<staticmesh_component*> meshes;
-
-
-		for (auto& i : global_scene->m_entities) {
-			for (auto& per_ent : i->m_components_list)
-			{
-				auto mesh_comps = dynamic_cast<staticmesh_component*>(per_ent);
-				if (mesh_comps)
-					meshes.push_back(mesh_comps);
-
-				auto light_comps = dynamic_cast<pointlight_component*>(per_ent);
-				if (light_comps)
+		auto mesh_comp = dynamic_cast<staticmesh_component*>(component);
+		if (mesh_comp)
+		{
+			if (mesh_comp->m_model) {
+				mesh_comp->m_model->m_camera = m_camera_manager->m_crnt_camera;
+				if (!mesh_comp->m_model->has_boundvolume)
 				{
-					point_lights.push_back(light_comps);
-					all_lights.push_back(light_comps);
+					mesh_comp->m_model->init_boundingvolume(mesh_comp->m_model->retrieve_all_vertices());
 				}
-
-				auto directional_comps = dynamic_cast<directionallight_component*>(per_ent);
-				if (directional_comps)
-				{
-					directional_lights.push_back(directional_comps);
-					all_lights.push_back(directional_comps);
-				}
-
-				auto spotlight_comps = dynamic_cast<spotlight_component*>(per_ent);
-				if (spotlight_comps) {
-
-					spot_lights.push_back(spotlight_comps);
-					all_lights.push_back(spotlight_comps);
-				}
-
-
-				auto renderable = dynamic_cast<core_renderable*>(per_ent);
-				if (renderable) {
-					std::vector<vertex_data> cube = {
-						vertex_data(glm::vec3(-.4,-.4,-.4)),
-						vertex_data(glm::vec3(-.4,-.4,.4)),
-						vertex_data(glm::vec3(-.4,.4,-.4)),
-						vertex_data(glm::vec3(-.4,.4,.4)),
-						vertex_data(glm::vec3(.4,-.4,-.4)),
-						vertex_data(glm::vec3(.4,-.4,.4)),
-						vertex_data(glm::vec3(.4,.4,-.4)),
-						vertex_data(glm::vec3(.4,.4,.4))
-					};					
-					renderable->init_boundingvolume(cube);
-				}
-
 			}
 		}
 
+		//auto light_comp = dynamic_cast<pointlight_component*>(component);
+		//if (light_comp)
+		//{}
 
-		for (auto& i : meshes) {
+		//auto directional_comp = dynamic_cast<directionallight_component*>(component);
+		//if (directional_comp)
+		//{}
 
-			//i->m_material->on_change_material();
+		//auto spotlight_comp = dynamic_cast<spotlight_component*>(component);
+		//if (spotlight_comp) 
+		//{}
 
-			if (i->m_model) {
-				i->m_model->m_camera = m_camera_manager->m_crnt_camera;
-				if (!i->m_model->has_boundvolume)
-				{
-					i->m_model->init_boundingvolume(i->m_model->retrieve_all_vertices());
-				}
-			}
+		auto renderable = dynamic_cast<core_renderable*>(component);
+		if (renderable) {
+			std::vector<vertex_data> cube = {
+				vertex_data(glm::vec3(-.4,-.4,-.4)),
+				vertex_data(glm::vec3(-.4,-.4,.4)),
+				vertex_data(glm::vec3(-.4,.4,-.4)),
+				vertex_data(glm::vec3(-.4,.4,.4)),
+				vertex_data(glm::vec3(.4,-.4,-.4)),
+				vertex_data(glm::vec3(.4,-.4,.4)),
+				vertex_data(glm::vec3(.4,.4,-.4)),
+				vertex_data(glm::vec3(.4,.4,.4))
+			};
+			renderable->init_boundingvolume(cube);
 		}
-		/*
-		* I am a IDIOT
-		* This will be updated because luckly for now only one object can be copied so only the last mesh will be updated
-		* this is bad because if later there is a way to paste multiple meshes this will only update the last one
-		*/
-		if (!meshes.empty() && meshes[meshes.size() - 1]->m_model)
-			meshes[meshes.size() - 1]->m_model->init_boundingvolume(meshes[meshes.size() - 1]->m_model->retrieve_all_vertices());
-
-
-		shader_count = global_scene->total_component_count();
-
 	}
+
+	global_scene->m_dirty_components.clear();
+
 }
 
 

@@ -35,6 +35,8 @@ namespace lowlevelsys {
 
 		bool m_is_active;
 		bool m_is_visible;
+
+		bool m_is_dirty = true;
 		
 
 		wizm::core_tag* component_tags;
