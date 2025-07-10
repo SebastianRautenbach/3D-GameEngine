@@ -19,7 +19,10 @@ void wizm::compute_cluster::update_lights()
 	static size_t previous_shader_count = 0;
 
 
-	if (global_scene->total_component_count() != previous_shader_count || global_scene->m_reloaded) {
+	for(auto& component : global_scene->m_dirty_components) {
+		const auto& light = dynamic_cast<light_component*>(component);
+		
+		if (!light) { continue; }
 
 		pointlight_indexes.clear();
 		spotlight_indexes.clear();
@@ -45,7 +48,16 @@ void wizm::compute_cluster::update_lights()
 			}
 		}
 
+		break;
 	}
+
+
+
+	//if (global_scene->total_component_count() != previous_shader_count || global_scene->m_reloaded) {
+	//
+	//	
+	//
+	//}
 
 
 	std::vector<PointLight> point_lights_list;

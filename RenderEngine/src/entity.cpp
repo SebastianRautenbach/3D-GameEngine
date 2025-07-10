@@ -54,6 +54,8 @@ core_entity* wizm::core_entity::copy_(std::string name) const
 	std::string new_ent_ID = name;
 	core_entity* new_entity = new core_entity(new_ent_ID);
 
+	new_entity->global_scene = global_scene;
+
 	
 	new_entity->set_position(get_position());
 	new_entity->set_rotation(get_rotation());
@@ -61,11 +63,16 @@ core_entity* wizm::core_entity::copy_(std::string name) const
 
 	if (entity_tags) {
 		new_entity->entity_tags->tags = this->entity_tags->tags;
-	}
+	} 	
+
 
 
 	for (const auto& component : m_components_list)
-		new_entity->add_component(component->_copy());
+	{
+		const auto& comp = component->_copy();
+		global_scene->m_dirty_components.emplace_back(comp);
+		new_entity->add_component(comp);
+	}
 
 
 	return new_entity;
@@ -83,6 +90,7 @@ core_component* wizm::core_entity::add_component(core_component* component)
 {
 	component->add_parent(this);
 	m_components_list.push_back(component);
+	global_scene->m_dirty_components.emplace_back(component);
 	return component;
 }
 

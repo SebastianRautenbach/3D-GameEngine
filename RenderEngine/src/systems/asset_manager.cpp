@@ -25,49 +25,40 @@ wizm::asset_manager::~asset_manager()
 
 void wizm::asset_manager::assign_assets()
 {
-	if(total_entities < global_scene->m_entities.size() || global_scene->m_reloaded)
-	{
-		for (auto& ent : global_scene->m_entities) {
-			for (auto& comp : ent->m_components_list)
+	for (auto& comp : global_scene->m_dirty_components) {
+		auto mesh_comps = dynamic_cast<staticmesh_component*>(comp);		//------------------------------------ STATIC MESH ASSET
+		if (mesh_comps)
+		{
+			if (m_assets[mesh_comps->m_mesh_asset_id])
 			{
-				auto mesh_comps = dynamic_cast<staticmesh_component*>(comp);		//------------------------------------ STATIC MESH ASSET
-				if (mesh_comps)
-				{
-					if (m_assets[mesh_comps->m_mesh_asset_id])
-					{
-						mesh_comps->m_model = load<staticmesh_asset>(mesh_comps->m_mesh_asset_id, "");						
-					}
-
-
-
-					for (int i = 0; i < mesh_comps->m_material_asset_ids.size(); i++) {			//------------------------------------ MATERIAL ASSIGNMENT
-						auto& mat_id = mesh_comps->m_material_asset_ids[i];
-						
-						if ((i + 1) > mesh_comps->m_materials.size())
-							mesh_comps->m_materials.emplace_back();
-						
-						auto& mat = mesh_comps->m_materials[i];
-						
-						mat = load<material_asset>(mat_id, "");
-					}
-
-				}				
-
-				auto script_comp = dynamic_cast<scripting_component*>(comp);		//------------------------------------ SCRIPTING ASSET ASSIGNMENT
-				if (script_comp) {
-					script_comp->m_script_asset = load<script_asset>(script_comp->script_asset_id, ""); 
-				}
-
-				auto sound_comp = dynamic_cast<sound_component*>(comp);				//------------------------------------ SOUND ASSET ASSIGNMENT		
-				if (sound_comp) {
-					sound_comp->m_sound_asset = load<sound_asset>(sound_comp->asset_id, "");
-				}
+				mesh_comps->m_model = load<staticmesh_asset>(mesh_comps->m_mesh_asset_id, "");
 			}
+
+
+
+			for (int i = 0; i < mesh_comps->m_material_asset_ids.size(); i++) {			//------------------------------------ MATERIAL ASSIGNMENT
+				auto& mat_id = mesh_comps->m_material_asset_ids[i];
+
+				if ((i + 1) > mesh_comps->m_materials.size())
+					mesh_comps->m_materials.emplace_back();
+
+				auto& mat = mesh_comps->m_materials[i];
+
+				mat = load<material_asset>(mat_id, "");
+			}
+
 		}
 
-		total_entities = global_scene->m_entities.size();
-	}
+		auto script_comp = dynamic_cast<scripting_component*>(comp);		//------------------------------------ SCRIPTING ASSET ASSIGNMENT
+		if (script_comp) {
+			script_comp->m_script_asset = load<script_asset>(script_comp->script_asset_id, "");
+		}
 
+		auto sound_comp = dynamic_cast<sound_component*>(comp);				//------------------------------------ SOUND ASSET ASSIGNMENT		
+		if (sound_comp) {
+			sound_comp->m_sound_asset = load<sound_asset>(sound_comp->asset_id, "");
+		}
+	}
 
 }
 

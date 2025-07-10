@@ -30,11 +30,11 @@ Variables:
    25   3 *    MULf     v2, v2, v1
    27   3 *    ADDf     v1, v3, v2
    29   3 *    PshV4    v1
-   30   4 *    CALL     107           (float sqrt(float))
+   30   4 *    CALL     106           (float sqrt(float))
    32   3 *    CpyRtoV4 v2
             {
             }
    33   3 *    CpyVtoR4 v2
             0:
-   34   3 *    FREE     v0, 0x36185720          (type:vec3)
+   34   3 *    FREE     v0, 0xcb442a20          (type:vec3)
    37   3 *    RET      2

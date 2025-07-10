@@ -438,7 +438,7 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, core_
 				{
 					staticmesh->m_mesh_asset_id = wstring_to_string(id);
 					m_asset_manager->assign_assets();
-					global_scene->m_reloaded = true;
+					global_scene->m_dirty_components.emplace_back(component);
 				}
 			}
 
@@ -468,7 +468,7 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, core_
 								}
 
 							staticmesh->m_material_asset_ids[i] = wstring_to_string(id);													
-							global_scene->m_reloaded = true;
+							global_scene->m_dirty_components.emplace_back(component);
 							m_asset_manager->assign_assets();
 						}
 					}
@@ -507,7 +507,7 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, core_
 				if (m_asset_manager->get_asset_details_from_id(wstring_to_string(id)).type == tSCRIPT)
 				{
 					script_component->script_asset_id = wstring_to_string(id);
-					global_scene->m_reloaded = true;
+					global_scene->m_dirty_components.emplace_back(component);
 					m_asset_manager->assign_assets();
 				}
 			}
@@ -538,7 +538,7 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, core_
 				if (m_asset_manager->get_asset_details_from_id(wstring_to_string(id)).type == tSOUND)
 				{
 					_sound_component->asset_id = wstring_to_string(id);
-					global_scene->m_reloaded = true;
+					global_scene->m_dirty_components.emplace_back(component);
 					m_asset_manager->assign_assets();
 				}
 			}

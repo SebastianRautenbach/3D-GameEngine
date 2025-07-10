@@ -114,11 +114,32 @@
 		is_entity:1;
 		m_ent_name:camera;
 	}
+	spotlight2{
+		light{
+			m_constant:1.000000;
+			linear:0.090000;
+			m_quadratic:0.032000;
+			m_outerCutOff:0.965926;
+			m_cutOff:0.984808;
+			m_ambient:0.285000,0.284997,0.284997;
+			m_diffuse:1.000000,1.000000,1.000000;
+			m_specular:1.000000,1.000000,1.000000;
+			m_distance:10.000000;
+			m_brightness:1.000000;
+			spotlightindex:;
+			light_index:0;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:90.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
 	tags{
 	}
 	transform{
-		position:1.268968,0.000000,3.786691;
-		rotation:0.000000,0.000000,0.000000;
+		position:0.687614,-1.316495,4.602898;
+		rotation:-0.072120,0.000000,0.000000;
 		scale:1.000000,1.000000,1.000000;
 	}
 }

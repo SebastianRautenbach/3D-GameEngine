@@ -75,6 +75,8 @@ namespace wizm {
 	core_entity* core_scene::add_entity(core_entity* entity) {
 		
 		entity->m_guid = generate_unique_id(); 
+
+		entity->global_scene = this;
 		
 		m_entities.push_back(entity);
 
@@ -143,7 +145,7 @@ namespace wizm {
 		process_entity(entity, read[entity->m_guid]);
 
 		return read;
-	}
+	}	
 
 
 	void core_scene::delete_enity(core_entity* entity)

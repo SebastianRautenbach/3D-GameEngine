@@ -28,6 +28,7 @@ namespace wizm {
 		void process_entity(filedata::ZER& new_read, core_entity* parent, const std::string& guid);
 		filedata::ZER save_entity(core_entity* entity);
 
+
 		core_entity* get_entity(std::string entity_id) { 
 			for (auto& ent : m_entities) { 
 				if (ent->m_guid == entity_id) {

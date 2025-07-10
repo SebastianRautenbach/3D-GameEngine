@@ -31,7 +31,8 @@ void update_manager::render_setup(int window_size_x, int window_size_y, const ch
 	spec.attachment = { framebuffer_texture_format::RGBA8, framebuffer_texture_format::Depth };
 	m_framebuffer = new core_framebuffer(spec);
 
-	compute_cluster_test = new compute_cluster(m_gl_renderer->m_shdrs, m_gl_renderer->m_shdrs[ENGINE_SHADER_CLUSTER_COMP], m_gl_renderer->m_shdrs[ENGINE_SHADER_CLUSTER_CULL],  m_camera_manager , global_scene);
+	compute_cluster_test = new compute_cluster(m_gl_renderer->m_shdrs, m_gl_renderer->m_shdrs[ENGINE_SHADER_CLUSTER_COMP],
+		m_gl_renderer->m_shdrs[ENGINE_SHADER_CLUSTER_CULL],  m_camera_manager , global_scene);
 	
 
 	m_asset_manager = new asset_manager(m_audio_manager, global_scene);
@@ -70,6 +71,10 @@ void update_manager::pre_render()
 	m_gl_renderer->update_draw_data();
 	compute_cluster_test->update_lights();
 	m_gl_renderer->pre_render(is_running, m_timer->get_delta_time());
+	
+	
+	if (!global_scene->m_dirty_components.empty())
+		global_scene->m_dirty_components.clear();
 }
 
 

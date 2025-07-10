@@ -213,7 +213,7 @@ void lowlevelsys::gl_renderer::update_draw_data()
 		}
 	}
 
-	global_scene->m_dirty_components.clear();
+	//global_scene->m_dirty_components.clear();
 
 }
 
