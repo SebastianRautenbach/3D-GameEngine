@@ -55,6 +55,8 @@ namespace wizm {
 
 		audio_listener* m_listener_manager;
 		audio_manager* m_audio_manager;
+
+		// SCENE
 		core_scene* global_scene;
 		
 	};

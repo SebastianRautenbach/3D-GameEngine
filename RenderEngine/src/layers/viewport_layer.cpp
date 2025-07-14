@@ -55,14 +55,12 @@ void wizm::viewport_layer::update(float delta_time)
             
             if(is_map_file(wstring_to_string(id)))
             {
-                global_scene->read_map_data(wstring_to_string(id));
-                global_scene->m_reloaded = true;
+                global_scene->read_map_data(wstring_to_string(id));                
                 m_camera_manager->load_save_viewport_camera(wstring_to_string(id));
                 m_camera_manager->update_crnt_camera(false);
             }
             else if (is_entity_file(temp->file_name)) {
                 global_scene->load_entity(std::dynamic_pointer_cast<entity_asset>(temp)->data);
-                global_scene->m_reloaded = true;
             }
             else if (is_mesh_file(temp->file_name)) {
                 core_entity* new_ent = new core_entity("new ent");
@@ -72,8 +70,6 @@ void wizm::viewport_layer::update(float delta_time)
                 
                 new_ent->add_component(mesh);                    
                 global_scene->add_entity(new_ent);
-
-                global_scene->m_reloaded = true;
             }
 
             
@@ -289,7 +285,7 @@ void wizm::viewport_layer::scene_viewport_func(float delta_time)
         ImGui::Separator();
 
         if (ImGui::MenuItem("Delete")) {         
-            global_scene->delete_enity(global_scene->get_crnt_entity());
+            global_scene->delete_entity(global_scene->get_crnt_entity());
             global_scene->clear_selected_entities();
             m_renderer->update_draw_data();
         }

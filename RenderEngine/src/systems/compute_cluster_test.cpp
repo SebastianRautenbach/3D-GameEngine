@@ -19,11 +19,7 @@ void wizm::compute_cluster::update_lights()
 	static size_t previous_shader_count = 0;
 
 
-	for(auto& component : global_scene->m_dirty_components) {
-		const auto& light = dynamic_cast<light_component*>(component);
-		
-		if (!light) { continue; }
-
+	if(global_scene->m_rebuild_lights) {
 		pointlight_indexes.clear();
 		spotlight_indexes.clear();
 
@@ -47,17 +43,7 @@ void wizm::compute_cluster::update_lights()
 				}
 			}
 		}
-
-		break;
 	}
-
-
-
-	//if (global_scene->total_component_count() != previous_shader_count || global_scene->m_reloaded) {
-	//
-	//	
-	//
-	//}
 
 
 	std::vector<PointLight> point_lights_list;
@@ -86,6 +72,11 @@ void wizm::compute_cluster::update_lights()
 		
 
 	}
+	
+	/*
+		We want to update all shaders with updated light info (if the camera moved or any light state change), this is done per frame
+	*/
+
 
 	for (auto& index_pair : spotlight_indexes) {
 
@@ -132,7 +123,7 @@ void wizm::compute_cluster::update_lights()
 	if (current_buffer_size != static_cast<GLint>(buffer_size) || point_lights_list.empty()) {
 		if (point_lights_list.empty()) {
 			// for some reason using 1 instead of 0 fixes the problem and updates the buffer, this problem is a
-			// pain in my -ss to fix, lowkey trying to find a needle in a haystack with a blindfold and a pistol close cuz dammnnn
+			// pain in my -ss to fix, low-key trying to find a needle in a haystack with a blindfold cuz dammnnn
 			glBufferData(GL_SHADER_STORAGE_BUFFER, 1, nullptr, GL_DYNAMIC_DRAW);
 		}
 		else {
@@ -180,7 +171,7 @@ void wizm::compute_cluster::update_lights()
 }
 
 void wizm::compute_cluster::update()
-{
+{	
 	auto crnt_camera = m_camera_manager->m_crnt_camera;
 	glm::mat4 view = crnt_camera->get_view_matrix();
 	glm::mat4 projection = crnt_camera->get_projection_matrix();

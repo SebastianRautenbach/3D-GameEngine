@@ -16,7 +16,7 @@ void wizm::core_renderable::init_boundingvolume(std::vector<vertex_data> vertice
         max_point_local = glm::max(max_point_local, vertex.Position);
     }
     center = get_center();
-    init_extents = extents = (max_point_local - min_point_local) * 0.5f;
+    init_extents = extents = (max_point_local - min_point_local) * 1.f;
     init_axes[0] = axes[0] = glm::vec3(1, 0, 0);
     init_axes[1] = axes[1] = glm::vec3(0, 1, 0);
     init_axes[2] = axes[2] = glm::vec3(0, 0, 1);

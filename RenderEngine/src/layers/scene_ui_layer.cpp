@@ -2,6 +2,7 @@
 #include "system/scene_manager.h"
 #include <functional>
 #include "tinyfiledialogs.h"
+#include "other utils/copy_to_clipboard.h"
 
 wizm::scene_ui_layer::scene_ui_layer( gl_renderer* renderer, wizm::core_scene* scene)
 	:core_layer("scene ui layer"), m_renderer(renderer), global_scene(scene)
@@ -193,10 +194,13 @@ void wizm::scene_ui_layer::render_modify_popup()
 		if (ImGui::InputText("##name", entity_name, IM_ARRAYSIZE(entity_name)))
 			global_scene->get_crnt_entity()->m_ent_name = entity_name;
 
+		if (ImGui::MenuItem("Copy GUID")) {
+			copy_to_clipboard(global_scene->get_crnt_entity()->m_guid);
+		}
 
 		if (ImGui::MenuItem("Delete")) {
 
-			global_scene->delete_enity(global_scene->get_crnt_entity());
+			global_scene->delete_entity(global_scene->get_crnt_entity());
 			global_scene->clear_selected_entities();
 
 			m_renderer->update_draw_data();

@@ -15,6 +15,7 @@ namespace wizm {
 		void scene_postupdate();
 		unsigned int total_component_count();
 		bool does_ent_name_exist(std::string name);
+		void on_component_change();
 
 		// serialization
 		void read_map_data(std::string file_path);
@@ -39,7 +40,7 @@ namespace wizm {
 			return NULL;
 		}
 		
-		void delete_enity(core_entity* entity);
+		void delete_entity(core_entity* entity);
 		void delete_all_entities();
 
 
@@ -103,8 +104,7 @@ namespace wizm {
 		std::vector<core_component*> m_dirty_components;
 
 
-
-		bool m_reloaded = false;
+		bool m_rebuild_lights = false;		
 		std::string current_scene = "";
 
 	private:

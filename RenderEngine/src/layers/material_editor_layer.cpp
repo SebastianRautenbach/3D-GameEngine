@@ -25,6 +25,9 @@ wizm::material_editor_layer::material_editor_layer(asset_manager* asset_manager)
 
     m_shader = std::shared_ptr<core_gl_shader>(new core_gl_shader("shaders/default_vrtx_shdr.glsl", "shaders/material_frgmnt_shdr.glsl"));
     m_shader->setInt("ammount_of_pointlights", 1);
+
+    diffuse_image = NULL;
+    sepcular_image = NULL;
 }
 
 wizm::material_editor_layer::~material_editor_layer()

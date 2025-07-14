@@ -1,0 +1,122 @@
+13113329222688848337{
+	specs{
+		is_entity:1;
+		m_ent_name:Entity Name;
+	}
+	staticmesh0{
+		asset id:18446117132198515086;
+		m_material_asset_ids:18135990598270948645;
+		is_static:1;
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:0.000000,0.000000,0.000000;
+		rotation:0.000000,0.000000,0.000000;
+		scale:27.429190,0.086137,64.937904;
+	}
+}
+18115428726035589376{
+	pointlight0{
+		light{
+			m_constant:1.000000;
+			linear:0.090000;
+			m_quadratic:0.032000;
+			m_radius:3.000000;
+			m_ambient:0.050000,0.050000,0.050000;
+			m_diffuse:0.800000,0.800000,0.800000;
+			m_specular:1.000000,1.000000,1.000000;
+			pointlightindex:;
+			m_brightness:1.000000;
+			m_intensity:1.000000;
+			light_index:0;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	specs{
+		is_entity:1;
+		m_ent_name:light;
+	}
+	tags{
+	}
+	transform{
+		position:0.000000,1.284225,-4.994818;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+2296759377382346476{
+	directionallight0{
+		light{
+			m_ambient:0.050000,0.050000,0.050000;
+			m_diffuse:0.400000,0.400000,0.400000;
+			m_specular:0.500000,0.500000,0.500000;
+			m_brightness:1.000000;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	specs{
+		is_entity:1;
+		m_ent_name:directional;
+	}
+	tags{
+	}
+	transform{
+		position:0.000000,2.094188,0.000000;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+6555411466442690989{
+	pointlight0{
+		light{
+			m_constant:1.000000;
+			linear:0.090000;
+			m_quadratic:0.032000;
+			m_radius:3.000000;
+			m_ambient:0.050000,0.050000,0.050000;
+			m_diffuse:0.800000,0.800000,0.800000;
+			m_specular:1.000000,1.000000,1.000000;
+			pointlightindex:;
+			m_brightness:1.000000;
+			m_intensity:1.000000;
+			light_index:1;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	specs{
+		is_entity:1;
+		m_ent_name:light(1);
+	}
+	tags{
+	}
+	transform{
+		position:-3.271688,1.284225,-1.946939;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+viewport_camera{
+	transform{
+		position:-9.413927,5.908524,-1.715684;
+		rotation:-25.098936,-76.029099,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}

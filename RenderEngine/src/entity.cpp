@@ -17,7 +17,7 @@ wizm::core_entity::core_entity(std::string ent_name, std::string ent_guid, core_
 	
 	m_guid = ent_guid;
 	
-	entity_tags = new core_tag();
+	entity_tags = core_tag();
 }
 
 	//-----------------------------------------------------------------------
@@ -34,11 +34,7 @@ void wizm::core_entity::remame_entity(std::string name)
 
 void wizm::core_entity::destroy_entity()
 {
-	if(entity_tags && this)
-	{
-		delete entity_tags;
-		entity_tags = nullptr;
-	}
+	
 }
 
 
@@ -61,9 +57,9 @@ core_entity* wizm::core_entity::copy_(std::string name) const
 	new_entity->set_rotation(get_rotation());
 	new_entity->set_scale(get_scale());
 
-	if (entity_tags) {
-		new_entity->entity_tags->tags = this->entity_tags->tags;
-	} 	
+	
+	new_entity->entity_tags.tags = this->entity_tags.tags;
+	
 
 
 
@@ -219,7 +215,7 @@ void wizm::core_entity::save_data(std::string parent_name, std::string index, fi
 
 
 
-	save_t["tags"].set_string("tags", entity_tags->tags);
+	save_t["tags"].set_string("tags", entity_tags.tags);
 
 	for (int i = 0; i < m_components_list.size(); i++) {
 		m_components_list[i]->save_data(m_guid, std::to_string(i), save_t);

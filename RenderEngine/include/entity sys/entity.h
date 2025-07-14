@@ -62,7 +62,7 @@ namespace wizm {
 
 		int entity_color_id;
 
-		core_tag* entity_tags;
+		core_tag entity_tags;
 		std::vector<core_component*> m_components_list;
 		core_scene* global_scene;
 

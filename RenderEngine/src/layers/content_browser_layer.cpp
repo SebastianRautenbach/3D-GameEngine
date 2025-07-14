@@ -327,7 +327,7 @@ void wizm::content_browser_layer::refresh_assets()
 
 
 std::vector<std::filesystem::path> wizm::content_browser_layer::get_directory_content(const std::filesystem::path& path)
-{
+{    
 	std::vector<std::filesystem::path> contents;
 	for (const auto& entry : std::filesystem::directory_iterator(path)) {
 		contents.push_back(entry.path());

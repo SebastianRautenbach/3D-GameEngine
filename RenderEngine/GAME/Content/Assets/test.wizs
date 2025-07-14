@@ -1,6 +1,6 @@
 
 const float PI = 3.141592653589793;
-string name = "cool cube";
+string entity = "14553375488139905987";
 
 
 float sin(float rad) {
@@ -50,29 +50,10 @@ float radians(float degrees) {
 }
 
 
-vec3 pivot = vec3(0, 3.02, 0);
-float rotation_speed = 90.0f; 
-float current_angle = 0.0f; 
-
 void on_start() {
-    set_entity_rotation(name, 0, 0, 0);
-    add_entity_position(name, 0, 0, 0);
+
 }
 
 void on_update(float delta_time) {
-    vec3 entity_pos = get_entity_position(name);
-
-    current_angle += rotation_speed * delta_time;
-    if (current_angle >= 360.0f) current_angle -= 360.0f;
-    float rad_angle = radians(current_angle);
-
-    vec3 lenth = vec3(entity_pos.x - pivot.x, entity_pos.y - pivot.y, entity_pos.z - pivot.z);
-    float radius = length(lenth);
-    vec3 new_pos;
-    new_pos.x = pivot.x + radius * cos(rad_angle);
-    new_pos.y = pivot.y + radius * sin(rad_angle);
-    new_pos.z = entity_pos.z;
-
-    set_entity_rotation(name, 0, 0, current_angle);
-    add_entity_position(name, new_pos.x - entity_pos.x, new_pos.y - entity_pos.y, 0);
+    add_entity_position(entity, 0.0, 0.1*delta_time, 0.0);
 }

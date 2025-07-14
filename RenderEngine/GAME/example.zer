@@ -1,0 +1,670 @@
+12666364809282286952{
+	specs{
+		is_entity:1;
+		m_ent_name:floor(1)(1)(1)(1)(1)(1)(1)(1)(1);
+	}
+	staticmesh0{
+		asset id:18446117132198515086;
+		m_material_asset_ids:18135990598270948645;
+		is_static:1;
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-25.697691,14.724090,-41.976048;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+13167009968994666346{
+	sound_component0{
+		asset id:18446409814557103841;
+		m_loop:1;
+		m_is3d:0;
+		m_play_on_start:1;
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	specs{
+		is_entity:1;
+		m_ent_name:choir music;
+	}
+	tags{
+	}
+	transform{
+		position:-7.927032,0.000000,-13.554170;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+13211093995302353046{
+	pointlight0{
+		light{
+			m_constant:1.000000;
+			linear:0.090000;
+			m_quadratic:0.032000;
+			m_radius:4.000000;
+			m_ambient:0.050000,0.050000,0.050000;
+			m_diffuse:1.000000,0.999990,0.999990;
+			m_specular:1.000000,1.000000,1.000000;
+			pointlightindex:;
+			m_brightness:1.000000;
+			m_intensity:1.000000;
+			light_index:0;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	specs{
+		is_entity:1;
+		m_ent_name:point1;
+	}
+	tags{
+	}
+	transform{
+		position:-34.153835,2.605205,-46.902466;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+13686122594722597077{
+	specs{
+		is_entity:1;
+		m_ent_name:floor;
+	}
+	staticmesh0{
+		asset id:18446117132198515086;
+		m_material_asset_ids:17850291995326238515;
+		is_static:1;
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:0.000000,-0.143601,0.000000;
+		rotation:-0.000000,0.000000,0.000000;
+		scale:157.941635,1.000000,230.716751;
+	}
+}
+13726971106707298642{
+	specs{
+		is_entity:1;
+		m_ent_name:floor(1)(1)(1)(1)(1)(1)(1)(1)(1)(1)(1)(1)(1)(1);
+	}
+	staticmesh0{
+		asset id:18446117132198515086;
+		m_material_asset_ids:18135990598270948645;
+		is_static:1;
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-39.870495,8.581033,-18.386484;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+13744922763623689681{
+	specs{
+		is_entity:1;
+		m_ent_name:floor(1)(1)(1)(1)(1)(1)(1)(1)(1)(1)(1)(1)(1)(1)(1)(1);
+	}
+	staticmesh0{
+		asset id:18446117132198515086;
+		m_material_asset_ids:18135990598270948645;
+		is_static:1;
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-44.214092,16.660719,-30.253086;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+13780724505460091946{
+	specs{
+		is_entity:1;
+		m_ent_name:floor(1)(1)(1)(1)(1)(1)(1)(1)(1)(1)(1);
+	}
+	staticmesh0{
+		asset id:18446117132198515086;
+		m_material_asset_ids:18135990598270948645;
+		is_static:1;
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-18.795235,14.174071,-28.230026;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+13815898677510338897{
+	specs{
+		is_entity:1;
+		m_ent_name:floor(1)(1)(1)(1)(1)(1)(1)(1)(1)(1);
+	}
+	staticmesh0{
+		asset id:18446117132198515086;
+		m_material_asset_ids:18135990598270948645;
+		is_static:1;
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-25.006611,11.858749,-32.309277;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+14336004348578839094{
+	pointlight0{
+		light{
+			m_constant:1.000000;
+			linear:0.090000;
+			m_quadratic:0.032000;
+			m_radius:4.000000;
+			m_ambient:0.050000,0.050000,0.050000;
+			m_diffuse:1.000000,0.999990,0.999990;
+			m_specular:1.000000,1.000000,1.000000;
+			pointlightindex:;
+			m_brightness:1.000000;
+			m_intensity:1.000000;
+			light_index:2;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	specs{
+		is_entity:1;
+		m_ent_name:point1(1)(1)(1)(1)(1);
+	}
+	tags{
+	}
+	transform{
+		position:-29.232145,18.620829,-25.479519;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+14553375488139905987{
+	ScriptingComponent0{
+		script_asset_id:16131872624966770262;
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	specs{
+		is_entity:1;
+		m_ent_name:floor(1);
+	}
+	staticmesh1{
+		asset id:18446117132198515086;
+		m_material_asset_ids:18135990598270948645;
+		is_static:0;
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-35.072754,-0.533677,-14.222903;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+16067716435138930414{
+	cameracomponent0{
+		settings{
+			is_main_camera:1;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	specs{
+		is_entity:1;
+		m_ent_name:camera;
+	}
+	tags{
+	}
+	transform{
+		position:-36.094666,5.533191,2.171911;
+		rotation:0.000000,-0.149722,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+16140329861147038403{
+	specs{
+		is_entity:1;
+		m_ent_name:floor(1)(1)(1)(1)(1)(1)(1)(1)(1)(1)(1)(1)(1);
+	}
+	staticmesh0{
+		asset id:18446117132198515086;
+		m_material_asset_ids:18135990598270948645;
+		is_static:1;
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-20.731800,3.774688,-23.986252;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+16859044323454675744{
+	specs{
+		is_entity:1;
+		m_ent_name:floor(1)(1)(1)(1)(1);
+	}
+	staticmesh0{
+		asset id:18446117132198515086;
+		m_material_asset_ids:18135990598270948645;
+		is_static:1;
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-15.220596,8.581033,-45.289246;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+16946448281915968967{
+	specs{
+		is_entity:1;
+		m_ent_name:other;
+	}
+	staticmesh0{
+		asset id:18446117132198515086;
+		m_material_asset_ids:18135990598270948645;
+		is_static:1;
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-32.252785,8.581033,-39.507065;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+17868688887741203847{
+	pointlight0{
+		light{
+			m_constant:1.000000;
+			linear:0.090000;
+			m_quadratic:0.032000;
+			m_radius:4.000000;
+			m_ambient:0.050000,0.050000,0.050000;
+			m_diffuse:1.000000,0.999990,0.999990;
+			m_specular:1.000000,1.000000,1.000000;
+			pointlightindex:;
+			m_brightness:1.000000;
+			m_intensity:1.000000;
+			light_index:2;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	specs{
+		is_entity:1;
+		m_ent_name:point1(1)(1)(1);
+	}
+	tags{
+	}
+	transform{
+		position:-19.474504,11.835543,-22.654968;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+17870140345286249372{
+	pointlight0{
+		light{
+			m_constant:1.000000;
+			linear:0.090000;
+			m_quadratic:0.032000;
+			m_radius:4.000000;
+			m_ambient:0.050000,0.050000,0.050000;
+			m_diffuse:1.000000,0.999990,0.999990;
+			m_specular:1.000000,1.000000,1.000000;
+			pointlightindex:;
+			m_brightness:1.000000;
+			m_intensity:1.000000;
+			light_index:2;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	specs{
+		is_entity:1;
+		m_ent_name:point1(1)(1)(1)(1);
+	}
+	tags{
+	}
+	transform{
+		position:-11.528994,11.702797,-43.055267;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+18122062629384396053{
+	specs{
+		is_entity:1;
+		m_ent_name:floor(1)(1)(1)(1)(1)(1);
+	}
+	staticmesh0{
+		asset id:18446117132198515086;
+		m_material_asset_ids:18135990598270948645;
+		is_static:1;
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-25.697691,8.581034,-41.976048;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+18410702001448167611{
+	specs{
+		is_entity:1;
+		m_ent_name:floor(1)(1)(1)(1);
+	}
+	staticmesh0{
+		asset id:18446117132198515086;
+		m_material_asset_ids:18135990598270948645;
+		is_static:1;
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-30.285072,8.581033,-29.812538;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+18422527306787893727{
+	directionallight0{
+		light{
+			m_ambient:0.050000,0.050000,0.050000;
+			m_diffuse:0.400000,0.400000,0.400000;
+			m_specular:0.500000,0.500000,0.500000;
+			m_brightness:1.000000;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	specs{
+		is_entity:1;
+		m_ent_name:light;
+	}
+	tags{
+	}
+	transform{
+		position:0.000000,0.000000,0.000000;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+18441096965436926336{
+	specs{
+		is_entity:1;
+		m_ent_name:floor(1)(1)(1)(1)(1)(1)(1);
+	}
+	staticmesh0{
+		asset id:18446117132198515086;
+		m_material_asset_ids:18135990598270948645;
+		is_static:1;
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-27.907585,8.581033,-21.401182;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+18445600022831365140{
+	pointlight0{
+		light{
+			m_constant:1.000000;
+			linear:0.090000;
+			m_quadratic:0.032000;
+			m_radius:4.000000;
+			m_ambient:0.050000,0.050000,0.050000;
+			m_diffuse:1.000000,0.999990,0.999990;
+			m_specular:1.000000,1.000000,1.000000;
+			pointlightindex:;
+			m_brightness:1.000000;
+			m_intensity:1.000000;
+			light_index:1;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	specs{
+		is_entity:1;
+		m_ent_name:point1(1);
+	}
+	tags{
+	}
+	transform{
+		position:-41.983124,2.605205,-21.739367;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+5186949134263963770{
+	specs{
+		is_entity:1;
+		m_ent_name:floor(1)(1);
+	}
+	staticmesh0{
+		asset id:18446117132198515086;
+		m_material_asset_ids:18135990598270948645;
+		is_static:1;
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-25.006611,8.581033,-32.309277;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+6790231411320294589{
+	specs{
+		is_entity:1;
+		m_ent_name:floor(1)(1)(1)(1)(1)(1)(1)(1)(1)(1)(1)(1)(1)(1)(1);
+	}
+	staticmesh0{
+		asset id:18446117132198515086;
+		m_material_asset_ids:18135990598270948645;
+		is_static:1;
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-44.214092,8.581033,-30.253086;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+8610600924058072644{
+	pointlight0{
+		light{
+			m_constant:1.000000;
+			linear:0.090000;
+			m_quadratic:0.032000;
+			m_radius:4.000000;
+			m_ambient:0.050000,0.050000,0.050000;
+			m_diffuse:1.000000,0.999990,0.999990;
+			m_specular:1.000000,1.000000,1.000000;
+			pointlightindex:;
+			m_brightness:1.000000;
+			m_intensity:1.000000;
+			light_index:1;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	specs{
+		is_entity:1;
+		m_ent_name:point1(1)(1);
+	}
+	tags{
+	}
+	transform{
+		position:-18.046780,2.605206,-3.130673;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+9186197929377618101{
+	specs{
+		is_entity:1;
+		m_ent_name:floor(1)(1)(1)(1)(1)(1)(1)(1)(1)(1)(1)(1);
+	}
+	staticmesh0{
+		asset id:18446117132198515086;
+		m_material_asset_ids:18135990598270948645;
+		is_static:1;
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-27.907585,3.774688,-21.401182;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+9740018880725000068{
+	specs{
+		is_entity:1;
+		m_ent_name:floor(1)(1)(1);
+	}
+	staticmesh0{
+		asset id:18446117132198515086;
+		m_material_asset_ids:18135990598270948645;
+		is_static:1;
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	tags{
+	}
+	transform{
+		position:-18.795235,8.581033,-28.230026;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}

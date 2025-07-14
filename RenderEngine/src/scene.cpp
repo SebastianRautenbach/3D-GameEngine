@@ -23,9 +23,7 @@ namespace wizm {
 	}
 	
 	void core_scene::scene_update(float delta_time, std::shared_ptr<core_gl_shader>& shader)
-	{
-		m_reloaded = false;
-		
+	{		
 		#pragma omp parallel for
 		for (size_t j = 0; j < m_entities.size(); ++j) {
 			auto& i = m_entities[j];
@@ -71,6 +69,13 @@ namespace wizm {
 	}
 
 
+	// if a component is deleted changed or added
+	void core_scene::on_component_change()
+	{
+		m_rebuild_lights = true;
+	}
+
+
 
 	core_entity* core_scene::add_entity(core_entity* entity) {
 		
@@ -82,6 +87,8 @@ namespace wizm {
 
 		m_dirty_components.insert(m_dirty_components.end(), entity->m_components_list.begin(),
 			entity->m_components_list.end());
+
+		on_component_change();
 
 		return entity;
 	}
@@ -113,6 +120,8 @@ namespace wizm {
 			
 			m_dirty_components.insert(m_dirty_components.end(), new_ent->m_components_list.begin(),
 				new_ent->m_components_list.end());
+
+			on_component_change();
 
 			if (parent)
 				new_ent->add_parent(parent);
@@ -148,10 +157,11 @@ namespace wizm {
 	}	
 
 
-	void core_scene::delete_enity(core_entity* entity)
+	void core_scene::delete_entity(core_entity* entity)
 	{
 		if (entity == NULL) { return; }
 		
+		on_component_change();
 		
 		// clear all entities with the same parent from the entity list to ensure that a call to a nullptr isn't made.
 		for (auto& child : entity->get_children()) {		
@@ -177,6 +187,7 @@ namespace wizm {
 
 	void core_scene::delete_all_entities()
 	{
+		on_component_change();
 		while (!m_entities.empty()) {
 			auto ent = m_entities.back();
 
@@ -189,8 +200,8 @@ namespace wizm {
 	
 
 	void core_scene::clear_entities()
-	{
-		m_reloaded = true;
+	{		
+		m_rebuild_lights = true;
 		delete_all_entities();
 		clear_selected_entities();
 	}

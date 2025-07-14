@@ -259,13 +259,12 @@ namespace engine_scripting
 	//-------------------------------------------------- STATIC MESH
 	//--------------------------------------------------------------
 	
-	static void change_mesh(std::string entity_name, int component_index, std::string asset_id) {
-		auto entity = global_scene->get_entity_by_id(entity_name);
+	static void change_mesh(std::string entity_guid, int component_index, std::string asset_id) {
+		auto entity = global_scene->get_entity_by_id(entity_guid);
 
 		if (entity->m_components_list.size() > component_index) {
 			auto sm_comp = dynamic_cast<staticmesh_component*>(entity->m_components_list[component_index]);
 			sm_comp->m_mesh_asset_id = asset_id;
-			global_scene->m_reloaded = true;
 		}
 	}
 	SCRIPT_DEFINE_FUNC_3(void, change_mesh, string, int, string);
@@ -273,8 +272,8 @@ namespace engine_scripting
 	//--------------------------------------------------	  ENTITY
 	//--------------------------------------------------------------
 
-	void destroy_entity(std::string entity_name) {
-		global_scene->delete_enity(global_scene->get_entity(entity_name));
+	void destroy_entity(std::string entity_guid) {
+		global_scene->delete_entity(global_scene->get_entity(entity_guid));
 	}
 	SCRIPT_DEFINE_FUNC_1(void, destroy_entity,string);
 
@@ -283,15 +282,14 @@ namespace engine_scripting
 	//--------------------------------------------------------------
 
 
-	void change_material(std::string entity_name, int component_index, std::string asset_id, int material_index) {
-		auto entity = global_scene->get_entity_by_id(entity_name);
+	void change_material(std::string entity_guid, int component_index, std::string asset_id, int material_index) {
+		auto entity = global_scene->get_entity_by_id(entity_guid);
 		if (entity->m_components_list.size() > component_index) {
 			auto sm_comp = dynamic_cast<staticmesh_component*>(entity->m_components_list[component_index]);
 			
 			if(sm_comp->m_material_asset_ids.size() > material_index)
 			{
-				sm_comp->m_material_asset_ids[material_index] = asset_id;
-				global_scene->m_reloaded = true;
+				sm_comp->m_material_asset_ids[material_index] = asset_id;				
 			}
 		}
 
@@ -302,16 +300,16 @@ namespace engine_scripting
 	//--------------------------------------------------------------
 	// entity
 	
-	static void set_entity_rotation(std::string entity_name, float p, float y, float r) {
-		auto entity = global_scene->get_entity_by_id(entity_name);
+	static void set_entity_rotation(std::string entity_guid, float p, float y, float r) {
+		auto entity = global_scene->get_entity_by_id(entity_guid);
 		entity->set_rotation(glm::vec3(p, y, r));
 	}
 	SCRIPT_DEFINE_FUNC_4(void, set_entity_rotation, string, float, float, float);
 	
 	//-----------------------------------------------------------------------
 	
-	static void add_entity_rotation(std::string entity_name, float p, float y, float r) {
-		auto entity = global_scene->get_entity_by_id(entity_name);
+	static void add_entity_rotation(std::string entity_guid, float p, float y, float r) {
+		auto entity = global_scene->get_entity_by_id(entity_guid);
 		entity->add_rotation(glm::vec3(p, y, r));
 	}
 	SCRIPT_DEFINE_FUNC_4(void, add_entity_rotation, string, float, float, float);
@@ -319,8 +317,8 @@ namespace engine_scripting
 
 	//-----------------------------------------------------------------------
 
-	static wizm_script::vec3 get_entity_rotation(const std::string entity_name) {
-		auto entity = global_scene->get_entity_by_id(entity_name);
+	static wizm_script::vec3 get_entity_rotation(const std::string entity_guid) {
+		auto entity = global_scene->get_entity_by_id(entity_guid);
 		if (entity)
 			return wizm_script::vec3(entity->get_rotation().x, entity->get_rotation().y, entity->get_rotation().z);
 		else
@@ -331,16 +329,16 @@ namespace engine_scripting
 	//-----------------------------------------------------------------------
 	
 	
-	static void set_entity_position(std::string entity_name, float x, float y, float z) {
-		auto entity = global_scene->get_entity_by_id(entity_name);
+	static void set_entity_position(std::string entity_guid, float x, float y, float z) {
+		auto entity = global_scene->get_entity_by_id(entity_guid);
 		entity->set_position(glm::vec3(x, y, z));
 	}
 	SCRIPT_DEFINE_FUNC_4(void, set_entity_position, string, float, float, float);
 	
 	//-----------------------------------------------------------------------
 	
-	static void add_entity_position(std::string entity_name, float x, float y, float z) {
-		auto entity = global_scene->get_entity_by_id(entity_name);
+	static void add_entity_position(std::string entity_guid, float x, float y, float z) {
+		auto entity = global_scene->get_entity_by_id(entity_guid);
 		entity->add_position(glm::vec3(x, y, z));
 	}
 	SCRIPT_DEFINE_FUNC_4(void, add_entity_position, string, float, float, float);
@@ -348,8 +346,8 @@ namespace engine_scripting
 
 	//-----------------------------------------------------------------------
 
-	static wizm_script::vec3 get_entity_position(const std::string entity_name) {
-		auto entity = global_scene->get_entity_by_id(entity_name);
+	static wizm_script::vec3 get_entity_position(const std::string entity_guid) {
+		auto entity = global_scene->get_entity_by_id(entity_guid);
 		if (entity)
 			return wizm_script::vec3(entity->get_position().x, entity->get_position().y, entity->get_position().z);
 		else
@@ -361,8 +359,8 @@ namespace engine_scripting
 	//-----------------------------------------------------------------------
 	
 	
-	static void set_entity_scale(std::string entity_name, float x, float y, float z) {
-		auto entity = global_scene->get_entity_by_id(entity_name);
+	static void set_entity_scale(std::string entity_guid, float x, float y, float z) {
+		auto entity = global_scene->get_entity_by_id(entity_guid);
 		entity->set_scale(glm::vec3(x, y, z));
 	}
 	SCRIPT_DEFINE_FUNC_4(void, set_entity_scale, string, float, float, float);
@@ -370,8 +368,8 @@ namespace engine_scripting
 	//-----------------------------------------------------------------------
 	
 		
-	static void add_entity_scale(std::string entity_name, float x, float y, float z) {
-		auto entity = global_scene->get_entity_by_id(entity_name);
+	static void add_entity_scale(std::string entity_guid, float x, float y, float z) {
+		auto entity = global_scene->get_entity_by_id(entity_guid);
 		entity->add_scale(glm::vec3(x, y, z));
 	}
 	SCRIPT_DEFINE_FUNC_4(void, add_entity_scale, string, float, float, float);
@@ -379,8 +377,8 @@ namespace engine_scripting
 
 	//-----------------------------------------------------------------------
 
-	static wizm_script::vec3 get_entity_scale(const std::string entity_name) {
-		auto entity = global_scene->get_entity_by_id(entity_name);
+	static wizm_script::vec3 get_entity_scale(const std::string entity_guid) {
+		auto entity = global_scene->get_entity_by_id(entity_guid);
 		if (entity)
 			return wizm_script::vec3(entity->get_scale().x, entity->get_scale().y, entity->get_scale().z);
 		else

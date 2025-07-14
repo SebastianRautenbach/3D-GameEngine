@@ -72,9 +72,12 @@ void update_manager::pre_render()
 	compute_cluster_test->update_lights();
 	m_gl_renderer->pre_render(is_running, m_timer->get_delta_time());
 	
+
+	// scene reset func required
 	
 	if (!global_scene->m_dirty_components.empty())
 		global_scene->m_dirty_components.clear();
+	global_scene->m_rebuild_lights = false;
 }
 
 

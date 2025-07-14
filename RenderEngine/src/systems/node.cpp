@@ -50,7 +50,6 @@ void wizm::core_node::set_position(const glm::vec3& position)
 
 void wizm::core_node::add_position(const glm::vec3& offset)
 {
-
     m_translation += offset;
 }
 

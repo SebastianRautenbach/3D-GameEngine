@@ -56,6 +56,8 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 
 
 
+
+
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
 	glEnable(GL_CULL_FACE);
