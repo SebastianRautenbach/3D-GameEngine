@@ -9,6 +9,7 @@ Clone the repository to your local machine using your preferred Git client or th
 
 ---------- FOR VS2022
 1. Run "build vs2022.bat"
+
 ---------- Other Enviroments
 1. Go to the "3D-Game-Engine\RenderEngine" directory
 2. Open cmd using selected path
