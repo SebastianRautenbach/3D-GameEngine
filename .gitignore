@@ -1,11 +1,17 @@
 *.ipch
 *.VC.db
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
 x64/
 /x64/Debug
 /x64
 /x64
 /out
 /RenderEngine/out
+/RenderEngine/obj
+/RenderEngine/bin
 .vs/RenderEngine/v17/Browse.VC.db
 .vs/RenderEngine/v17/Browse.VC.db
 .vs/RenderEngine/v17/Solution.VC.db
