@@ -34,6 +34,11 @@ public:
 		glUniform1i(glGetUniformLocation(shader_id, name.c_str()), value);
 	}
 	// ------------------------------------------------------------------------
+	void setUInt(std::string name, unsigned int value) const
+	{
+		glUniform1ui(glGetUniformLocation(shader_id, name.c_str()), value);
+	}
+	// ------------------------------------------------------------------------
 	void setFloat(std::string name, float value) const
 	{
 		glUniform1f(glGetUniformLocation(shader_id, name.c_str()), value);

@@ -21,6 +21,39 @@
 		scale:27.429190,0.086137,64.937904;
 	}
 }
+15850981285174033051{
+	pointlight0{
+		light{
+			m_constant:1.000000;
+			linear:0.090000;
+			m_quadratic:0.032000;
+			m_radius:3.000000;
+			m_ambient:0.050000,0.050000,0.050000;
+			m_diffuse:0.800000,0.800000,0.800000;
+			m_specular:1.000000,1.000000,1.000000;
+			pointlightindex:;
+			m_brightness:1.000000;
+			m_intensity:1.000000;
+			light_index:2;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	specs{
+		is_entity:1;
+		m_ent_name:light(1)(1)(1)(1);
+	}
+	tags{
+	}
+	transform{
+		position:-6.932498,1.284225,-9.205190;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
 17391406413295185485{
 	specs{
 		is_entity:1;

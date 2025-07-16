@@ -84,6 +84,10 @@ namespace wizm {
 		std::shared_ptr<core_gl_shader> m_shader_cluster;
 		std::shared_ptr<camera_manager> m_camera_manager;
 
+		std::vector<pointlight_component*> m_point_lights;
+		std::vector<spotlight_component*> m_spot_lights;
+
+
 		unsigned int clusterGridSSBO, pointLightSSBO, spotLightSSBO, shader_count = 0;
 
 
@@ -93,7 +97,7 @@ namespace wizm {
 		unsigned int gridSizeZ = 24;
 		unsigned int numClusters = gridSizeX * gridSizeY * gridSizeZ;
 
-
+		int current_point_light_buffer_size = 0, current_spot_light_buffer_size = 0;
 		
 
 

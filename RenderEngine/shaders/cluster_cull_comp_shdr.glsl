@@ -63,7 +63,11 @@ layout(std430, binding = 3) buffer spotLightSSBO
     SpotLight spotLight[];
 };
 
+
+
 uniform mat4 viewMatrix;
+uniform uint pointlightCount;
+uniform uint spotlightCount;
 
 
 
@@ -108,8 +112,6 @@ bool test_pointlightAABB(uint i, Cluster cluster) {
 }
 
 void main() {
-    uint pointlightCount = pointLight.length();
-    uint spotlightCount = spotLight.length();
 
     uint index = gl_WorkGroupID.x * LOCAL_SIZE + gl_LocalInvocationID.x;
 

@@ -14,16 +14,18 @@ wizm::compute_cluster::compute_cluster(std::map<int, std::shared_ptr<core_gl_sha
 }
 
 void wizm::compute_cluster::update_lights()
-{
-	static std::vector<std::pair<unsigned int, unsigned int>> pointlight_indexes, spotlight_indexes;
-	static size_t previous_shader_count = 0;
+{	
+
+	static std::vector<PointLight> point_lights_list;
+	static std::vector<SpotLight> spot_lights_list;
 
 
 	if(global_scene->m_rebuild_lights) {
-		pointlight_indexes.clear();
-		spotlight_indexes.clear();
+		m_point_lights.clear();
+		m_spot_lights.clear();
+		point_lights_list.clear();
+		spot_lights_list.clear();
 
-		previous_shader_count = global_scene->total_component_count();
 
 		if (pointLightSSBO || spotLightSSBO) {
 			glDeleteBuffers(1, &pointLightSSBO);
@@ -35,77 +37,95 @@ void wizm::compute_cluster::update_lights()
 		// Rebuild the list of light indexes (n^2) very slow operatation
 		for (unsigned int ent_i = 0; ent_i < global_scene->m_entities.size(); ent_i++) {
 			for (unsigned int comp_i = 0; comp_i < global_scene->m_entities[ent_i]->m_components_list.size(); comp_i++) {
-				if (global_scene->m_entities[ent_i]->m_components_list[comp_i]->m_component_type == ePointLight) {
-					pointlight_indexes.emplace_back(ent_i, comp_i);
+				if (global_scene->m_entities[ent_i]->m_components_list[comp_i]->m_component_type == ePointLight) {					
+					auto component = dynamic_cast<pointlight_component*>(global_scene->m_entities[ent_i]->m_components_list[comp_i]);
+					m_point_lights.emplace_back(component);
 				}
 				else if (global_scene->m_entities[ent_i]->m_components_list[comp_i]->m_component_type == eSpotLight) {
-					spotlight_indexes.emplace_back(ent_i, comp_i);
+					auto component = dynamic_cast<spotlight_component*>(global_scene->m_entities[ent_i]->m_components_list[comp_i]);
+					m_spot_lights.emplace_back(component);
 				}
 			}
 		}
-	}
 
+		point_lights_list.reserve(m_point_lights.size());
+		spot_lights_list.reserve(m_spot_lights.size());
 
-	std::vector<PointLight> point_lights_list;
-	std::vector<SpotLight> spot_lights_list;
-
-	point_lights_list.reserve(pointlight_indexes.size());
-	spot_lights_list.reserve(spotlight_indexes.size());
-
-	// Gather point light data
-	for (auto& index_pair : pointlight_indexes) {
-		
-		const auto& [ent_i, comp_i] = index_pair;
-				
-		auto light_comps = dynamic_cast<pointlight_component*>(
-			global_scene->m_entities[ent_i]->m_components_list[comp_i]);
-
-		if (light_comps) {
-			PointLight temp;
-			temp.position = glm::vec4(light_comps->get_world_position(), 1.0f);
-			temp.color = glm::vec4(light_comps->m_diffuse, 1.0f);
-			temp.intensity = light_comps->m_intensity;
-			temp.radius = light_comps->m_radius;
-			temp.pad1 = temp.pad2 = 0;
-			point_lights_list.emplace_back(temp);
+		for (auto& pointlight : m_point_lights) {
+			if (pointlight) {
+				PointLight temp;
+				temp.position = glm::vec4(pointlight->get_world_position(), 1.0f);
+				temp.color = glm::vec4(pointlight->m_diffuse, 1.0f);
+				temp.intensity = pointlight->m_intensity;
+				temp.radius = pointlight->m_radius;
+				temp.pad1 = temp.pad2 = 0;
+				point_lights_list.emplace_back(temp);
+			}
 		}
 
+		for (auto& spotlight : m_spot_lights) {
+			if (spotlight) {
+				SpotLight temp;
+				temp.position = glm::vec4(spotlight->get_world_position(), 1.0f);
 
+				glm::vec3 world_rotation = spotlight->get_world_rotation();
+				glm::quat rotation_quat = glm::quat(glm::vec3(glm::radians(world_rotation.x),
+					glm::radians(world_rotation.y), glm::radians(world_rotation.z)));
+				glm::vec3 rotated_direction = glm::normalize(rotation_quat * glm::vec3(0.0f, -1.0f, 0.0f));
+
+				temp.direction = glm::vec4(rotated_direction, 1.0f);
+				temp.cutOff = spotlight->m_cutOff;
+				temp.outerCutOff = spotlight->m_outerCutOff;
+				temp.distance = spotlight->m_distance;
+				temp.constant = spotlight->m_constant;
+				temp.quadratic = spotlight->m_quadratic;
+				temp.ambient = glm::vec4(spotlight->m_ambient, 1.0f);
+				temp.diffuse = glm::vec4(spotlight->m_diffuse, 1.0f);
+				temp.specular = glm::vec4(spotlight->m_specular, 1.0f);
+				temp.linear = spotlight->m_linear;
+				spot_lights_list.emplace_back(temp);
+			}
+		}
+
+		m_shader_cull->use_shader();		
+		m_shader_cull->setUInt("pointlightCount", m_point_lights.size());
+		m_shader_cull->setUInt("spotlightCount", m_spot_lights.size());
 	}
+
+	
+
+	// Gather point light data
+
+	for (int i = 0; i < point_lights_list.size(); i++) {
+		point_lights_list[i].position = glm::vec4(m_point_lights[i]->get_world_position(), 1.0f);
+		point_lights_list[i].color = glm::vec4(m_point_lights[i]->m_diffuse, 1.0f);
+		point_lights_list[i].intensity = m_point_lights[i]->m_intensity;
+		point_lights_list[i].radius = m_point_lights[i]->m_radius;
+	}
+
 	
 	/*
 		We want to update all shaders with updated light info (if the camera moved or any light state change), this is done per frame
 	*/
 
+	for (int i = 0; i < spot_lights_list.size(); i++) {
+		spot_lights_list[i].position = glm::vec4(m_spot_lights[i]->get_world_position(), 1.0f);
 
-	for (auto& index_pair : spotlight_indexes) {
+		glm::vec3 world_rotation = m_spot_lights[i]->get_world_rotation();
+		glm::quat rotation_quat = glm::quat(glm::vec3(glm::radians(world_rotation.x),
+			glm::radians(world_rotation.y), glm::radians(world_rotation.z)));
+		glm::vec3 rotated_direction = glm::normalize(rotation_quat * glm::vec3(0.0f, -1.0f, 0.0f));
 
-		const auto& [ent_i, comp_i] = index_pair;
-	
-		auto spotlight_comp = dynamic_cast<spotlight_component*>(
-			global_scene->m_entities[ent_i]->m_components_list[comp_i]);
-
-		if (spotlight_comp) {
-			SpotLight temp;
-			temp.position = glm::vec4(spotlight_comp->get_world_position(), 1.0f);
-
-			glm::vec3 world_rotation = spotlight_comp->get_world_rotation();
-			glm::quat rotation_quat = glm::quat(glm::vec3(glm::radians(world_rotation.x), 
-				glm::radians(world_rotation.y), glm::radians(world_rotation.z)));
-			glm::vec3 rotated_direction = glm::normalize(rotation_quat * glm::vec3(0.0f, -1.0f, 0.0f));
-			
-			temp.direction = glm::vec4(rotated_direction, 1.0f);
-			temp.cutOff = spotlight_comp->m_cutOff;
-			temp.outerCutOff = spotlight_comp->m_outerCutOff;
-			temp.distance = spotlight_comp->m_distance;
-			temp.constant = spotlight_comp->m_constant;
-			temp.quadratic = spotlight_comp->m_quadratic;
-			temp.ambient = glm::vec4(spotlight_comp->m_ambient, 1.0f);
-			temp.diffuse = glm::vec4(spotlight_comp->m_diffuse, 1.0f);
-			temp.specular = glm::vec4(spotlight_comp->m_specular, 1.0f);
-			temp.linear = spotlight_comp->m_linear;
-			spot_lights_list.emplace_back(temp);
-		}
+		spot_lights_list[i].direction = glm::vec4(rotated_direction, 1.0f);
+		spot_lights_list[i].cutOff = m_spot_lights[i]->m_cutOff;
+		spot_lights_list[i].outerCutOff = m_spot_lights[i]->m_outerCutOff;
+		spot_lights_list[i].distance = m_spot_lights[i]->m_distance;
+		spot_lights_list[i].constant = m_spot_lights[i]->m_constant;
+		spot_lights_list[i].quadratic = m_spot_lights[i]->m_quadratic;
+		spot_lights_list[i].ambient = glm::vec4(m_spot_lights[i]->m_ambient, 1.0f);
+		spot_lights_list[i].diffuse = glm::vec4(m_spot_lights[i]->m_diffuse, 1.0f);
+		spot_lights_list[i].specular = glm::vec4(m_spot_lights[i]->m_specular, 1.0f);
+		spot_lights_list[i].linear = m_spot_lights[i]->m_linear;
 	}
 
 
@@ -116,15 +136,15 @@ void wizm::compute_cluster::update_lights()
 
 	glBindBuffer(GL_SHADER_STORAGE_BUFFER, pointLightSSBO);
 
+	
 
-	GLint current_buffer_size = 0;
-	glGetBufferParameteriv(GL_SHADER_STORAGE_BUFFER, GL_BUFFER_SIZE, &current_buffer_size);
-
-	if (current_buffer_size != static_cast<GLint>(buffer_size) || point_lights_list.empty()) {
+	if (current_point_light_buffer_size != static_cast<GLint>(buffer_size) || point_lights_list.empty()) {
 		if (point_lights_list.empty()) {			
+			glGetBufferParameteriv(GL_SHADER_STORAGE_BUFFER, GL_BUFFER_SIZE, &current_point_light_buffer_size);
 			glBufferData(GL_SHADER_STORAGE_BUFFER, 0, nullptr, GL_DYNAMIC_DRAW);
 		}
 		else {
+			glGetBufferParameteriv(GL_SHADER_STORAGE_BUFFER, GL_BUFFER_SIZE, &current_point_light_buffer_size);
 			glBufferData(GL_SHADER_STORAGE_BUFFER, buffer_size, point_lights_list.data(), GL_DYNAMIC_DRAW);
 		}
 	}
@@ -144,16 +164,16 @@ void wizm::compute_cluster::update_lights()
 	}
 	glBindBuffer(GL_SHADER_STORAGE_BUFFER, spotLightSSBO);
 	
-	GLint current_buffer_sizespt = 0;
-
-	glGetBufferParameteriv(GL_SHADER_STORAGE_BUFFER, GL_BUFFER_SIZE, &current_buffer_sizespt);
 
 
-	if (current_buffer_sizespt != static_cast<GLint>(buffer_sizespt) || spot_lights_list.empty()) {
+
+	if (current_point_light_buffer_size != static_cast<GLint>(buffer_sizespt) || spot_lights_list.empty()) {
 		if (spot_lights_list.empty()) {
+			glGetBufferParameteriv(GL_SHADER_STORAGE_BUFFER, GL_BUFFER_SIZE, &current_spot_light_buffer_size);
 			glBufferData(GL_SHADER_STORAGE_BUFFER, 0, nullptr, GL_DYNAMIC_DRAW);
 		}
 		else {
+			glGetBufferParameteriv(GL_SHADER_STORAGE_BUFFER, GL_BUFFER_SIZE, &current_spot_light_buffer_size);
 			glBufferData(GL_SHADER_STORAGE_BUFFER, buffer_sizespt, spot_lights_list.data(), GL_DYNAMIC_DRAW);
 		}
 	}
