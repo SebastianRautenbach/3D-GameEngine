@@ -66,10 +66,10 @@ void wizm::compute_cluster::update_lights()
 			temp.color = glm::vec4(light_comps->m_diffuse, 1.0f);
 			temp.intensity = light_comps->m_intensity;
 			temp.radius = light_comps->m_radius;
+			temp.pad1 = temp.pad2 = 0;
 			point_lights_list.emplace_back(temp);
 		}
 
-		
 
 	}
 	
@@ -109,7 +109,7 @@ void wizm::compute_cluster::update_lights()
 	}
 
 
-	size_t buffer_size = point_lights_list.size() * sizeof(PointLight);
+	int buffer_size = point_lights_list.size() * sizeof(PointLight);
 	if (pointLightSSBO == 0) {
 		glGenBuffers(1, &pointLightSSBO);
 	}
@@ -121,10 +121,8 @@ void wizm::compute_cluster::update_lights()
 	glGetBufferParameteriv(GL_SHADER_STORAGE_BUFFER, GL_BUFFER_SIZE, &current_buffer_size);
 
 	if (current_buffer_size != static_cast<GLint>(buffer_size) || point_lights_list.empty()) {
-		if (point_lights_list.empty()) {
-			// for some reason using 1 instead of 0 fixes the problem and updates the buffer, this problem is a
-			// pain in my -ss to fix, low-key trying to find a needle in a haystack with a blindfold cuz dammnnn
-			glBufferData(GL_SHADER_STORAGE_BUFFER, 1, nullptr, GL_DYNAMIC_DRAW);
+		if (point_lights_list.empty()) {			
+			glBufferData(GL_SHADER_STORAGE_BUFFER, 0, nullptr, GL_DYNAMIC_DRAW);
 		}
 		else {
 			glBufferData(GL_SHADER_STORAGE_BUFFER, buffer_size, point_lights_list.data(), GL_DYNAMIC_DRAW);
@@ -136,10 +134,11 @@ void wizm::compute_cluster::update_lights()
 
 	glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 2, pointLightSSBO);
 
+	auto packet_test = point_lights_list.data();
 
 	//--------------------------------------------------------------------------------------------------------------------------------- SPOTLIGHT
 
-	size_t buffer_sizespt = spot_lights_list.size() * sizeof(SpotLight);
+	int buffer_sizespt = spot_lights_list.size() * sizeof(SpotLight);
 	if (spotLightSSBO == 0) {
 		glGenBuffers(1, &spotLightSSBO);
 	}
@@ -172,7 +171,7 @@ void wizm::compute_cluster::update_lights()
 
 void wizm::compute_cluster::update()
 {	
-	auto crnt_camera = m_camera_manager->m_crnt_camera;
+	const auto& crnt_camera = m_camera_manager->m_crnt_camera;
 	glm::mat4 view = crnt_camera->get_view_matrix();
 	glm::mat4 projection = crnt_camera->get_projection_matrix();
 	glm::mat4 inverseProjection = glm::inverse(projection);

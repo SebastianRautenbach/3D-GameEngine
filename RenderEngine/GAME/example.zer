@@ -349,6 +349,39 @@
 		scale:1.000000,1.000000,1.000000;
 	}
 }
+17868012092165867119{
+	pointlight0{
+		light{
+			m_constant:1.000000;
+			linear:0.090000;
+			m_quadratic:0.032000;
+			m_radius:3.000000;
+			m_ambient:0.050000,0.050000,0.050000;
+			m_diffuse:0.800000,0.800000,0.800000;
+			m_specular:1.000000,1.000000,1.000000;
+			pointlightindex:;
+			m_brightness:1.000000;
+			m_intensity:1.000000;
+			light_index:0;
+		}
+		transform{
+			position:0.000000,0.000000,0.000000;
+			rotation:0.000000,0.000000,0.000000;
+			scale:1.000000,1.000000,1.000000;
+		}
+	}
+	specs{
+		is_entity:1;
+		m_ent_name:newpl;
+	}
+	tags{
+	}
+	transform{
+		position:0.000000,1.420814,0.000000;
+		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
 17868688887741203847{
 	pointlight0{
 		light{
@@ -665,6 +698,13 @@
 	transform{
 		position:-18.795235,8.581033,-28.230026;
 		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+viewport_camera{
+	transform{
+		position:-17.658987,21.473356,7.377527;
+		rotation:-13.038894,4.910803,0.000000;
 		scale:1.000000,1.000000,1.000000;
 	}
 }

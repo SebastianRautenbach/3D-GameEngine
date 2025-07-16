@@ -43,7 +43,7 @@ void wizm::viewport_layer::update(float delta_time)
     
     ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
     mSize = { viewportPanelSize.x, viewportPanelSize.y };
-    m_camera_manager->m_viewport_camera->set_window_size(mSize.x, mSize.y);
+    m_camera_manager->m_viewport_camera->set_window_size((int)mSize.x, (int)mSize.y);
 
     ImGui::Image(reinterpret_cast<void*>(m_framebuffer->get_color_attachment_render_id()), ImVec2{ mSize.x, mSize.y }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
     if (ImGui::BeginDragDropTarget() && engine_status == EDITOR_STATUS) {
@@ -195,7 +195,7 @@ void wizm::viewport_layer::scene_viewport_func(float delta_time)
 
             lowlevelsys::decompose_transform(mat, position, rotation, scale);
 
-            glm::vec3 diff = - pivot->get_position() + position;
+            //glm::vec3 diff = - pivot->get_position() + position;
 
             for (auto e : global_scene->get_selected_entities()) {
                 if (e != nullptr) {

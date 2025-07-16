@@ -35,7 +35,7 @@ public:
 	
 	void get_mouse_pos(double& mouse_x, double& mouse_y) { glfwGetCursorPos(m_window, &mouse_x, &mouse_y); }
 
-	void set_mouse_cursor_pos(double mouse_x, double mouse_y) { glfwSetCursorPos(m_window, (w_width / 2), (w_height / 2)); }
+	void set_mouse_cursor_pos(double mouse_x, double mouse_y) { (void)mouse_x; (void)mouse_y;  glfwSetCursorPos(m_window, (w_width / 2), (w_height / 2)); }
 
 	void set_hide_mouse_cursor(bool hide) { hide ? glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN) : glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_NORMAL); }
 

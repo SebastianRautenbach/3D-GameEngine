@@ -3,7 +3,7 @@
 
 namespace lowlevelsys {
 
-    core_mesh::core_mesh(std::vector<vertex_data> vertices, std::vector<unsigned int> indices, std::vector<core_gl_texture> textures, int material_index)
+    core_mesh::core_mesh(std::vector<vertex_data> vertices, std::vector<unsigned int> indices, int material_index)
         : vertices(std::move(vertices)), indices(std::move(indices)),  m_material_index(material_index){
         setup_mesh();
     }

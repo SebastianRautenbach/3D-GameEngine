@@ -24,7 +24,8 @@ void wizm::pointlight_component::component_preupdate()
 
 void wizm::pointlight_component::component_update(float delta_time, std::shared_ptr<core_gl_shader>& shader)
 {
-
+    (void)shader;
+    (void)delta_time;
 }
 
 void wizm::pointlight_component::component_postupdate()

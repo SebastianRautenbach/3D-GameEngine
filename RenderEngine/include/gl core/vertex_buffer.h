@@ -52,33 +52,33 @@ namespace lowlevelsys {
 		These function were created by Cherno
 	*/
 
-	static bool is_depth_format(framebuffer_texture_format format)
+	inline bool is_depth_format(framebuffer_texture_format format)
 	{
 		switch (format)
 		{
 		case framebuffer_texture_format::DEPTH24STENCIL8:  return true;
 		}
-
+	
 		return false;
 	}
 
-	static GLenum texture_target(bool multisampled)
+	inline GLenum texture_target(bool multisampled)
 	{
 		return multisampled ? GL_TEXTURE_2D_MULTISAMPLE : GL_TEXTURE_2D;
 	}
 
 
-	static void create_texture(bool multisampled, uint32_t* outID, uint32_t count)
+	inline void create_texture(bool multisampled, uint32_t* outID, uint32_t count)
 	{
 		glCreateTextures(texture_target(multisampled), count, outID);
 	}
 
-	static void bind_texture(bool multisampled, uint32_t id)
+	inline void bind_texture(bool multisampled, uint32_t id)
 	{
 		glBindTexture(texture_target(multisampled), id);
 	}
 
-	static GLenum framebuffer_texture_format_to_gl(framebuffer_texture_format format)
+	inline GLenum framebuffer_texture_format_to_gl(framebuffer_texture_format format)
 	{
 		switch (format)
 		{
@@ -91,7 +91,7 @@ namespace lowlevelsys {
 
 
 
-	static void attach_color_texture(uint32_t id, int samples, GLenum internalFormat, GLenum format, uint32_t width, uint32_t height, int index)
+	inline void attach_color_texture(uint32_t id, int samples, GLenum internalFormat, GLenum format, uint32_t width, uint32_t height, int index)
 	{
 		bool multisampled = samples > 1;
 		if (multisampled)
@@ -114,7 +114,7 @@ namespace lowlevelsys {
 
 
 
-	static void attach_depth_texture(uint32_t id, int samples, GLenum format, GLenum attachmentType, uint32_t width, uint32_t height)
+	inline void attach_depth_texture(uint32_t id, int samples, GLenum format, GLenum attachmentType, uint32_t width, uint32_t height)
 	{
 		bool multisampled = samples > 1;
 		if (multisampled)
@@ -217,8 +217,8 @@ public:
 	void create_attrib_arr(unsigned int layout, int size, int stride, int attrib_length);
 
 public:
-	core_index_buffer* ibo;
-	core_vertex_buffer* vbo;
+	core_index_buffer* ibo = nullptr;
+	core_vertex_buffer* vbo = nullptr;
 	std::vector<attrib_info> vertex_attribs;
 	
 };

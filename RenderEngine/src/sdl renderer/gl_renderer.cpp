@@ -49,8 +49,8 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 
 
 	m_camera_manager->m_viewport_camera = std::make_shared<camera_core_3d>(w_width, w_height);
-	m_camera_manager->m_viewport_camera->set_position(glm::vec3(-1.76043, 1.11876, 1.69863));
-	m_camera_manager->m_viewport_camera->set_rotation(-0.438943, -0.769122, 0.0);
+	m_camera_manager->m_viewport_camera->set_position(glm::vec3(-1.76043f, 1.11876f, 1.69863f));
+	m_camera_manager->m_viewport_camera->set_rotation(-0.438943f, -0.769122f, 0.0f);
 	m_camera_manager->m_crnt_camera = m_camera_manager->m_viewport_camera;
 
 

@@ -26,6 +26,7 @@ namespace wizm {
 		}
 
 		void draw(core_gl_shader* shader) {
+			(void)shader;
 			texture->bind_texture();
 			bounded = true;
 		}

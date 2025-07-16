@@ -26,7 +26,7 @@ void wizm::directionallight_component::component_preupdate()
 
 void wizm::directionallight_component::component_update(float delta_time, std::shared_ptr<core_gl_shader>& shader)
 {
-	
+	(void)delta_time;
 
 
 	

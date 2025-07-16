@@ -20,6 +20,7 @@ void wizm::script_debug_layer::on_detach()
 
 void wizm::script_debug_layer::update(float delta_time)
 {
+    (void)delta_time;
 	ImGui::Begin("Debug");
     ImVec4 bg_color = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
     ImVec4 warning_text_color = ImVec4(1, 1, 0, 1);

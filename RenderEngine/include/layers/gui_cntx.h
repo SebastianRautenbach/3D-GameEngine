@@ -21,6 +21,7 @@ namespace wizm {
 
 		virtual void on_attach() override;
 		virtual void on_detach() override;
+		virtual void update(float delta_time) override { (void)delta_time; };
 
 
 		void begin();

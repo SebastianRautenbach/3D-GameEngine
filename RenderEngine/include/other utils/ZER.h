@@ -149,9 +149,9 @@ namespace filedata
 				if (i.find(var_name) != -1) {
 
 					// formulate all the variable data in a neat string
-					for (auto i : value)
+					for (auto y : value)
 					{
-						concat_string += std::to_string(i) + ",";
+						concat_string += std::to_string(y) + ",";
 					}
 
 					concat_string.pop_back();
@@ -163,10 +163,11 @@ namespace filedata
 			// if the variable does not exist then create one
 			if (!value_does_exist)
 			{
-				std::string concat_string = var_name + ":";
-				for (auto i : value)
+				concat_string = "";
+				concat_string = var_name + ":";
+				for (auto y : value)
 				{
-					concat_string += std::to_string(i) + ",";
+					concat_string += std::to_string(y) + ",";
 				}
 				concat_string.pop_back();
 				concat_string += ';';
@@ -192,9 +193,9 @@ namespace filedata
 				if (i.find(var_name) != -1) {
 
 					// formulate all the variable data in a neat string
-					for (auto i : value)
+					for (auto y : value)
 					{
-						concat_string += std::to_string(i) + ",";
+						concat_string += std::to_string(y) + ",";
 					}
 
 					remove_non_ascii_char(concat_string);
@@ -207,11 +208,11 @@ namespace filedata
 			}
 			// if the variable does not exist then create one
 			if (!value_does_exist)
-			{
-				std::string concat_string = var_name + ":";
-				for (auto i : value)
+			{				
+				concat_string = var_name + ":";
+				for (auto y : value)
 				{
-					concat_string += std::to_string(i) + ",";
+					concat_string += std::to_string(y) + ",";
 				}
 
 				remove_non_ascii_char(concat_string);
@@ -240,10 +241,10 @@ namespace filedata
 				if (i.find(var_name) != -1) {
 
 					// formulate all the variable data in a neat string
-					for (const auto& i : value)
+					for (const auto& y : value)
 					{
 
-						concat_string += i + ",";
+						concat_string += y + ",";
 					}
 
 					remove_non_ascii_char(concat_string);
@@ -257,7 +258,7 @@ namespace filedata
 			// if the variable does not exist then create one
 			if (!value_does_exist)
 			{
-				std::string concat_string = var_name + ":";
+				concat_string = var_name + ":";
 				for (const auto& i : value)
 				{
 					concat_string += i + ",";
@@ -283,10 +284,10 @@ namespace filedata
 
 			for (const auto& i : this->variables)
 			{
-				int index_found_at = i.find(var_name);
+				int index_found_at = (int)i.find(var_name);
 				if (index_found_at != -1)
 				{
-					index_found_at += var_name.size();
+					index_found_at += (int)var_name.size();
 					variable_value = retrieve_right_operand(i, index_found_at) + ","; break;
 				}
 			}
@@ -303,7 +304,7 @@ namespace filedata
 			}
 
 			if (return_val.empty()) {
-				return {0};
+				return { 0 };
 			}
 
 			return return_val;
@@ -315,10 +316,10 @@ namespace filedata
 
 			for (auto i : this->variables)
 			{
-				int index_found_at = i.find(var_name);
+				int index_found_at = (int)i.find(var_name);
 				if (index_found_at != -1)
 				{
-					index_found_at += var_name.size();
+					index_found_at += (int)var_name.size();
 					variable_value = retrieve_right_operand(i, index_found_at) + ","; break;
 				}
 			}
@@ -346,10 +347,10 @@ namespace filedata
 
 			for (auto i : this->variables)
 			{
-				int index_found_at = i.find(var_name);
+				int index_found_at = (int)i.find(var_name);
 				if (index_found_at != -1)
 				{
-					index_found_at += var_name.size();
+					index_found_at += (int)var_name.size();
 					variable_value = retrieve_right_operand(i, index_found_at) + ","; break;
 				}
 			}
@@ -366,7 +367,7 @@ namespace filedata
 			}
 
 			if (return_val.empty()) {
-				return { ""};
+				return { "" };
 			}
 
 			return return_val;
@@ -379,7 +380,7 @@ namespace filedata
 			for (const auto& i : property_ref.variables)
 			{
 				// give correct indentation
-				for (int i = 0; i < crnt_indentation + 1; i++)
+				for (int y = 0; y < crnt_indentation + 1; y++)
 					file_save_data += "\t";
 
 				file_save_data += i + "\n";
@@ -388,13 +389,13 @@ namespace filedata
 			{
 				++crnt_indentation;
 
-				for (int i = 0; i < crnt_indentation; i++)
+				for (int y = 0; y < crnt_indentation; y++)
 					file_save_data += "\t";
 
 				file_save_data += i.second->property_id + "{\n";
 				read_class_properties(*i.second, file_save_data, crnt_indentation);
 
-				for (int i = 0; i < crnt_indentation + 1; i++)
+				for (int y = 0; y < crnt_indentation + 1; y++)
 					file_save_data += "\t";
 
 				file_save_data += "}\n";
@@ -436,7 +437,7 @@ namespace filedata
 				if (ittr == -1)
 					break;
 			}
-			for (unsigned int i = constructed_name.size() - 1; i + 1 > 0; i--)
+			for (int i = (int)constructed_name.size() - 1; i + 1 > 0; i--)
 			{
 				reconstructed_name += constructed_name[i];
 			}
@@ -504,7 +505,7 @@ namespace filedata
 				construct_class_from_file(file_data, *this, start_index);
 			}
 
-		
+
 			if (!read_file_success) {
 				std::cerr << "Failed to read file: " << file_name << std::endl;
 			}

@@ -63,7 +63,7 @@ void wizm::camera_core_3d::set_window_size(int width, int height)
 
 void wizm::camera_core_3d::set_aspect_ratio(int aspect)
 {
-    m_aspect_ratio = aspect;
+    m_aspect_ratio = (float)aspect;
     update_projection_matrix();
 }
 

@@ -15,7 +15,7 @@ struct MeshGL {
 struct mesh_batch_data {
 	std::vector<unsigned int> indices;
 	std::vector<vertex_data> vertices;
-	glm::mat4 mesh_transform;
+	glm::mat4 mesh_transform = glm::mat4();
 };
 
 

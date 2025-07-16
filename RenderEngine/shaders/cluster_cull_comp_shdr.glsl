@@ -6,10 +6,12 @@ layout(local_size_x = LOCAL_SIZE, local_size_y = 1, local_size_z = 1) in;
 
 struct PointLight
 {
-    vec4  position;
-    vec4  color;
+    vec4 position;
+    vec4 color;
     float intensity;
     float radius;
+    uint pad1;
+    uint pad2;
 };
 
 struct SpotLight

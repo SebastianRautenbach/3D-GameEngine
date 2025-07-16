@@ -41,7 +41,7 @@ void wizm::billboard_core::draw(glm::mat4 transform, eBillboardType type, glm::v
 	
 	
 	vertex_buffer->bind_buffer();
-	vertex_buffer->draw_buffer(m_indices.size());
+	vertex_buffer->draw_buffer((unsigned int)m_indices.size());
 	vertex_buffer->unbind_buffer();
 
 	texture_atlas[type]->unbind_texture();

@@ -13,9 +13,9 @@ namespace wizm
 {
 	class bounding_volume {
     public:
-        glm::vec3 min_point, min_point_local;
-        glm::vec3 max_point, max_point_local;
-        glm::vec3 extents, init_extents , center;
+        glm::vec3 min_point = glm::vec3(), min_point_local = glm::vec3();
+        glm::vec3 max_point = glm::vec3(), max_point_local = glm::vec3();
+        glm::vec3 extents = glm::vec3(), init_extents = glm::vec3(), center = glm::vec3();
         glm::vec3 axes[3], init_axes[3];
 
         bounding_volume() : min_point(glm::vec3(std::numeric_limits<float>::max())),

@@ -12,7 +12,7 @@ namespace wizm {
 
         virtual void on_attach() {} 
         virtual void on_detach() {} 
-        virtual void update(float delta_time) {}
+        virtual void update(float delta_time) = 0;
         virtual void on_imgui_render() {}
 
         std::string get_layer_name() { return m_DebugName; }

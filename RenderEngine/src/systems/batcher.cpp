@@ -19,7 +19,7 @@ void batcher::render(std::shared_ptr<core_gl_shader> m_shader)
 
             if (!matPtr) continue;
 
-            matPtr->apply(m_shader);
+            matPtr->apply();
 
             for (auto& glMesh : glMeshes) {
                 glBindVertexArray(glMesh.vao);

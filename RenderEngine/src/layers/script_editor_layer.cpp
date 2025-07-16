@@ -23,7 +23,7 @@ void wizm::script_editor_layer::on_detach()
 
 void wizm::script_editor_layer::update(float delta_time)
 {
-
+	(void)delta_time;
 
 
 	ImGui::Begin("script editor");

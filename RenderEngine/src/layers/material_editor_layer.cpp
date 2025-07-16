@@ -98,10 +98,10 @@ void wizm::material_editor_layer::update(float delta_time)
             m_shader->setVec3("pointLights[0].ambient", glm::vec3(.1));
             m_shader->setVec3("pointLights[0].diffuse", glm::vec3(1.0));
             m_shader->setVec3("pointLights[0].specular", glm::vec3(1.0));
-            m_shader->setFloat("pointLights[0].constant", 1.0);
-            m_shader->setFloat("pointLights[0].linear", .09);
-            m_shader->setFloat("pointLights[0].quadratic", .03);
-            m_shader->setFloat("pointLights[0].radius", 100);
+            m_shader->setFloat("pointLights[0].constant", 1.0f);
+            m_shader->setFloat("pointLights[0].linear", .09f);
+            m_shader->setFloat("pointLights[0].quadratic", .03f);
+            m_shader->setFloat("pointLights[0].radius", 100.f);
         }
 
         light->component_postupdate();

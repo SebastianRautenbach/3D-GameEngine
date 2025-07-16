@@ -46,7 +46,7 @@ void wizm::staticmesh_component::component_update(float delta_time, std::shared_
 		auto material = m_materials[mat_index];
 
 		if (material)
-			material->apply(shader);
+			material->apply();
 
 		
 

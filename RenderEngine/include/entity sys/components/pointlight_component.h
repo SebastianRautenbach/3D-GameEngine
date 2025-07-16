@@ -35,7 +35,7 @@ namespace wizm {
 
 
         void read_saved_data(std::string parent_name, std::string index, filedata::ZER& save_t) override {
-
+            (void)parent_name;
             set_position(glm::vec3(
                 save_t[index]["transform"].get_float("position")[0],
                 save_t[index]["transform"].get_float("position")[1],

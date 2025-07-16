@@ -33,7 +33,7 @@ private:
 	asIScriptFunction* m_onstart_func = nullptr;
 	asIScriptEngine* m_script_engine = nullptr;
 	asIScriptContext* m_context = nullptr;
-	wizm::core_scene* global_scene;
+	wizm::core_scene* global_scene = nullptr;
 	bool m_initiated_scripts = false;
 
 };

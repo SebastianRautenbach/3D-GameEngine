@@ -77,7 +77,7 @@ namespace wizm {
 		void read_saved_data(std::string parent_name, std::string index, filedata::ZER& save_t) {
 			
 
-			if (m_position.x = save_t[parent_name]["transform"].get_float("position")[0]) {
+			if (save_t[parent_name]["transform"].get_float("position")[0]) {
 
 				m_position.x = save_t[parent_name]["transform"].get_float("position")[0];
 				m_position.y = save_t[parent_name]["transform"].get_float("position")[1];
@@ -98,6 +98,7 @@ namespace wizm {
 		};
 			
 		void save_data(std::string parent_name, std::string index, filedata::ZER& save_t) {
+			(void)index;
 			save_t[parent_name]["transform"].set_float("position", {m_position.x, m_position.y, m_position.z});
 			save_t[parent_name]["transform"].set_float("rotation", { m_pitch, m_yaw, m_roll });
 			save_t[parent_name]["transform"].set_float("scale", { 1, 1, 1});
@@ -117,7 +118,7 @@ namespace wizm {
 		float m_near_plane;
 		float m_far_plane;
 
-		float m_speed = 0.01;
+		float m_speed = 0.01f;
 
 		glm::mat4 m_projection_matrix;
 		glm::mat4 m_rotation_matrix = glm::mat4(1.0f);

@@ -20,8 +20,8 @@ namespace wizm {
 		glm::vec4 maxPoint;
 		unsigned int pointcount;
 		unsigned int spotcount;
-		float pad1;
-		float pad2;
+		unsigned int pad1;
+		unsigned int pad2;
 		unsigned int pointLightIndices[100];
 		unsigned int spotLightIndices[100];
 	};
@@ -31,9 +31,13 @@ namespace wizm {
 
 		glm::vec4 position;
 		glm::vec4 color;
-		float intensity;
-		float radius;
 
+
+		float intensity;  
+		float radius;	  
+		
+		unsigned int pad1;
+		unsigned int pad2;
 	};
 
 

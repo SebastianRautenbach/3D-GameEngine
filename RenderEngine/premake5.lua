@@ -16,6 +16,8 @@ project "WizmEngine"
     cppdialect "C++20"
     staticruntime "on"
 
+    warnings "Extra"    
+
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 

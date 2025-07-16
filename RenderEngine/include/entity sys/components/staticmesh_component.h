@@ -52,7 +52,7 @@ namespace wizm {
 
 
 		void save_data(std::string parent_name, std::string index, filedata::ZER& save_t) const override {
-
+			(void)parent_name;
 			save_t["staticmesh" + index]["transform"].set_float("position", { get_position().x, get_position().y, get_position().z });
 			save_t["staticmesh" + index]["transform"].set_float("rotation", { get_rotation().x, get_rotation().y, get_rotation().z });
 			save_t["staticmesh" + index]["transform"].set_float("scale", { get_scale().x, get_scale().y, get_scale().z });

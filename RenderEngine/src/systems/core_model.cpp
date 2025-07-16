@@ -120,7 +120,7 @@ lowlevelsys::core_mesh lowlevelsys::core_model::processMesh(aiMesh* mesh, const 
     }
 
 
-    return core_mesh(vertices, indices, textures, mesh->mMaterialIndex);
+    return core_mesh(vertices, indices, mesh->mMaterialIndex);
 }
 
 

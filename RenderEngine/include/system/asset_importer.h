@@ -34,6 +34,9 @@ public:
         bool asset_exists = false;
 
         rc = sqlite3_exec(db, query.c_str(), [](void* exists, int count, char** data, char** columns) -> int {
+            (void)data;
+            (void)columns;
+            (void)count;
             *static_cast<bool*>(exists) = true;
             return 0;
             }, &asset_exists, &zErrMsg);

@@ -13,7 +13,7 @@ namespace wizm {
 		{}
 
 		void listener_on_update(float delta_time) {
-
+			(void)delta_time;
 			if(engine_status != EDITOR_STATUS)
 			{
 				auto pos = m_cam_manager->m_crnt_camera->get_position();

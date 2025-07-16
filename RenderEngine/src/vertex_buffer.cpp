@@ -115,7 +115,7 @@ void core_arr_vertex_buffer::create_buffer() {
 
 	for (const auto& i : vertex_attribs)
 	{
-		glVertexAttribPointer(i.layout, i.size, GL_FLOAT, GL_FALSE, i.stride, (void*)i.attrib_length);
+		glVertexAttribPointer(i.layout, i.size, GL_FLOAT, GL_FALSE, i.stride, (void*)(intptr_t)i.attrib_length);
 		glEnableVertexAttribArray(i.layout);
 	}
 
@@ -245,7 +245,7 @@ void core_framebuffer::create_fbuffer()
 	if (m_color_attachment_spec.size()) {
 
 		m_color_attachments.resize(m_color_attachment_spec.size());
-		lowlevelsys::create_texture(multisample, m_color_attachments.data(), m_color_attachments.size());
+		lowlevelsys::create_texture(multisample, m_color_attachments.data(), (uint32_t)m_color_attachments.size());
 
 
 		for (int i = 0; i < m_color_attachments.size(); i++) {
@@ -276,7 +276,7 @@ void core_framebuffer::create_fbuffer()
 	}
 	if (m_color_attachments.size() > 1) {
 		GLenum buffers[4] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_COLOR_ATTACHMENT2, GL_COLOR_ATTACHMENT3 };
-		glDrawBuffers(m_color_attachments.size(), buffers);
+		glDrawBuffers((GLsizei)m_color_attachments.size(), buffers);
 	}
 	else if (m_color_attachments.empty()) {
 		glDrawBuffer(GL_NONE);
@@ -303,7 +303,7 @@ void core_framebuffer::invalidate()
 	{
 		glDeleteFramebuffers(1, &buffer_id);
 		
-		glDeleteTextures(m_color_attachments.size(), m_color_attachments.data());
+		glDeleteTextures((GLsizei)m_color_attachments.size(), m_color_attachments.data());
 		glDeleteTextures(1, &m_depth_attachment);
 
 		m_color_attachments.clear();
@@ -318,9 +318,9 @@ void core_framebuffer::invalidate()
 	if (m_color_attachment_spec.size())
 	{
 		m_color_attachments.resize(m_color_attachment_spec.size());
-		lowlevelsys::create_texture(multisample, m_color_attachments.data(), m_color_attachments.size());
+		lowlevelsys::create_texture(multisample, m_color_attachments.data(), (uint32_t)m_color_attachments.size());
 
-		for (size_t i = 0; i < m_color_attachments.size(); i++)
+		for (int i = 0; i < m_color_attachments.size(); i++)
 		{
 			lowlevelsys::bind_texture(multisample, m_color_attachments[i]);
 			switch (m_color_attachment_spec[i].texture_format)
@@ -353,7 +353,7 @@ void core_framebuffer::invalidate()
 			throw std::invalid_argument("m_color_attachments.size() <= 4");
 	
 		GLenum buffers[4] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_COLOR_ATTACHMENT2, GL_COLOR_ATTACHMENT3 };
-		glDrawBuffers(m_color_attachments.size(), buffers);
+		glDrawBuffers((GLsizei)m_color_attachments.size(), buffers);
 	}
 	else if (m_color_attachments.empty())
 	{

@@ -24,6 +24,8 @@ struct PointLight
     vec4 color;
     float intensity;
     float radius;
+    uint pad1;
+    uint pad2;
 };
 
 struct SpotLight
