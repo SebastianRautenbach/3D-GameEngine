@@ -197,6 +197,14 @@ namespace wizm {
 		}
 	}
 
+	void core_scene::delete_component(core_entity* entity,core_component* component)
+	{
+		entity->m_components_list.erase(std::find(entity->m_components_list.begin(),
+			entity->m_components_list.end(), component));
+		delete component;
+		m_rebuild_lights = true;
+	}
+
 	
 
 	void core_scene::clear_entities()

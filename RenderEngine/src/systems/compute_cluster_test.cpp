@@ -56,7 +56,7 @@ void wizm::compute_cluster::update_lights()
 	for (auto& index_pair : pointlight_indexes) {
 		
 		const auto& [ent_i, comp_i] = index_pair;
-		
+				
 		auto light_comps = dynamic_cast<pointlight_component*>(
 			global_scene->m_entities[ent_i]->m_components_list[comp_i]);
 
@@ -151,7 +151,7 @@ void wizm::compute_cluster::update_lights()
 
 	if (current_buffer_sizespt != static_cast<GLint>(buffer_sizespt) || spot_lights_list.empty()) {
 		if (spot_lights_list.empty()) {
-			glBufferData(GL_SHADER_STORAGE_BUFFER, 1, nullptr, GL_DYNAMIC_DRAW);
+			glBufferData(GL_SHADER_STORAGE_BUFFER, 0, nullptr, GL_DYNAMIC_DRAW);
 		}
 		else {
 			glBufferData(GL_SHADER_STORAGE_BUFFER, buffer_sizespt, spot_lights_list.data(), GL_DYNAMIC_DRAW);

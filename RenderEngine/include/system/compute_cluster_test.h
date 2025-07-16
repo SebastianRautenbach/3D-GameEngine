@@ -56,8 +56,8 @@ namespace wizm {
 
 		float linear;
 		float quadratic;
-		float pad1;
-		float pad2; 
+		unsigned int pad1;
+		unsigned int pad2;
 	};
 
 

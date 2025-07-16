@@ -31,14 +31,13 @@ namespace lowlevelsys {
 
 	public:
 
-		eCompType m_component_type;
+		wizm::eCompType m_component_type;
 
 		bool m_is_active;
 		bool m_is_visible;
 
 		bool m_is_dirty = true;
 		
-
 		wizm::core_tag* component_tags;
 	};
 }

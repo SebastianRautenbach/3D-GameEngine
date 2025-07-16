@@ -285,9 +285,7 @@ void wizm::properties_ui_layer::update(float delta_time)
 			if (ImGui::MenuItem("Delete")) {
 
 				
-
-				ent->m_components_list.erase(std::find(ent->m_components_list.begin(),
-				ent->m_components_list.end(), ent->get_selected_comp()));
+				global_scene->delete_component(ent, ent->get_selected_comp());
 				ent->set_selected_comp(nullptr);
 			}
 

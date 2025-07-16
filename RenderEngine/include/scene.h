@@ -43,6 +43,7 @@ namespace wizm {
 		void delete_entity(core_entity* entity);
 		void delete_all_entities();
 
+		void delete_component(core_entity* entity, core_component* component);
 
 		// modifying only one entity
 		//-------------------------------------------------------------------------------------------------------- NEW SELECTION
