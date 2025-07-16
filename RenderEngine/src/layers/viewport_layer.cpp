@@ -41,6 +41,8 @@ void wizm::viewport_layer::update(float delta_time)
     ImGui::Begin("Viewport");
      
     
+   
+    
     ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
     mSize = { viewportPanelSize.x, viewportPanelSize.y };
     m_camera_manager->m_viewport_camera->set_window_size((int)mSize.x, (int)mSize.y);
@@ -142,6 +144,49 @@ void wizm::viewport_layer::update(float delta_time)
     
     if(engine_status == EDITOR_STATUS)
         scene_viewport_func(delta_time);
+
+    
+    if (ImGui::Button("lit"))
+    {
+        m_renderer->m_shdrs[0]->use_shader();
+        m_renderer->m_shdrs[0]->setInt("debugMode", 0);
+    }
+    ImGui::SameLine();
+    if (ImGui::Button("cluster0"))
+    {
+        m_renderer->m_shdrs[0]->use_shader();
+        m_renderer->m_shdrs[0]->setInt("debugMode", 1);
+    }
+    ImGui::SameLine();
+    if (ImGui::Button("cluster1"))
+    {
+        m_renderer->m_shdrs[0]->use_shader();
+        m_renderer->m_shdrs[0]->setInt("debugMode", 2);
+    }
+    ImGui::SameLine();
+    if (ImGui::Button("cluster2"))
+    {
+        m_renderer->m_shdrs[0]->use_shader();
+        m_renderer->m_shdrs[0]->setInt("debugMode", 3);
+    }
+    ImGui::SameLine();
+    if (ImGui::Button("cluster3"))
+    {
+        m_renderer->m_shdrs[0]->use_shader();
+        m_renderer->m_shdrs[0]->setInt("debugMode", 4);
+    }
+    ImGui::SameLine();
+    if (ImGui::Button("cluster4"))
+    {
+        m_renderer->m_shdrs[0]->use_shader();
+        m_renderer->m_shdrs[0]->setInt("debugMode", 5);
+    }
+    ImGui::SameLine();
+    if (ImGui::Button("un-lit"))
+    {
+        m_renderer->m_shdrs[0]->use_shader();
+        m_renderer->m_shdrs[0]->setInt("debugMode", 6);
+    }
 
     ImGui::End();
 }

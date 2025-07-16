@@ -97,7 +97,18 @@ void update_manager::render()
 	compute_cluster_test->update();
 
 
-	
+	// prepass
+	{
+		glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
+		glDepthMask(GL_TRUE);
+		glClear(GL_DEPTH_BUFFER_BIT);
+		m_gl_renderer->m_shdrs[ENGINE_SHADER_PREPASS]->use_shader();
+		global_scene->scene_update(m_timer->get_delta_time(), m_gl_renderer->m_shdrs[ENGINE_SHADER_PREPASS]);
+		m_runtime_manager->render_runtime(m_timer->get_delta_time(), m_gl_renderer->m_shdrs[ENGINE_SHADER_PREPASS]);
+		glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+	}
+
+	// default
 	{
 		m_framebuffer->bind_buffer();
 		m_gl_renderer->m_shdrs[ENGINE_SHADER_DEFUALT]->use_shader();

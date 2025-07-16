@@ -209,6 +209,12 @@ void wizm::compute_cluster::update()
 			shader.second->setMat4("projection", projection);
 			shader.second->setVec3("camPos", camPos);
 			shader.second->setVec3("camFront", camFront);
+
+			shader.second->setFloat("zNear", zNear);
+			shader.second->setFloat("zFar", zFar);
+
+			shader.second->setUVec3("gridSize", { gridSizeX, gridSizeY, gridSizeZ });
+			shader.second->setUVec2("screenDimensions", screenDimensions);
 		}
 	}
 

@@ -97,7 +97,7 @@ in vec3 Normal;
 in vec2 oTexture;
 in vec4 FragPosLightSpace;
 float gamma = 2.2;
-
+uniform int debugMode; 
 
 
 
@@ -108,24 +108,142 @@ vec3 CalcSpotLight(SpotLight light, vec3 normal, vec3 fragPos, vec3 viewDir);
 float ShadowCalculation(vec4 fragPosLightSpace);
 
 
+vec3 uniqueLightColor(uint id) {
+    float r = float((id & 0x3)    ) / 3.0;
+    float g = float((id >> 2) & 0x3) / 3.0;
+    float b = float((id >> 4) & 0x3) / 3.0;
+    return vec3(r, g, b);
+}
+
+uint computeTileIndex(vec3 fragPos, vec2 fragCoord) {
+    uint zTile = uint((log(max(abs(fragPos.z), 0.001) / zNear) * gridSize.z) / log(zFar / zNear));
+    vec2 tileSize = screenDimensions / gridSize.xy;
+    uvec3 tile = uvec3(fragCoord / tileSize, zTile);
+    return tile.x + (tile.y * uint(gridSize.x)) + (tile.z * uint(gridSize.x * gridSize.y));
+}
+
+
+vec4 visualizeClusterGrid(vec2 fragCoord) {
+    vec2 tileSize = screenDimensions / gridSize.xy;
+    if (fract(fragCoord.x / tileSize.x) < 0.01 || fract(fragCoord.y / tileSize.y) < 0.01)
+        return vec4(1.0, 0.0, 0.0, 1.0); // Red grid lines
+    return vec4(0.0);
+}
+
+vec4 visualizeLightHeatmap(uint tileIndex) {
+    uint pCount = clusters[tileIndex].point_count;
+    uint sCount = clusters[tileIndex].spot_count;
+    float intensity = clamp(float(pCount + sCount) / 10.0, 0.0, 1.0);
+    return vec4(intensity, 0.0, 1.0 - intensity, 1.0);
+}
+
+vec4 visualizeClusterIndex(uint tileIndex) {
+    vec3 encoded = vec3(
+        float((tileIndex & 0xFF)) / 255.0,
+        float((tileIndex >> 8) & 0xFF) / 255.0,
+        float((tileIndex >> 16) & 0xFF) / 255.0
+    );
+    return vec4(encoded, 1.0);
+}
+
+vec4 visualizeLightContribution(uint tileIndex) {
+    vec3 result = vec3(0.0);
+    for (uint i = 0; i < clusters[tileIndex].point_count; ++i) {
+        uint id = clusters[tileIndex].pointLightIndices[i];
+        result += uniqueLightColor(id);
+    }
+    for (uint i = 0; i < clusters[tileIndex].spot_count; ++i) {
+        uint id = clusters[tileIndex].spotLightIndices[i];
+        result += uniqueLightColor(id);
+    }
+    return vec4(min(result, vec3(1.0)), 1.0);
+}
+
+vec4 visualizeClusterAsSquares(vec2 fragCoord) {
+    vec2 tileSize = screenDimensions / gridSize.xy;
+    uvec2 tileXY = uvec2(fragCoord / tileSize);
+
+    // Map tile index to color
+    uint tileIndex = tileXY.x + (tileXY.y * uint(gridSize.x));
+    vec3 color = vec3(
+        float((tileIndex & 0xFF)) / 255.0,
+        float((tileIndex >> 8) & 0xFF) / 255.0,
+        float((tileIndex >> 16) & 0xFF) / 255.0
+    );
+
+    return vec4(color, 1.0);
+}
+
+vec4 drawClusterGridLines(vec2 fragCoord) {
+
+    vec2 tileSize = screenDimensions / gridSize.xy;
+    vec2 inTileCoord = mod(fragCoord, tileSize);
+
+    // Thickness of the grid lines
+    float edge = 1.0;
+
+    if (inTileCoord.x < edge || inTileCoord.y < edge) {
+        return vec4(1.0, 0.0, 0.0, 1.0); // Red grid lines
+    } else {
+        return vec4(0.0);
+    }
+}
+
+
+float LinearizeDepth(float depth, float near, float far)
+{
+    float z = depth * 2.0 - 1.0; // Convert [0,1] to NDC [-1,1]
+    return (2.0 * near * far) / (far + near - z * (far - near));
+}
 
 void main()
 {
     vec3 norm = normalize(Normal);
     vec3 viewDir = normalize(camPos - FragPos);
 
-    vec3 result = CalcDirLight(dirLight, norm, viewDir);
+    
 
-    uint zTile = uint((log(max(abs(FragPos.z), 0.001) / zNear) * gridSize.z) / log(zFar / zNear));
-
+    float viewZ = LinearizeDepth(gl_FragCoord.z, zNear, zFar);
+    uint zTile = uint((log(max(viewZ, 0.001) / zNear) * gridSize.z) / log(zFar / zNear));
 
     vec2 tileSize = screenDimensions / gridSize.xy;
     uvec3 tile = uvec3(gl_FragCoord.xy / tileSize, zTile);
     uint tileIndex = tile.x + (tile.y * gridSize.x) + (tile.z * gridSize.x * gridSize.y);
 
+
+    // Debug Modes
+    if (debugMode == 1) {
+        FragColor = visualizeClusterGrid(gl_FragCoord.xy);
+        return;
+    }
+    if (debugMode == 2) {
+        FragColor = visualizeLightHeatmap(tileIndex);
+        return;
+    }
+    if (debugMode == 3) {
+        FragColor = visualizeClusterIndex(tileIndex);
+        return;
+    }
+    if (debugMode == 4) {
+        FragColor = visualizeLightContribution(tileIndex);
+        return;
+    }
+    if (debugMode == 5) {
+        vec4 color = visualizeClusterAsSquares(gl_FragCoord.xy);
+        vec4 border = drawClusterGridLines(gl_FragCoord.xy);
+        FragColor = max(color, border);
+        return;
+    }
+    if(debugMode == 6) {
+        vec3 result = CalcDirLight(DirLight(vec3(0.0), vec3(1.0), vec3(1.0), vec3(1.0)), norm, viewDir);
+        FragColor = vec4(pow(result , vec3(1.0/gamma)), 1.0);
+        return;
+    }
+
     uint pointlightCount = clusters[tileIndex].point_count;
     uint spotLightCount = clusters[tileIndex].spot_count;
 
+    vec3 result = CalcDirLight(dirLight, norm, viewDir);
 
     for (int i = 0; i < pointlightCount; ++i)
     {
