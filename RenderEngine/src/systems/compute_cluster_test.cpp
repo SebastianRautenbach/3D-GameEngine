@@ -90,6 +90,9 @@ void wizm::compute_cluster::update_lights()
 		m_shader_cull->use_shader();		
 		m_shader_cull->setUInt("pointlightCount", m_point_lights.size());
 		m_shader_cull->setUInt("spotlightCount", m_spot_lights.size());
+
+		current_point_light_buffer_size = 0;
+		current_spot_light_buffer_size = 0;
 	}
 
 	
@@ -129,7 +132,7 @@ void wizm::compute_cluster::update_lights()
 	}
 
 
-	int buffer_size = point_lights_list.size() * sizeof(PointLight);
+	int point_light_buffer_size = point_lights_list.size() * sizeof(PointLight);
 	if (pointLightSSBO == 0) {
 		glGenBuffers(1, &pointLightSSBO);
 	}
@@ -138,27 +141,26 @@ void wizm::compute_cluster::update_lights()
 
 	
 
-	if (current_point_light_buffer_size != static_cast<GLint>(buffer_size) || point_lights_list.empty()) {
+	if (current_point_light_buffer_size != static_cast<GLint>(point_light_buffer_size) || point_lights_list.empty()) {
 		if (point_lights_list.empty()) {			
 			glGetBufferParameteriv(GL_SHADER_STORAGE_BUFFER, GL_BUFFER_SIZE, &current_point_light_buffer_size);
 			glBufferData(GL_SHADER_STORAGE_BUFFER, 0, nullptr, GL_DYNAMIC_DRAW);
 		}
 		else {
 			glGetBufferParameteriv(GL_SHADER_STORAGE_BUFFER, GL_BUFFER_SIZE, &current_point_light_buffer_size);
-			glBufferData(GL_SHADER_STORAGE_BUFFER, buffer_size, point_lights_list.data(), GL_DYNAMIC_DRAW);
+			glBufferData(GL_SHADER_STORAGE_BUFFER, point_light_buffer_size, point_lights_list.data(), GL_DYNAMIC_DRAW);
 		}
 	}
 	else {
-		glBufferSubData(GL_SHADER_STORAGE_BUFFER, 0, buffer_size, point_lights_list.data());
+		glBufferSubData(GL_SHADER_STORAGE_BUFFER, 0, point_light_buffer_size, point_lights_list.data());
 	}
 
 	glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 2, pointLightSSBO);
 
-	auto packet_test = point_lights_list.data();
 
 	//--------------------------------------------------------------------------------------------------------------------------------- SPOTLIGHT
 
-	int buffer_sizespt = spot_lights_list.size() * sizeof(SpotLight);
+	int spot_light_buffer_size = spot_lights_list.size() * sizeof(SpotLight);
 	if (spotLightSSBO == 0) {
 		glGenBuffers(1, &spotLightSSBO);
 	}
@@ -167,18 +169,18 @@ void wizm::compute_cluster::update_lights()
 
 
 
-	if (current_point_light_buffer_size != static_cast<GLint>(buffer_sizespt) || spot_lights_list.empty()) {
+	if (current_spot_light_buffer_size != static_cast<GLint>(spot_light_buffer_size) || spot_lights_list.empty()) {
 		if (spot_lights_list.empty()) {
 			glGetBufferParameteriv(GL_SHADER_STORAGE_BUFFER, GL_BUFFER_SIZE, &current_spot_light_buffer_size);
 			glBufferData(GL_SHADER_STORAGE_BUFFER, 0, nullptr, GL_DYNAMIC_DRAW);
 		}
 		else {
 			glGetBufferParameteriv(GL_SHADER_STORAGE_BUFFER, GL_BUFFER_SIZE, &current_spot_light_buffer_size);
-			glBufferData(GL_SHADER_STORAGE_BUFFER, buffer_sizespt, spot_lights_list.data(), GL_DYNAMIC_DRAW);
+			glBufferData(GL_SHADER_STORAGE_BUFFER, spot_light_buffer_size, spot_lights_list.data(), GL_DYNAMIC_DRAW);
 		}
 	}
 	else {
-		glBufferSubData(GL_SHADER_STORAGE_BUFFER, 0, buffer_sizespt, spot_lights_list.data());
+		glBufferSubData(GL_SHADER_STORAGE_BUFFER, 0, spot_light_buffer_size, spot_lights_list.data());
 	}
 
 	glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 3, spotLightSSBO);

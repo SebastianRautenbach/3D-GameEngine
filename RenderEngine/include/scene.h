@@ -110,7 +110,6 @@ namespace wizm {
 
 	private:
 		std::vector<core_entity*> m_selected_entities;		
-		bool m_frustum_loaded = false;
 	};
 
 
