@@ -1,4 +1,4 @@
-#version 460 core
+#version 450 core
 
 #define LOCAL_SIZE 128
 #define PI_DIV_4 0.7853975

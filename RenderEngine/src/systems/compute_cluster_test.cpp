@@ -11,6 +11,7 @@ wizm::compute_cluster::compute_cluster(std::map<int, std::shared_ptr<core_gl_sha
 
 	glBufferData(GL_SHADER_STORAGE_BUFFER, sizeof(Cluster) * numClusters, nullptr, GL_STATIC_COPY);
 	glBindBufferBase(GL_SHADER_STORAGE_BUFFER, 1, clusterGridSSBO);
+	glBindBuffer(GL_SHADER_STORAGE_BUFFER, 0);
 }
 
 void wizm::compute_cluster::update_lights()
