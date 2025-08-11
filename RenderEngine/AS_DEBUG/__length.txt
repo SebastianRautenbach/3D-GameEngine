@@ -1,0 +1,40 @@
+float length(vec3)
+
+Temps: 1, 2, 3
+
+Variables: 
+ 000: (heap) vec3 v
+ 001: int 
+ 002: int 
+ 003: int 
+
+
+- 34,5 -
+               VarDecl  0
+    0   3 *    SUSPEND
+    1   3 *    LoadThisR v0, 67108880
+    3   3 *    RDR4     v1
+    4   3 *    LoadThisR v0, 67108880
+    6   3 *    RDR4     v2
+    7   3 *    MULf     v1, v1, v2
+    9   3 *    LoadThisR v4, 67108880
+   11   3 *    RDR4     v2
+   12   3 *    LoadThisR v4, 67108880
+   14   3 *    RDR4     v3
+   15   3 *    MULf     v2, v2, v3
+   17   3 *    ADDf     v3, v1, v2
+   19   3 *    LoadThisR v8, 67108880
+   21   3 *    RDR4     v2
+   22   3 *    LoadThisR v8, 67108880
+   24   3 *    RDR4     v1
+   25   3 *    MULf     v2, v2, v1
+   27   3 *    ADDf     v1, v3, v2
+   29   3 *    PshV4    v1
+   30   4 *    CALL     107           (float sqrt(float))
+   32   3 *    CpyRtoV4 v2
+            {
+            }
+   33   3 *    CpyVtoR4 v2
+            0:
+   34   3 *    FREE     v0, 0x75b86560          (type:vec3)
+   37   3 *    RET      2

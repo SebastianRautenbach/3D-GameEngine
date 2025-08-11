@@ -1,0 +1,30 @@
+void on_update(float)
+
+Temps: 1, 2, 3, 5
+
+Variables: 
+ 000: float delta_time
+ 001: int 
+ 002: int 
+ 003: int 
+ 005: (heap) string 
+
+
+- 58,5 -
+               VarDecl  0
+    0   5 *    SUSPEND
+    1   5 *    PshC4    0x0          (i:0, f:0)
+    3   6 *    MULIf    v1, v0, 0.100000
+    6   6 *    PshV4    v1
+    7   7 *    PshC4    0x0          (i:0, f:0)
+    9   8 *    PSF      v5
+   10  10 *    PshGPtr  0x1b72b4fd258          (i:1886217294424, f:9.31915e-312)
+   13  12 *    CHKREF
+   14  12 *    ALLOC    0x1b775b86bf0, 20             (type:string, string::string(const string&in))
+   18   8 *    VAR      v5
+   19  10 *    GETOBJ   0
+   20  10 *    CALLSYS  80           (void add_entity_position(string, float, float, float))
+- 59,2 -
+   22   5 *    SUSPEND
+            0:
+   23   5 *    RET      1

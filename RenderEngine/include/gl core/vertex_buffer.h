@@ -248,8 +248,6 @@ public:
 	core_framebuffer(framebuffer_spec spec);
 	~core_framebuffer();
 
-	unsigned int get_tex_id() { return m_tex_id; }
-
 	int read_pixel(unsigned int color_attachement_index, int x, int y);
 	void clear_attachment(unsigned int attachment_index, int value);
 
@@ -268,10 +266,13 @@ public:
 			throw std::invalid_argument("index out of range for fbo");
 		return m_color_attachments[index];
 	}
+	unsigned int get_depth_attachment_render_id() {
+		return m_depth_attachment;
+	}
 
 private:
-	unsigned int m_tex_id;
-	unsigned int m_depth_id;
+	//unsigned int m_tex_id;
+	//unsigned int m_depth_id;
 
 	/*
 		I like how Cherno did his

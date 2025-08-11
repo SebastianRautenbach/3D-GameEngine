@@ -82,19 +82,19 @@ void core_index_buffer::destroy_buffer()
 
 
 
-	//////////////////////////////////////////////////////////////////////////
-	// DEFAULT CONSTRUCTOR FOR VAO
-	//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+// DEFAULT CONSTRUCTOR FOR VAO
+//////////////////////////////////////////////////////////////////////////
 
 
-core_arr_vertex_buffer::core_arr_vertex_buffer( std::vector<vertex_data>& vertices, std::vector<unsigned int>& indices)
+core_arr_vertex_buffer::core_arr_vertex_buffer(std::vector<vertex_data>& vertices, std::vector<unsigned int>& indices)
 {
 
 	glGenVertexArrays(1, &this->buffer_id);
 	vbo = new core_vertex_buffer(vertices);
 	ibo = new core_index_buffer(indices);
 
-	
+
 }
 
 core_arr_vertex_buffer::~core_arr_vertex_buffer()
@@ -203,7 +203,7 @@ core_framebuffer::~core_framebuffer()
 int core_framebuffer::read_pixel(unsigned int color_attachement_index, int x, int y)
 {
 	glReadBuffer(GL_COLOR_ATTACHMENT0 + color_attachement_index);
-	
+
 	float r, g, b;
 	float pixels[3];
 	glReadPixels(x, y, 1, 1, GL_RGB, GL_FLOAT, pixels);
@@ -217,7 +217,7 @@ int core_framebuffer::read_pixel(unsigned int color_attachement_index, int x, in
 	int blue = static_cast<int>(b * 255.0f);
 
 	int pick_color = (red << 16) | (green << 8) | blue;
-	
+
 	return pick_color;
 }
 
@@ -278,8 +278,15 @@ void core_framebuffer::create_fbuffer()
 		GLenum buffers[4] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_COLOR_ATTACHMENT2, GL_COLOR_ATTACHMENT3 };
 		glDrawBuffers((GLsizei)m_color_attachments.size(), buffers);
 	}
-	else if (m_color_attachments.empty()) {
+	else if (m_color_attachments.empty()) {			
+
+		GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+		if (status != GL_FRAMEBUFFER_COMPLETE) {
+			std::cerr << "Framebuffer not complete!" << std::endl;
+		}
+
 		glDrawBuffer(GL_NONE);
+		glReadBuffer(GL_NONE);
 	}
 	unbind_buffer();
 }
@@ -293,7 +300,7 @@ void core_framebuffer::resize(unsigned int width, unsigned int height)
 
 	m_spec.Width = width;
 	m_spec.Height = height;
-	
+
 	invalidate();
 }
 
@@ -302,7 +309,7 @@ void core_framebuffer::invalidate()
 	if (buffer_id)
 	{
 		glDeleteFramebuffers(1, &buffer_id);
-		
+
 		glDeleteTextures((GLsizei)m_color_attachments.size(), m_color_attachments.data());
 		glDeleteTextures(1, &m_depth_attachment);
 
@@ -334,7 +341,7 @@ void core_framebuffer::invalidate()
 			}
 		}
 	}
-	
+
 	if (m_depth_attachment_spec.texture_format != framebuffer_texture_format::None)
 	{
 		lowlevelsys::create_texture(multisample, &m_depth_attachment, 1);
@@ -351,7 +358,7 @@ void core_framebuffer::invalidate()
 	{
 		if (!(m_color_attachments.size() <= 4))
 			throw std::invalid_argument("m_color_attachments.size() <= 4");
-	
+
 		GLenum buffers[4] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_COLOR_ATTACHMENT2, GL_COLOR_ATTACHMENT3 };
 		glDrawBuffers((GLsizei)m_color_attachments.size(), buffers);
 	}
@@ -388,10 +395,12 @@ void core_framebuffer::destroy_buffer()
 	if (this->buffer_id)
 	{
 		glDeleteFramebuffers(GL_FRAMEBUFFER, &this->buffer_id);
-		glDeleteTextures(1, &m_tex_id);
-		glDeleteTextures(1, &m_depth_id);
-		m_tex_id = 0;
-		m_depth_id = 0;
+		for (auto attachment : m_color_attachments) {
+			glDeleteTextures(1, &attachment);
+		}
+		m_color_attachments.clear();
+		
+		glDeleteTextures(1, &m_depth_attachment);		
 	}
 }
 
@@ -428,7 +437,7 @@ void core_newframebuffer::resize(unsigned int new_width, unsigned int new_height
 {
 	width = new_width;
 	height = new_height;
-	
+
 	glBindFramebuffer(GL_FRAMEBUFFER, buffer_id);
 	glBindTexture(GL_TEXTURE_2D, color_texture);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, nullptr);
@@ -444,15 +453,15 @@ void core_newframebuffer::resize(unsigned int new_width, unsigned int new_height
 unsigned int core_newframebuffer::read_pixel(int x, int y) {
 
 	glBindFramebuffer(GL_FRAMEBUFFER, buffer_id);
-	
+
 	glReadBuffer(GL_COLOR_ATTACHMENT0);
 
 	unsigned char pixels[3];
 	glReadPixels(x, height - y, 1, 1, GL_RGB, GL_UNSIGNED_BYTE, &pixels);
 
 
-	GLuint pickID = (static_cast<GLuint>(pixels[0]) << 16) | 
-		(static_cast<GLuint>(pixels[1]) << 8) | 
+	GLuint pickID = (static_cast<GLuint>(pixels[0]) << 16) |
+		(static_cast<GLuint>(pixels[1]) << 8) |
 		(static_cast<GLuint>(pixels[2]));
 
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);

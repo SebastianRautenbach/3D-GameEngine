@@ -609,12 +609,12 @@
 	}
 	specs{
 		is_entity:1;
-		m_ent_name:light;
+		m_ent_name:directionallight;
 	}
 	tags{
 	}
 	transform{
-		position:0.000000,0.000000,0.000000;
+		position:1.977029,26.788538,-7.013589;
 		rotation:0.000000,0.000000,0.000000;
 		scale:1.000000,1.000000,1.000000;
 	}
@@ -788,34 +788,14 @@
 	}
 }
 8610600924058072644{
-	pointlight0{
-		light{
-			m_constant:1.000000;
-			linear:0.090000;
-			m_quadratic:0.032000;
-			m_radius:4.000000;
-			m_ambient:0.050000,0.050000,0.050000;
-			m_diffuse:1.000000,0.999990,0.999990;
-			m_specular:1.000000,1.000000,1.000000;
-			pointlightindex:;
-			m_brightness:1.000000;
-			m_intensity:1.000000;
-			light_index:1;
-		}
-		transform{
-			position:0.000000,0.000000,0.000000;
-			rotation:0.000000,0.000000,0.000000;
-			scale:1.000000,1.000000,1.000000;
-		}
-	}
 	specs{
 		is_entity:1;
-		m_ent_name:point1(1)(1);
+		m_ent_name:endpoint;
 	}
 	tags{
 	}
 	transform{
-		position:-18.046780,2.605206,-3.130673;
+		position:-43.759361,0.000000,-53.243973;
 		rotation:0.000000,0.000000,0.000000;
 		scale:1.000000,1.000000,1.000000;
 	}
@@ -863,6 +843,13 @@
 	transform{
 		position:-18.795235,8.581033,-28.230026;
 		rotation:0.000000,0.000000,0.000000;
+		scale:1.000000,1.000000,1.000000;
+	}
+}
+viewport_camera{
+	transform{
+		position:11.749011,30.033173,0.645328;
+		rotation:-19.018755,40.010651,0.000000;
 		scale:1.000000,1.000000,1.000000;
 	}
 }

@@ -88,6 +88,10 @@ core_component* wizm::core_entity::add_component(core_component* component)
 	m_components_list.push_back(component);
 	global_scene->m_dirty_components.emplace_back(component);
 	global_scene->m_rebuild_lights = true;
+	
+	if(component->m_component_type == eDirectionalLight)
+		global_scene->m_directional_light = component;
+	
 	return component;
 }
 

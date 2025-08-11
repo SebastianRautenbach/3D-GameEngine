@@ -81,7 +81,9 @@ void lowlevelsys::gl_renderer::setup(int window_size_x, int window_size_y, const
 	m_shdrs.emplace(ENGINE_SHADER_PREPASS,new core_gl_shader("shaders/Z Pre-pass_vrtx_shdr.glsl", "shaders/Z Pre-pass_frgmnt_shdr.glsl"));
 	m_shdrs.emplace(ENGINE_SHADER_CLUSTER_COMP,new core_gl_shader("shaders/cluster_comp_shdr.glsl"));
 	m_shdrs.emplace(ENGINE_SHADER_CLUSTER_CULL,new core_gl_shader("shaders/cluster_cull_comp_shdr.glsl"));
-	m_shdrs.emplace(ENGINE_SHADER_MOUSEPICK,new core_gl_shader("shaders/mouse_pick_vrtx.glsl", "shaders/mouse_pick_frgmnt.glsl"));
+	m_shdrs.emplace(ENGINE_SHADER_MOUSEPICK, new core_gl_shader("shaders/mouse_pick_vrtx.glsl", "shaders/mouse_pick_frgmnt.glsl"));
+	m_shdrs.emplace(ENGINE_SHADER_SHADOW, new core_gl_shader("shaders/shadow/shadow_vrtx_shdr.glsl", "shaders/shadow/shadow_frgmnt_shdr.glsl"));
+	m_shdrs.emplace(ENGINE_SHADER_SHADOW_DEBUG,new core_gl_shader("shaders/shadow/debug_shadow_vrtx_shdr.glsl", "shaders/shadow/debug_shadow_frgmnt_shdr.glsl"));
 	
 }
 
