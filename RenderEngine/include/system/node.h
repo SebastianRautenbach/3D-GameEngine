@@ -85,26 +85,43 @@ namespace wizm {
 				return m_translation;
 		}
 
-		glm::mat4 get_rotation_matrix() {
+		glm::vec3 get_direction() {
+			return get_world_rotation_quat() * glm::vec3(0.0f, 0.0f, -1.0f);
+		}
 
-			if (m_parent_node)			// THIS IS WRONG!!!!!!!!!!!!!!!!
-				return glm::mat4_cast(glm::quat(m_parent_node->m_rotation));
+		glm::mat4 get_rotation_matrix() {
+			glm::quat localQuat = glm::quat(glm::radians(m_rotation));
+			if (m_parent_node)
+				return glm::mat4_cast(m_parent_node->get_world_rotation_quat() * localQuat);
 			else
-				return glm::mat4_cast(glm::quat(m_rotation));
+				return glm::mat4_cast(localQuat);
 		}
 
 
 		glm::vec3 get_world_rotation() {
-			glm::mat3 normal_matrix = glm::mat3(get_world_transform());
-			glm::vec3 euler_angles = glm::eulerAngles(glm::quat_cast(glm::mat4(normal_matrix)));
+
+			glm::vec3 euler_angles = glm::eulerAngles(get_world_rotation_quat());
 			return glm::degrees(euler_angles);
+
 		}
 
 
 		glm::quat get_world_rotation_quat()
 		{
-			glm::mat3 normal_matrix = glm::mat3(get_world_transform());
-			return glm::quat_cast(glm::mat4(normal_matrix));
+			glm::mat4 world = get_world_transform();
+			glm::mat3 R = glm::mat3(world);
+
+			
+			R[0] = glm::normalize(R[0]);
+			R[1] = glm::normalize(R[1]);
+			R[2] = glm::normalize(R[2]);
+
+			
+			if (glm::determinant(R) < 0.0f) {
+				R[0] = -R[0];
+			}
+
+			return glm::quat_cast(R);
 		}
 
 

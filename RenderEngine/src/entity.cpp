@@ -90,7 +90,7 @@ core_component* wizm::core_entity::add_component(core_component* component)
 	global_scene->m_rebuild_lights = true;
 	
 	if(component->m_component_type == eDirectionalLight)
-		global_scene->m_directional_light = component;
+		global_scene->m_directional_light = dynamic_cast<directionallight_component*>(component);
 	
 	return component;
 }

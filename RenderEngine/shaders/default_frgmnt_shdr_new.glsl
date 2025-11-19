@@ -10,12 +10,11 @@ struct Material {
     float shininess;
 }; 
 
-struct DirLight {
-    vec3 direction;
-	
+struct DirLight {    
     vec3 ambient;
     vec3 diffuse;
     vec3 specular;
+    vec3 direction;
 };
 
 struct PointLight
@@ -239,25 +238,33 @@ void main()
         FragColor = vec4(pow(result , vec3(1.0/gamma)), 1.0);
         return;
     }
+    if (debugMode == 7) {
+        vec3 projCoords = FragPosLightSpace.xyz / FragPosLightSpace.w;
+        projCoords = projCoords * 0.5 + 0.5;
+        float depth = texture(depthMap, projCoords.xy).r;
+        FragColor = vec4(vec3(depth), 1.0);
+        return;
+        
+    }
 
     uint pointlightCount = clusters[tileIndex].point_count;
     uint spotLightCount = clusters[tileIndex].spot_count;
 
-    vec3 result = CalcDirLight(dirLight, norm, viewDir);
+    vec3 result = CalcDirLight(dirLight, norm, viewDir );
 
-   // for (int i = 0; i < pointlightCount; ++i)
-   // {
-   //     uint lightIndex = clusters[tileIndex].pointLightIndices[i];
-   //     PointLight light = pointLight[lightIndex];
-   //     result += CalcPointLight(light, norm, FragPos, viewDir); 
-   // }
-   // 
-   // for(int i = 0; i < spotLightCount; ++i) 
-   // {
-   //     uint lightIndex = clusters[tileIndex].spotLightIndices[i];
-   //     SpotLight light = spotLight[lightIndex];
-   //     result += CalcSpotLight(light, norm, FragPos, viewDir); 
-   // }
+    for (int i = 0; i < pointlightCount; ++i)
+    {
+        uint lightIndex = clusters[tileIndex].pointLightIndices[i];
+        PointLight light = pointLight[lightIndex];
+        result += CalcPointLight(light, norm, FragPos, viewDir); 
+    }
+    
+    for(int i = 0; i < spotLightCount; ++i) 
+    {
+        uint lightIndex = clusters[tileIndex].spotLightIndices[i];
+        SpotLight light = spotLight[lightIndex];
+        result += CalcSpotLight(light, norm, FragPos, viewDir); 
+    }
 
 
     FragColor = vec4(pow(result , vec3(1.0/gamma)), 1.0);
@@ -276,8 +283,7 @@ vec3 CalcDirLight(DirLight light, vec3 normal, vec3 viewDir)
     vec3 specular = light.specular * spec * vec3(texture(material.specular, oTexture));
     
     float shadow = ShadowCalculation(FragPosLightSpace);
-
-
+    
     return (ambient + (1.0 - shadow) * (diffuse + specular)); 
 }
 
@@ -338,12 +344,33 @@ vec3 CalcSpotLight(SpotLight light, vec3 normal, vec3 fragPos, vec3 viewDir)
 
 float ShadowCalculation(vec4 fragPosLightSpace)
 {
-    vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
-    projCoords = projCoords * 0.5 + 0.5;
-    float closestDepth = texture(depthMap, projCoords.xy).r; 
-    float currentDepth = projCoords.z;
-    float bias = 0.005;
-    float shadow = currentDepth - bias > closestDepth  ? 1.0 : 0.0;  
     
+    vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
+    
+    projCoords = projCoords * 0.5 + 0.5;
+    
+    float closestDepth = texture(depthMap, projCoords.xy).r; 
+    
+    float currentDepth = projCoords.z;
+    
+    vec3 normal = normalize(Normal);
+    
+    
+    float bias = max(0.05 * (1.0 - dot(normal, normalize(dirLight.direction))), 0.005);
+    
+    float shadow = 0.0;
+    vec2 texelSize = 1.0 / textureSize(depthMap, 0);
+    for(int x = -1; x <= 1; ++x)
+    {
+        for(int y = -1; y <= 1; ++y)
+        {
+            float pcfDepth = texture(depthMap, projCoords.xy + vec2(x, y) * texelSize).r; 
+            shadow += currentDepth - bias > pcfDepth  ? 1.0 : 0.0;        
+        }    
+    }
+    return 0.0;
     return shadow;
 }
+
+
+    

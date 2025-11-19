@@ -3,6 +3,7 @@
 #include "imgui/imgui.h"
 #include "imgui/backends/imgui_impl_glfw.h"
 #include "imgui/backends/imgui_impl_opengl3.h"
+#include "system/scene_manager.h"
 #include <memory>
 
 namespace wizm {
@@ -11,7 +12,7 @@ namespace wizm {
 
 	class performace_ui_layer : public core_layer {
 	public:
-		performace_ui_layer(core_scene* scene);
+		performace_ui_layer(core_scene* scene, core_framebuffer* shadow_fbo);
 		~performace_ui_layer();
 
 		virtual void on_attach() override;
@@ -20,6 +21,7 @@ namespace wizm {
 
 	private:
 		core_scene* global_scene;
+		core_framebuffer* m_shadow_fbo;
 	};
 
 }

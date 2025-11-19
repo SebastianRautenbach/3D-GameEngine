@@ -18,6 +18,8 @@ namespace glm
 		T const y = static_cast<T>(2) * (q.x * q.y + q.w * q.z);
 		T const x = q.w * q.w + q.x * q.x - q.y * q.y - q.z * q.z;
 
+		auto naai = equal(vec<2, T, Q>(x, y), vec<2, T, Q>(0), epsilon<T>());
+
 		if(all(equal(vec<2, T, Q>(x, y), vec<2, T, Q>(0), epsilon<T>()))) //avoid atan2(0,0) - handle singularity - Matiis
 			return static_cast<T>(0);
 

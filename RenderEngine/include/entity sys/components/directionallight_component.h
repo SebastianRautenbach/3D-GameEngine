@@ -17,6 +17,14 @@ namespace wizm {
         void component_update(float delta_time, std::shared_ptr<core_gl_shader>& shader);
         void component_postupdate();
 
+
+        glm::mat4 computeLightSpaceMatrix(
+            const glm::vec3& scene_center,
+            float scene_radius,
+            float ortho_size,
+            float near_plane,
+            float far_plane);
+
         core_component* _copy() const;
 
 

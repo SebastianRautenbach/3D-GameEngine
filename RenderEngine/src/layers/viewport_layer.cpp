@@ -187,6 +187,12 @@ void wizm::viewport_layer::update(float delta_time)
         m_renderer->m_shdrs[0]->use_shader();
         m_renderer->m_shdrs[0]->setInt("debugMode", 6);
     }
+    ImGui::SameLine();
+    if (ImGui::Button("ShadowMap"))
+    {
+        m_renderer->m_shdrs[0]->use_shader();
+        m_renderer->m_shdrs[0]->setInt("debugMode", 7);
+    }
 
     ImGui::End();
 }

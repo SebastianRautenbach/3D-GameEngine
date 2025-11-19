@@ -26,45 +26,42 @@ void wizm::directionallight_component::component_preupdate()
 
 void wizm::directionallight_component::component_update(float delta_time, std::shared_ptr<core_gl_shader>& shader)
 {
-	(void)delta_time;
-
-
-	
-	
-	
-	
-	
-	
-	
-
-
 	if (m_shader != shader)
 		m_shader = shader;
 
-
-	glm::mat4 lightProjection, lightView;
-	glm::mat4 light_matrix;
-
-	glm::vec3 pos = get_world_position();
-
-	light_matrix = lightProjection = lightView = glm::mat4(1.0);
-
-
-	float near_plane = 1.0f, far_plane = 7.5f;
-	lightProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, near_plane, far_plane);
-	lightView = glm::lookAt(pos, glm::vec3(0.0f), glm::vec3(0.0, 1.0, 0.0));
-	light_matrix = lightProjection * lightView;
-	shader->setMat4("light_matrix", light_matrix);
-
-
-	shader->setVec3("dirLight.direction", get_world_rotation());
-	shader->setVec3("dirLight.ambient", m_ambient * glm::vec3(m_brightness));
+	
+	shader->setVec3("dirLight.ambient", m_ambient * m_brightness);
 	shader->setVec3("dirLight.diffuse", m_diffuse);
 	shader->setVec3("dirLight.specular", m_specular);
+	shader->setVec3("dirLight.direction", glm::normalize(get_direction()));
 }
 
 void wizm::directionallight_component::component_postupdate()
 {
+}
+
+glm::mat4 wizm::directionallight_component::computeLightSpaceMatrix(const glm::vec3& scene_center, float scene_radius, float ortho_size, float near_plane, float far_plane)
+{
+
+	glm::vec3 light_dir = glm::normalize(this->get_direction());
+
+	float distance = std::max(scene_radius * 2.0f, ortho_size);
+	glm::vec3 light_pos = scene_center - light_dir * distance;
+
+	
+	glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
+	if (glm::abs(glm::dot(up, light_dir)) > 0.99f)
+		up = glm::vec3(0.0f, 0.0f, 1.0f); 
+
+	glm::mat4 light_view = glm::lookAt(light_pos, scene_center, up);
+
+	
+	float half = ortho_size * 0.5f;
+	glm::mat4 light_proj = glm::ortho(-half, half, -half, half, near_plane, far_plane);
+
+
+	return light_proj * light_view;
+	
 }
 
 core_component* wizm::directionallight_component::_copy() const

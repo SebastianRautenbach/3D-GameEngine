@@ -3,20 +3,68 @@
   "WorkspaceRootPath": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\update_manager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|solutionrelative:src\\update_manager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\system\\camera_3d.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|solutionrelative:include\\system\\camera_3d.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\vertex_buffer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|solutionrelative:src\\vertex_buffer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|C:\\USERS\\KARAT\\DOCUMENTS\\GITHUB\\3D-GAME-ENGINE\\RENDERENGINE\\INCLUDE\\DEPENDENCIES\\GLM\\EXT\\VECTOR_RELATIONAL.INL||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|solutionrelative:INCLUDE\\DEPENDENCIES\\GLM\\EXT\\VECTOR_RELATIONAL.INL||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\gl core\\vertex_buffer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|solutionrelative:include\\gl core\\vertex_buffer.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\INCLUDE\\DEPENDENCIES\\GLM\\GTC\\QUATERNION.INL||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|solutionrelative:INCLUDE\\DEPENDENCIES\\GLM\\GTC\\QUATERNION.INL||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|solutionrelative:include\\scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\INCLUDE\\DEPENDENCIES\\GLM\\DETAIL\\FUNC_VECTOR_RELATIONAL.INL||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|solutionrelative:INCLUDE\\DEPENDENCIES\\GLM\\DETAIL\\FUNC_VECTOR_RELATIONAL.INL||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\systems\\camera_3d.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|solutionrelative:src\\systems\\camera_3d.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\detail\\type_vec4.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|solutionrelative:include\\dependencies\\glm\\detail\\type_vec4.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\detail\\type_vec3.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|solutionrelative:include\\dependencies\\glm\\detail\\type_vec3.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\detail\\type_vec1.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|solutionrelative:include\\dependencies\\glm\\detail\\type_vec1.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\detail\\type_vec2.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|solutionrelative:include\\dependencies\\glm\\detail\\type_vec2.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\INCLUDE\\DEPENDENCIES\\GLM\\DETAIL\\FUNC_EXPONENTIAL.INL||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|solutionrelative:INCLUDE\\DEPENDENCIES\\GLM\\DETAIL\\FUNC_EXPONENTIAL.INL||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\ext\\quaternion_common.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|solutionrelative:include\\dependencies\\glm\\ext\\quaternion_common.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\ext\\quaternion_geometric.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|solutionrelative:include\\dependencies\\glm\\ext\\quaternion_geometric.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\systems\\batcher.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|solutionrelative:src\\systems\\batcher.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\gl core\\core shader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|solutionrelative:include\\gl core\\core shader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\INCLUDE\\DEPENDENCIES\\GLM\\DETAIL\\TYPE_MAT4X4.INL||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|solutionrelative:INCLUDE\\DEPENDENCIES\\GLM\\DETAIL\\TYPE_MAT4X4.INL||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\detail\\type_mat4x4.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{629F2F63-4E57-71B0-B75E-4A0CA3350CA1}|WizmEngine.vcxproj|solutionrelative:include\\dependencies\\glm\\detail\\type_mat4x4.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,56 +74,200 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 15,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "vertex_buffer.h",
-              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\gl core\\vertex_buffer.h",
-              "RelativeDocumentMoniker": "include\\gl core\\vertex_buffer.h",
-              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\gl core\\vertex_buffer.h",
-              "RelativeToolTip": "include\\gl core\\vertex_buffer.h",
-              "ViewState": "AgIAAO4AAAAAAAAAAAApwPoAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-07-20T22:02:04.556Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "vertex_buffer.cpp",
-              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\vertex_buffer.cpp",
-              "RelativeDocumentMoniker": "src\\vertex_buffer.cpp",
-              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\vertex_buffer.cpp",
-              "RelativeToolTip": "src\\vertex_buffer.cpp",
-              "ViewState": "AgIAAHABAAAAAAAAAAAMwH4BAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-20T22:01:11.954Z",
+              "Title": "vector_relational.inl",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\ext\\vector_relational.inl",
+              "RelativeDocumentMoniker": "include\\dependencies\\glm\\ext\\vector_relational.inl",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\ext\\vector_relational.inl",
+              "RelativeToolTip": "include\\dependencies\\glm\\ext\\vector_relational.inl",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-11-19T13:27:52.184Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "quaternion.inl",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\gtc\\quaternion.inl",
+              "RelativeDocumentMoniker": "include\\dependencies\\glm\\gtc\\quaternion.inl",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\gtc\\quaternion.inl",
+              "RelativeToolTip": "include\\dependencies\\glm\\gtc\\quaternion.inl",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA4AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-11-19T13:21:59.859Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "scene.h",
-              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\scene.h",
-              "RelativeDocumentMoniker": "include\\scene.h",
-              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\scene.h",
-              "RelativeToolTip": "include\\scene.h",
-              "ViewState": "AgIAAFoAAAAAAAAAAAAtwGoAAAAvAAAAAAAAAA==",
+              "Title": "func_vector_relational.inl",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\detail\\func_vector_relational.inl",
+              "RelativeDocumentMoniker": "include\\dependencies\\glm\\detail\\func_vector_relational.inl",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\detail\\func_vector_relational.inl",
+              "RelativeToolTip": "include\\dependencies\\glm\\detail\\func_vector_relational.inl",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAvwCcAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-11-19T13:22:26.085Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "type_vec4.hpp",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\detail\\type_vec4.hpp",
+              "RelativeDocumentMoniker": "include\\dependencies\\glm\\detail\\type_vec4.hpp",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\detail\\type_vec4.hpp",
+              "RelativeToolTip": "include\\dependencies\\glm\\detail\\type_vec4.hpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-07-18T23:05:53.084Z"
+              "WhenOpened": "2025-11-19T12:34:16.897Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "type_vec3.hpp",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\detail\\type_vec3.hpp",
+              "RelativeDocumentMoniker": "include\\dependencies\\glm\\detail\\type_vec3.hpp",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\detail\\type_vec3.hpp",
+              "RelativeToolTip": "include\\dependencies\\glm\\detail\\type_vec3.hpp",
+              "ViewState": "AgIAAPIAAAAAAAAAAAApwAQBAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-11-19T10:44:21.062Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "type_vec2.hpp",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\detail\\type_vec2.hpp",
+              "RelativeDocumentMoniker": "include\\dependencies\\glm\\detail\\type_vec2.hpp",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\detail\\type_vec2.hpp",
+              "RelativeToolTip": "include\\dependencies\\glm\\detail\\type_vec2.hpp",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAcwBAAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-11-19T10:43:57.496Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "type_vec1.hpp",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\detail\\type_vec1.hpp",
+              "RelativeDocumentMoniker": "include\\dependencies\\glm\\detail\\type_vec1.hpp",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\detail\\type_vec1.hpp",
+              "RelativeToolTip": "include\\dependencies\\glm\\detail\\type_vec1.hpp",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-11-19T10:42:09.278Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "func_exponential.inl",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\detail\\func_exponential.inl",
+              "RelativeDocumentMoniker": "include\\dependencies\\glm\\detail\\func_exponential.inl",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\detail\\func_exponential.inl",
+              "RelativeToolTip": "include\\dependencies\\glm\\detail\\func_exponential.inl",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAkwIcAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-11-18T21:58:27.874Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "quaternion_geometric.hpp",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\ext\\quaternion_geometric.hpp",
+              "RelativeDocumentMoniker": "include\\dependencies\\glm\\ext\\quaternion_geometric.hpp",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\ext\\quaternion_geometric.hpp",
+              "RelativeToolTip": "include\\dependencies\\glm\\ext\\quaternion_geometric.hpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-11-17T17:30:18.94Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "quaternion_common.hpp",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\ext\\quaternion_common.hpp",
+              "RelativeDocumentMoniker": "include\\dependencies\\glm\\ext\\quaternion_common.hpp",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\ext\\quaternion_common.hpp",
+              "RelativeToolTip": "include\\dependencies\\glm\\ext\\quaternion_common.hpp",
+              "ViewState": "AgIAACMAAAAAAAAAAAAAADQAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-11-17T12:08:21.429Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "camera_3d.cpp",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\systems\\camera_3d.cpp",
+              "RelativeDocumentMoniker": "src\\systems\\camera_3d.cpp",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\systems\\camera_3d.cpp",
+              "RelativeToolTip": "src\\systems\\camera_3d.cpp",
+              "ViewState": "AgIAAB4AAAAAAAAAAAApwC0AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-11-17T12:08:07.016Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "core shader.h",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\gl core\\core shader.h",
+              "RelativeDocumentMoniker": "include\\gl core\\core shader.h",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\gl core\\core shader.h",
+              "RelativeToolTip": "include\\gl core\\core shader.h",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAAAFgAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-11-17T12:00:44.222Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "batcher.cpp",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\systems\\batcher.cpp",
+              "RelativeDocumentMoniker": "src\\systems\\batcher.cpp",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\systems\\batcher.cpp",
+              "RelativeToolTip": "src\\systems\\batcher.cpp",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAAAGEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-11-17T11:58:59.164Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "type_mat4x4.inl",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\detail\\type_mat4x4.inl",
+              "RelativeDocumentMoniker": "include\\dependencies\\glm\\detail\\type_mat4x4.inl",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\detail\\type_mat4x4.inl",
+              "RelativeToolTip": "include\\dependencies\\glm\\detail\\type_mat4x4.inl",
+              "ViewState": "AgIAACoBAAAAAAAAAAAIwDIBAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-11-17T11:22:08.798Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "type_mat4x4.hpp",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\detail\\type_mat4x4.hpp",
+              "RelativeDocumentMoniker": "include\\dependencies\\glm\\detail\\type_mat4x4.hpp",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\dependencies\\glm\\detail\\type_mat4x4.hpp",
+              "RelativeToolTip": "include\\dependencies\\glm\\detail\\type_mat4x4.hpp",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAowBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-11-17T00:00:31.101Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "update_manager.cpp",
-              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\update_manager.cpp",
-              "RelativeDocumentMoniker": "src\\update_manager.cpp",
-              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\src\\update_manager.cpp",
-              "RelativeToolTip": "src\\update_manager.cpp",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAAAFwAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-18T22:55:11.723Z",
+              "Title": "camera_3d.h",
+              "DocumentMoniker": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\system\\camera_3d.h",
+              "RelativeDocumentMoniker": "include\\system\\camera_3d.h",
+              "ToolTip": "C:\\Users\\karat\\Documents\\GitHub\\3D-Game-Engine\\RenderEngine\\include\\system\\camera_3d.h",
+              "RelativeToolTip": "include\\system\\camera_3d.h",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAiwHcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-11-16T22:54:12.476Z",
               "EditorCaption": ""
             }
           ]

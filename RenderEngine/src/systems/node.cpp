@@ -81,6 +81,7 @@ glm::mat4 wizm::core_node::get_world_transform()
     static const glm::mat4 identity = glm::mat4(1.0f);
 
     glm::mat4 rotation = glm::mat4_cast(glm::quat(m_rotation));
+
     glm::mat4 localTransform = glm::translate(identity, m_translation) *
         rotation *
         glm::scale(identity, m_scale);

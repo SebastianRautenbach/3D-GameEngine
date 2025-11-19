@@ -104,7 +104,8 @@ namespace wizm {
 		std::vector<core_entity*> m_entities;
 		std::vector<core_component*> m_dirty_components;
 
-		core_component* m_directional_light = nullptr;
+		directionallight_component* m_directional_light = nullptr;
+		
 
 		bool m_rebuild_lights = false;		
 		std::string current_scene = "";

@@ -1,8 +1,8 @@
 #include "layers/performance_ui_layer.h"
 #include "scene.h"
 
-wizm::performace_ui_layer::performace_ui_layer(core_scene* scene)
-	:core_layer("performance layer"), global_scene(scene)
+wizm::performace_ui_layer::performace_ui_layer(core_scene* scene, core_framebuffer* shadow_fbo)
+	:core_layer("performance layer"), global_scene(scene), m_shadow_fbo(shadow_fbo)
 {
 }
 
@@ -39,8 +39,21 @@ void wizm::performace_ui_layer::update(float delta_time)
 			}
 		}
 	}
+
+
+
+
+
+
 	std::string tot_vert_str = "total triangles:" + std::to_string(amm_verts);
 	ImGui::Text(tot_vert_str.c_str());
 	
+
+	static ImVec2 mSize = { 200.0, 200.0 };
+	
+	ImGui::Image(reinterpret_cast<void*>(m_shadow_fbo->get_depth_attachment_render_id()), ImVec2{ mSize.x, mSize.y }, ImVec2{ 0, 1 }, ImVec2{ 1, 0 });
+
+
+
 	ImGui::End();
 }

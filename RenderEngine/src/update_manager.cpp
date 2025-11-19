@@ -55,7 +55,7 @@ void update_manager::render_setup(int window_size_x, int window_size_y, const ch
 	m_layer_stack->push_layer(new script_debug_layer());
 	m_layer_stack->push_layer(new viewport_layer(m_framebuffer, m_camera_manager, m_gl_renderer, m_asset_manager, global_scene));
 	m_layer_stack->push_layer(new scene_ui_layer(m_gl_renderer, global_scene));
-	m_layer_stack->push_layer(new performace_ui_layer(global_scene));
+	m_layer_stack->push_layer(new performace_ui_layer(global_scene, m_shadowframebuffer));
 	m_layer_stack->push_layer(new properties_ui_layer(m_gl_renderer, m_asset_manager, global_scene));
 	m_layer_stack->push_layer(new content_browser_layer(m_asset_manager));
 	m_layer_stack->push_layer(new material_editor_layer(m_asset_manager));
@@ -114,7 +114,7 @@ void update_manager::pre_render()
 void update_manager::render()
 {
 
-	static bool debug_shadow = true;
+	static bool debug_shadow = false;
 
 
 	m_timer->update_delta_time();
@@ -127,13 +127,11 @@ void update_manager::render()
 
 	if(global_scene->m_directional_light)
 	{		
-		glm::vec3 center_pos = glm::vec3(0.0f);
-		lightProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, near_plane, far_plane);
-		lightView = glm::lookAt(lightPos, center_pos, glm::vec3(0.0f, 1.0f, 0.0f));
-		lightSpaceMatrix = lightProjection * lightView;
-
+		
 		m_gl_renderer->m_shdrs[ENGINE_SHADER_SHADOW]->use_shader();
-		m_gl_renderer->m_shdrs[ENGINE_SHADER_SHADOW]->setMat4("lightSpaceMatrix", lightSpaceMatrix);
+		m_gl_renderer->m_shdrs[ENGINE_SHADER_SHADOW]->setMat4("lightSpaceMatrix", global_scene->m_directional_light->computeLightSpaceMatrix(
+		glm::vec3(0.0f),100.f,10.f,5.f, 100.f
+		));
 
 				
 		m_shadowframebuffer->bind_buffer();		

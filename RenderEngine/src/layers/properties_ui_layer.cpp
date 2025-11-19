@@ -362,10 +362,29 @@ void wizm::properties_ui_layer::modify_component_attrib(std::string& type, core_
 	{
 		auto directionallight = dynamic_cast<directionallight_component*>(component);
 
-		float test[3] = { directionallight->m_ambient.x, directionallight->m_ambient.y, directionallight->m_ambient.z };
+		float ambient_color[3] = { directionallight->m_ambient.x, directionallight->m_ambient.y, directionallight->m_ambient.z };
 
-		ImGui::ColorPicker3("test", test);
-		directionallight->m_ambient = glm::vec3(test[0], test[1], test[2]);
+		float diffuse_color[3] = { directionallight->m_diffuse.x, directionallight->m_diffuse.y, directionallight->m_diffuse.z };
+		
+		float specular_color[3] = { directionallight->m_specular.x, directionallight->m_specular.y, directionallight->m_specular.z };
+
+		float brightness = directionallight->m_brightness;
+
+		
+		ImGui::ColorPicker3("ambient", ambient_color);
+		ImGui::ColorPicker3("diffuse", diffuse_color);
+		ImGui::ColorPicker3("specular", specular_color);
+		ImGui::InputFloat("brightness", &brightness, 0.1f, 1.0f);
+		
+		
+		
+		
+		
+		
+		directionallight->m_ambient = glm::vec3(ambient_color[0], ambient_color[1], ambient_color[2]);
+		directionallight->m_diffuse = glm::vec3(diffuse_color[0], diffuse_color[1], diffuse_color[2]);
+		directionallight->m_specular = glm::vec3(specular_color[0], specular_color[1], specular_color[2]);
+		directionallight->m_brightness = brightness;
 	}
 
 	if (type == "SpotLight")
